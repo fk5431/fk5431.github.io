@@ -85,6 +85,9 @@
 
 
 
+  <meta property="fb:admins" content="9104f4ea90defc8a150482e87e7cf792" />
+  <meta property="fb:app_id" content="412676329103702" />
+
 
 
 <meta name="description" content="HexoHexo是一个可以快速搭建博客的框架，使用Markdown解析文章，生成静态的网页。（可以部署在github上哦） hexo的安装hexo只依赖于  Node.js Git  上面的两个的安装就不说了，自行百度，hexo基于上述环境可以使用nmp安装 1npm install -g hexo-cli hexo的基本命令 hexo init [folder]   #新建一个网站 hexo n">
@@ -137,6 +140,24 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '412676329103702',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 
 
 
@@ -352,6 +373,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/17/start/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/04/17/start/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
           
 
           
@@ -468,6 +499,16 @@
 
       
         
+          <div class="social-like">
+            
+
+            
+              <div class="fb_like">
+                <div class="fb-like" data-layout="button_count" data-share="true"></div>
+              </div>
+            
+          </div>
+        
       
 
       
@@ -491,6 +532,13 @@
 
           
   <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2017/04/17/start/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
     
   </div>
 
@@ -724,6 +772,26 @@
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://fk5431.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/04/17/start/';
+          this.page.identifier = '2017/04/17/start/';
+          this.page.title = 'hexo初步使用';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://fk5431.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
   
 
