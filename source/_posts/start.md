@@ -1,5 +1,5 @@
 ---
-title: hexoc初步使用
+title: hexo初步使用
 date: 2017-04-17 14:40:10
 tags: 
 - 其他
