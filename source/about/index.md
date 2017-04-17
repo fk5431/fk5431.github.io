@@ -9,5 +9,5 @@ date: 2017-04-17 15:04:18
 小菜鸟一个，欢迎讨论。
 
 赞助
-![支付宝](zhifubao.jpg)
+![支付宝](zhifubao.png)
 ![微信](weixin.png)
