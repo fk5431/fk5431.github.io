@@ -85,6 +85,9 @@
 
 
 
+  <meta property="fb:admins" content="9104f4ea90defc8a150482e87e7cf792" />
+  <meta property="fb:app_id" content="412676329103702" />
+
 
 
 <meta name="description" content="咸鱼翻身">
@@ -142,6 +145,24 @@
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '412676329103702',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 
 
 
@@ -304,6 +325,13 @@
 
           
   <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/categories/index.html"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
     
   </div>
 
@@ -508,6 +536,26 @@
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://fk5431.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/categories/index.html';
+          this.page.identifier = 'categories/index.html';
+          this.page.title = 'categories';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://fk5431.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
 
   
 
