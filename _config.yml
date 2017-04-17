@@ -44,8 +44,11 @@ highlight:
   tab_replace:
 
 # Category & Tag
-default_category: uncategorized
+#默认分类
+default_category: java,python
+#分类别名
 category_map:
+#标签别名
 tag_map:
 
 # Date / Time format
