@@ -1,6 +1,7 @@
 ---
 title: about
 date: 2017-04-17 15:04:18
+comments: false
 ---
 ### fk5431的githubpage
 - [github](https://github.com/fk5431)： https://github.com/fk5431
