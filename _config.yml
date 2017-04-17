@@ -7,7 +7,7 @@ title: fk5431
 subtitle: fk5431
 description: 咸鱼翻身
 author: fk
-language:
+language: zh-Hans
 timezone:
 
 # URL
@@ -44,8 +44,8 @@ highlight:
   tab_replace:
 
 # Category & Tag
-default_category: uncategorized
-category_map:
+default_category: java, python, 计算机系统, jvm, 前端, 其他
+category_map: java, python, 计算机系统, jvm, 前端, 其他
 tag_map:
 
 # Date / Time format
