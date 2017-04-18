@@ -1,6 +1,7 @@
 ---
 title: hexo初步使用
 date: 2017-04-17 14:40:10
+comments: false
 tags: 
 - 其他
 categories: 
