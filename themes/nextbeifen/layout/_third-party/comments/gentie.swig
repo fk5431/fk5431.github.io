@@ -2,7 +2,7 @@
 
   {% if theme.gentie_productKey %}
     {% set gentie_productKey = theme.gentie_productKey %}
-    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper" style="max-width:980px;margin:0 auto;"></div>
     <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
     <script>
       var cloudTieConfig = {
