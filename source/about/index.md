@@ -9,6 +9,6 @@ comments: false
 
 小菜鸟一个，欢迎讨论。
 
-赞助
+坚持原创技术分享，您的支持将鼓励我继续创作！
 ![支付宝](zhifubao.png)
 ![微信](weixin.png)
