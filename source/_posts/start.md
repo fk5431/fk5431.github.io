@@ -6,6 +6,7 @@ tags:
 - 其他
 categories: 
 - 其他
+keywords: hexo, github
 ---
 ## Hexo
 Hexo是一个可以快速搭建博客的框架，使用Markdown解析文章，生成静态的网页。（可以部署在github上哦）
