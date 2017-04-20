@@ -47,6 +47,11 @@ menu:
   #commonweal: /404.html
 
 
+#打赏
+reward_comment: 坚持原创技术分享，您的支持将鼓励我继续创作！
+wechatpay: /pay/weixin.png
+alipay: /pay/zhifubao.png
+
 # Enable/Disable menu icons.
 # Icon Mapping:
 #   Map a menu item to a specific FontAwesome icon name.
@@ -134,8 +139,10 @@ font:
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-#social:
-  #LinkLabel: Link
+social:
+  GitHub: https://github.com/fk5431
+  csdn: http://blog.csdn.net/fk5431
+  知乎: http://www.zhihu.com/people/narr
 
 
 # Social Links Icons
@@ -272,7 +279,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night bright
 
 
 # ---------------------------------------------------------------
@@ -298,7 +305,7 @@ baidu_analytics: 7d7bc2dc9efce9bfd4b23d39bce80284
 # Disqus
 disqus:
   enable: true
-  shortname: fk5431
+  shortname: 来自
   count: true
 
 # Hypercomments
@@ -395,9 +402,9 @@ vkontakte_api:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: false
-  app_id: #<app_id>
-  app_key: #<app_key>
+  enable: true
+  app_id: 4lafdIPASG7vEXiPQdkjmVpF-gzGzoHsz
+  app_key: rchYd5mRO9350AxY9wX3PEaU
 
 # Show PV/UV of the website/page with busuanzi.
 # Get more information on http://ibruce.info/2015/04/04/busuanzi/
@@ -458,8 +465,13 @@ algolia_search:
 
 # Local search
 local_search:
-  enable: false
+  enable: true
 
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
 # External URL with BASE64 encrypt & decrypt
 # Usage: {% exturl text url "title" %}
 # Alias: {% extlink text url "title" %}
