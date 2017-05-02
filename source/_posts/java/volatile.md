@@ -1,5 +1,5 @@
 ---
-title: volatile
+title: 深入理解volatile
 date: 2017-05-02 09:45:54
 comments: false
 tags: 
