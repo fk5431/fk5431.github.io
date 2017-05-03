@@ -94,12 +94,12 @@
 <meta property="og:url" content="http://yoursite.com/20170503/java/concurrentHashMap/index.html">
 <meta property="og:site_name" content="fk5431">
 <meta property="og:description" content="HashMap的问题HashMap是不支持并发操作的，多线程情况下HashMap可能会导致死循环的发生，导致CPU占用率达到100%。 Hash表的数据结构HashMap通常会用一个指针数组（假设为table[]）来做分散所有的key，当一个key被加入时，会通过Hash算法通过key算出这个数组的下标i，然后就把这个插到table[i]中，如果有两个不同的key被算在了同一个i，那么就叫冲突，又">
-<meta property="og:image" content="http://yoursite.com/20170503/java/concurrentHashMap/concurrentHashMap.png">
-<meta property="og:updated_time" content="2017-05-03T08:44:38.690Z">
+<meta property="og:image" content="http://yoursite.com/20170503/uploads/concurrentHashMap.png">
+<meta property="og:updated_time" content="2017-05-03T08:53:24.430Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入分析ConcurrentHashMap">
 <meta name="twitter:description" content="HashMap的问题HashMap是不支持并发操作的，多线程情况下HashMap可能会导致死循环的发生，导致CPU占用率达到100%。 Hash表的数据结构HashMap通常会用一个指针数组（假设为table[]）来做分散所有的key，当一个key被加入时，会通过Hash算法通过key算出这个数组的下标i，然后就把这个插到table[i]中，如果有两个不同的key被算在了同一个i，那么就叫冲突，又">
-<meta name="twitter:image" content="http://yoursite.com/20170503/java/concurrentHashMap/concurrentHashMap.png">
+<meta name="twitter:image" content="http://yoursite.com/20170503/uploads/concurrentHashMap.png">
 
 
 
@@ -444,7 +444,7 @@
 <p>这样就会导致<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">线程1</div><div class="line"> ______    </div><div class="line">|__0___|           __________________              </div><div class="line">|__1___|          |                 |            </div><div class="line">|__2___|       ___|___          ____|__ </div><div class="line">|__3___| ---&gt; |_&lt;3,a&gt;_| -----&gt; |_&lt;7,b&gt;_| ----&gt; null</div></pre></td></tr></table></figure></p>
 <p>产生循环链表，导致死循环。</p>
 <h3 id="concurrentHashMap原理"><a href="#concurrentHashMap原理" class="headerlink" title="concurrentHashMap原理"></a>concurrentHashMap原理</h3><p>concurrentHashMap采用锁分段技术：假如容器里有多把锁，每一把锁用于锁容器其中一部分数据，那么当多线程访问容器里不同数据段的数据时，线程间就不会存在锁竞争，从而可以有效的提高并发访问效率，这就是ConcurrentHashMap所使用的锁分段技术。首先将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据的时候，其他段的数据也能被其他线程访问。</p>
-<p><img src="concurrentHashMap.png" alt="concurrentHashMap"></p>
+<p><img src="../../uploads/concurrentHashMap.png" alt="concurrentHashMap"></p>
 <p>HashEntry源码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">static final class HashEntry&lt;K,V&gt; &#123;</div><div class="line">        final int hash;</div><div class="line">        final K key;</div><div class="line">        volatile V value;</div><div class="line">        volatile HashEntry&lt;K,V&gt; next;</div></pre></td></tr></table></figure></p>
 <p>volatile关键字保证了多线程读取的时候一定是最新值。</p>
 <p>ConcurrentHashMap包含一个Segment数组,每个Segment包含一个HashEntry数组,当修改HashEntry数组采用开链法处理冲突,所以它的每个HashEntry元素又是链表结构的元素。</p>
