@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="java编程语言允许线程访问共享变量，为了确保共享变量能被准确和一致的更新，线程应该确保通过排他锁单独获得这个变量。java语言提供了volatile，在某些情况下比锁更加方便。如果一个字段被声明成volatile，java线程内存模型确保所有线程看到这个变量的值是一致的。  ###VolatileVolatile变量具有synchronized的可见性特性，但是不具备原子性。线程可以自动发现v">
+<meta name="description" content="java编程语言允许线程访问共享变量，为了确保共享变量能被准确和一致的更新，线程应该确保通过排他锁单独获得这个变量。java语言提供了volatile，在某些情况下比锁更加方便。如果一个字段被声明成volatile，java线程内存模型确保所有线程看到这个变量的值是一致的。  VolatileVolatile变量具有synchronized的可见性特性，但是不具备原子性。线程可以自动发现vola">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解volatile">
 <meta property="og:url" content="http://yoursite.com/20170502/java/volatile/index.html">
 <meta property="og:site_name" content="fk5431">
-<meta property="og:description" content="java编程语言允许线程访问共享变量，为了确保共享变量能被准确和一致的更新，线程应该确保通过排他锁单独获得这个变量。java语言提供了volatile，在某些情况下比锁更加方便。如果一个字段被声明成volatile，java线程内存模型确保所有线程看到这个变量的值是一致的。  ###VolatileVolatile变量具有synchronized的可见性特性，但是不具备原子性。线程可以自动发现v">
-<meta property="og:updated_time" content="2017-05-02T05:52:51.308Z">
+<meta property="og:description" content="java编程语言允许线程访问共享变量，为了确保共享变量能被准确和一致的更新，线程应该确保通过排他锁单独获得这个变量。java语言提供了volatile，在某些情况下比锁更加方便。如果一个字段被声明成volatile，java线程内存模型确保所有线程看到这个变量的值是一致的。  VolatileVolatile变量具有synchronized的可见性特性，但是不具备原子性。线程可以自动发现vola">
+<meta property="og:updated_time" content="2017-05-03T01:06:37.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解volatile">
-<meta name="twitter:description" content="java编程语言允许线程访问共享变量，为了确保共享变量能被准确和一致的更新，线程应该确保通过排他锁单独获得这个变量。java语言提供了volatile，在某些情况下比锁更加方便。如果一个字段被声明成volatile，java线程内存模型确保所有线程看到这个变量的值是一致的。  ###VolatileVolatile变量具有synchronized的可见性特性，但是不具备原子性。线程可以自动发现v">
+<meta name="twitter:description" content="java编程语言允许线程访问共享变量，为了确保共享变量能被准确和一致的更新，线程应该确保通过排他锁单独获得这个变量。java语言提供了volatile，在某些情况下比锁更加方便。如果一个字段被声明成volatile，java线程内存模型确保所有线程看到这个变量的值是一致的。  VolatileVolatile变量具有synchronized的可见性特性，但是不具备原子性。线程可以自动发现vola">
 
 
 
@@ -420,8 +420,8 @@
         <blockquote>
 <p>java编程语言允许线程访问共享变量，为了确保共享变量能被准确和一致的更新，线程应该确保通过排他锁单独获得这个变量。java语言提供了volatile，在某些情况下比锁更加方便。如果一个字段被声明成volatile，java线程内存模型确保所有线程看到这个变量的值是一致的。</p>
 </blockquote>
-<p>###Volatile<br>Volatile变量具有synchronized的可见性特性，但是不具备原子性。线程可以自动发现volatile变量的最新值，volatile可以用于线程安全，但是只能作用于很有限的一组用例：多个变量之间或者某个变量的当前值与修改后值之间没有约束。</p>
-<p>###正确使用volatile变量的条件<br>如果说要想使用volatile变量来替代锁，保证线程安全，必须满足一下两个条件：</p>
+<h3 id="Volatile"><a href="#Volatile" class="headerlink" title="Volatile"></a>Volatile</h3><p>Volatile变量具有synchronized的可见性特性，但是不具备原子性。线程可以自动发现volatile变量的最新值，volatile可以用于线程安全，但是只能作用于很有限的一组用例：多个变量之间或者某个变量的当前值与修改后值之间没有约束。</p>
+<h3 id="正确使用volatile变量的条件"><a href="#正确使用volatile变量的条件" class="headerlink" title="正确使用volatile变量的条件"></a>正确使用volatile变量的条件</h3><p>如果说要想使用volatile变量来替代锁，保证线程安全，必须满足一下两个条件：</p>
 <ul>
 <li>该变量的写操作不依赖当前值</li>
 <li>该变量没有包含在具有其他变量的不变式中</li>
@@ -519,8 +519,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/20170417/scala/scalastart/" rel="prev" title="Programming in Scala 阅读">
-                Programming in Scala 阅读 <i class="fa fa-chevron-right"></i>
+              <a href="/20170428/java/concurrentHashMap/" rel="prev" title="深入分析ConcurrentHashMap">
+                深入分析ConcurrentHashMap <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -595,7 +595,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -681,7 +681,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用volatile和不用volatile的一个例子"><span class="nav-number">1.</span> <span class="nav-text">使用volatile和不用volatile的一个例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正确使用volatile的模式"><span class="nav-number">2.</span> <span class="nav-text">正确使用volatile的模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#状态标志"><span class="nav-number">2.1.</span> <span class="nav-text">状态标志</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用于一次安全的发布"><span class="nav-number">2.2.</span> <span class="nav-text">用于一次安全的发布</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#独立观察模式"><span class="nav-number">2.3.</span> <span class="nav-text">独立观察模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#volatile-bean-模式"><span class="nav-number">2.4.</span> <span class="nav-text">volatile bean 模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#开销较低的读－写锁策略"><span class="nav-number">2.5.</span> <span class="nav-text">开销较低的读－写锁策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能考虑"><span class="nav-number"></span> <span class="nav-text">性能考虑</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Volatile"><span class="nav-number">1.</span> <span class="nav-text">Volatile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正确使用volatile变量的条件"><span class="nav-number">2.</span> <span class="nav-text">正确使用volatile变量的条件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用volatile和不用volatile的一个例子"><span class="nav-number">2.1.</span> <span class="nav-text">使用volatile和不用volatile的一个例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正确使用volatile的模式"><span class="nav-number">2.2.</span> <span class="nav-text">正确使用volatile的模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#状态标志"><span class="nav-number">2.2.1.</span> <span class="nav-text">状态标志</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用于一次安全的发布"><span class="nav-number">2.2.2.</span> <span class="nav-text">用于一次安全的发布</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#独立观察模式"><span class="nav-number">2.2.3.</span> <span class="nav-text">独立观察模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#volatile-bean-模式"><span class="nav-number">2.2.4.</span> <span class="nav-text">volatile bean 模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#开销较低的读－写锁策略"><span class="nav-number">2.2.5.</span> <span class="nav-text">开销较低的读－写锁策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能考虑"><span class="nav-number">3.</span> <span class="nav-text">性能考虑</span></a></li></ol></div>
             
 
           </div>
