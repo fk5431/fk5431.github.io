@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="设计模式, 工厂模式" />
+  <meta name="keywords" content="设计模式, 抽象工厂模式" />
 
 
 
@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="工厂模式介绍定义一个创建对象的接口，让其子类自己决定实例化哪一个工厂类，工厂模式使其创建过程延迟到子类进行。（创建型模式） 使用场景例如orm框架，在选择数据库的时候只需要替换方言和驱动，不需要对已经实现的具体细节进行改动。  优点：使用工厂模式可以屏蔽具体实现，只需要关心接口的调用；在增加一个产品的时候，只需要在工厂类里扩展一个产品就可以。 缺点：每增加产品就必须增加具体实现类和实现工厂，增加了">
+<meta name="description" content="抽象工厂模式介绍为创建一组相关或相互依赖的对象提供一个接口，而且无需指定他们的具体类。（创建型模式） 和工厂模式区别工厂模式提供一个产品的结构，而抽象工厂模式提供多个产品的结构，可以组成一个产品族。  QQ换皮肤可以使用抽象工厂模式  优点：当一个产品族中的多个对象被设计成一起工作时，它能保证客户端始终只使用同一个产品族中的对象。缺点：扩展非常麻烦，需要修改很多代码。 DEMO可以在前一个例子上给">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式——工厂模式">
-<meta property="og:url" content="http://yoursite.com/20170617/Design_pattern/factory_pattern/index.html">
+<meta property="og:title" content="抽象工厂模式">
+<meta property="og:url" content="http://yoursite.com/20170618/Design_pattern/abstract-factory-pattern/index.html">
 <meta property="og:site_name" content="fk5431">
-<meta property="og:description" content="工厂模式介绍定义一个创建对象的接口，让其子类自己决定实例化哪一个工厂类，工厂模式使其创建过程延迟到子类进行。（创建型模式） 使用场景例如orm框架，在选择数据库的时候只需要替换方言和驱动，不需要对已经实现的具体细节进行改动。  优点：使用工厂模式可以屏蔽具体实现，只需要关心接口的调用；在增加一个产品的时候，只需要在工厂类里扩展一个产品就可以。 缺点：每增加产品就必须增加具体实现类和实现工厂，增加了">
-<meta property="og:updated_time" content="2017-06-17T14:28:58.247Z">
+<meta property="og:description" content="抽象工厂模式介绍为创建一组相关或相互依赖的对象提供一个接口，而且无需指定他们的具体类。（创建型模式） 和工厂模式区别工厂模式提供一个产品的结构，而抽象工厂模式提供多个产品的结构，可以组成一个产品族。  QQ换皮肤可以使用抽象工厂模式  优点：当一个产品族中的多个对象被设计成一起工作时，它能保证客户端始终只使用同一个产品族中的对象。缺点：扩展非常麻烦，需要修改很多代码。 DEMO可以在前一个例子上给">
+<meta property="og:updated_time" content="2017-06-19T12:06:42.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式——工厂模式">
-<meta name="twitter:description" content="工厂模式介绍定义一个创建对象的接口，让其子类自己决定实例化哪一个工厂类，工厂模式使其创建过程延迟到子类进行。（创建型模式） 使用场景例如orm框架，在选择数据库的时候只需要替换方言和驱动，不需要对已经实现的具体细节进行改动。  优点：使用工厂模式可以屏蔽具体实现，只需要关心接口的调用；在增加一个产品的时候，只需要在工厂类里扩展一个产品就可以。 缺点：每增加产品就必须增加具体实现类和实现工厂，增加了">
+<meta name="twitter:title" content="抽象工厂模式">
+<meta name="twitter:description" content="抽象工厂模式介绍为创建一组相关或相互依赖的对象提供一个接口，而且无需指定他们的具体类。（创建型模式） 和工厂模式区别工厂模式提供一个产品的结构，而抽象工厂模式提供多个产品的结构，可以组成一个产品族。  QQ换皮肤可以使用抽象工厂模式  优点：当一个产品族中的多个对象被设计成一起工作时，它能保证客户端始终只使用同一个产品族中的对象。缺点：扩展非常麻烦，需要修改很多代码。 DEMO可以在前一个例子上给">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/20170617/Design_pattern/factory_pattern/"/>
+  <link rel="canonical" href="http://yoursite.com/20170618/Design_pattern/abstract-factory-pattern/"/>
 
 
 
 
 
-  <title> 设计模式——工厂模式 | fk5431 </title>
+  <title> 抽象工厂模式 | fk5431 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -314,7 +314,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20170617/Design_pattern/factory_pattern/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20170618/Design_pattern/abstract-factory-pattern/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fk">
@@ -335,7 +335,7 @@
             
             
               
-                设计模式——工厂模式
+                抽象工厂模式
               
             
           </h1>
@@ -350,8 +350,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-17T21:21:50+08:00">
-                2017-06-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-18T14:39:16+08:00">
+                2017-06-18
               </time>
             
 
@@ -388,7 +388,7 @@
 
           
           
-             <span id="/20170617/Design_pattern/factory_pattern/" class="leancloud_visitors" data-flag-title="设计模式——工厂模式">
+             <span id="/20170618/Design_pattern/abstract-factory-pattern/" class="leancloud_visitors" data-flag-title="抽象工厂模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -417,25 +417,29 @@
       
 
       
-        <h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>定义一个创建对象的接口，让其子类自己决定实例化哪一个工厂类，工厂模式使其创建过程延迟到子类进行。（创建型模式）</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>例如orm框架，在选择数据库的时候只需要替换方言和驱动，不需要对已经实现的具体细节进行改动。</p>
-<ul>
-<li>优点：使用工厂模式可以屏蔽具体实现，只需要关心接口的调用；在增加一个产品的时候，只需要在工厂类里扩展一个产品就可以。</li>
-<li>缺点：每增加产品就必须增加具体实现类和实现工厂，增加了系统复杂性。（如果产品非常非常多，233333）</li>
-</ul>
-<h3 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h3><p>工厂模式比较简单，就写个最常用的例子：图形。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package factory.pattern;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/17.</div><div class="line"> */</div><div class="line">public interface Shape &#123;</div><div class="line">    void draw();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>创建 shape抽象类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package factory.pattern;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/17.</div><div class="line"> */</div><div class="line">public class Rectangle implements Shape &#123;</div><div class="line">    @Override</div><div class="line">    public void draw() &#123;</div><div class="line">        System.out.println(&quot;Rectangle : draw()&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>rectangle实现shape方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">package factory.pattern;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/17.</div><div class="line"> */</div><div class="line">public class Circle implements Shape &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void draw() &#123;</div><div class="line">        System.out.println(&quot;Circle : draw()&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>circle实现shape方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">package factory.pattern;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/17.</div><div class="line"> */</div><div class="line">public class Square implements Shape &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void draw() &#123;</div><div class="line">        System.out.println(&quot;Square : draw()&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>square实现shape方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">package factory.pattern;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/17.</div><div class="line"> */</div><div class="line">public class ShapeFactory &#123;</div><div class="line"></div><div class="line">    public Shape getShape(String shapeType)&#123;</div><div class="line">        if(shapeType == null)&#123;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line">        if(shapeType.equalsIgnoreCase(&quot;CIRCLE&quot;))&#123;</div><div class="line">            return new Circle();</div><div class="line">        &#125; else if(shapeType.equalsIgnoreCase(&quot;RECTANGLE&quot;))&#123;</div><div class="line">            return new Rectangle();</div><div class="line">        &#125; else if(shapeType.equalsIgnoreCase(&quot;SQUARE&quot;))&#123;</div><div class="line">            return new Square();</div><div class="line">        &#125;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>创建一个工厂，生成基于给传入值的实体类的对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">package factory.pattern;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/17.</div><div class="line"> */</div><div class="line">public class FactoryPattern &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        ShapeFactory shapeFactory = new ShapeFactory();</div><div class="line">        Shape circle = shapeFactory.getShape(&quot;CIRCLE&quot;);</div><div class="line">        //调用 Circle 的 draw 方法</div><div class="line">        circle.draw();</div><div class="line">        Shape rectangle = shapeFactory.getShape(&quot;RECTANGLE&quot;);</div><div class="line">        //调用 Rectangle 的 draw 方法</div><div class="line">        rectangle.draw();</div><div class="line">        Shape square = shapeFactory.getShape(&quot;SQUARE&quot;);</div><div class="line">        //调用 Square 的 draw 方法</div><div class="line">        square.draw();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>写个demo来测试下输出是否实现了工厂模式，输出如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Circle : draw()</div><div class="line">Rectangle : draw()</div><div class="line">Square : draw()</div></pre></td></tr></table></figure></p>
+        <h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>为创建一组相关或相互依赖的对象提供一个接口，而且无需指定他们的具体类。（创建型模式）</p>
+<h3 id="和工厂模式区别"><a href="#和工厂模式区别" class="headerlink" title="和工厂模式区别"></a>和工厂模式区别</h3><p>工厂模式提供一个产品的结构，而抽象工厂模式提供多个产品的结构，可以组成一个产品族。</p>
+<blockquote>
+<p>QQ换皮肤可以使用抽象工厂模式</p>
+</blockquote>
+<p><strong>优点</strong>：当一个产品族中的多个对象被设计成一起工作时，它能保证客户端始终只使用同一个产品族中的对象。<br><strong>缺点</strong>：扩展非常麻烦，需要修改很多代码。</p>
+<h3 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h3><p>可以在前一个例子上给图形增加颜色，就相当于一个产品族了：</p>
+<p>先创建一个图形和颜色的接口类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.abs;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/18.</div><div class="line"> */</div><div class="line">public interface Color &#123;</div><div class="line">    void fill();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.abs;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/18.</div><div class="line"> */</div><div class="line">public interface Shape &#123;</div><div class="line">    void draw();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后分别实现各自两个类进行测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.abs;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/18.</div><div class="line"> */</div><div class="line">public class Black implements Color &#123;</div><div class="line">    @Override</div><div class="line">    public void fill() &#123;</div><div class="line">        System.out.println(&quot;Black : fill()&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.abs;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/18.</div><div class="line"> */</div><div class="line">public class Red implements Color &#123;</div><div class="line">    @Override</div><div class="line">    public void fill() &#123;</div><div class="line">        System.out.println(&quot;Red : fill()&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.abs;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/18.</div><div class="line"> */</div><div class="line">public class Circle implements Shape &#123;</div><div class="line">    @Override</div><div class="line">    public void draw() &#123;</div><div class="line">        System.out.println(&quot;Circle : draw()&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.abs;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/18.</div><div class="line"> */</div><div class="line">public class Rectangle implements Shape &#123;</div><div class="line">    @Override</div><div class="line">    public void draw() &#123;</div><div class="line">        System.out.println(&quot;Rectangle : draw()&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后实现工厂抽象类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.abs;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/18.</div><div class="line"> */</div><div class="line">public abstract class AbstractFactory &#123;</div><div class="line">    abstract Color getColorFactory(String color);</div><div class="line">    abstract Shape getShapeFactory(String shape);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后扩展工厂抽象类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.abs;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/18.</div><div class="line"> */</div><div class="line">public class ShapeFactory extends AbstractFactory &#123;</div><div class="line">    @Override</div><div class="line">    Color getColorFactory(String color) &#123;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    Shape getShapeFactory(String shape) &#123;</div><div class="line">        if(shape == null) &#123;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line">        if (&quot;rectangle&quot;.equals(shape))&#123;</div><div class="line">            return new Rectangle();</div><div class="line">        &#125;else if (&quot;circle&quot;.equals(shape))&#123;</div><div class="line">            return new Circle();</div><div class="line">        &#125;else &#123;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.abs;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/18.</div><div class="line"> */</div><div class="line">public class ColorFactory extends AbstractFactory &#123;</div><div class="line">    @Override</div><div class="line">    Color getColorFactory(String color) &#123;</div><div class="line">        if(color == null) &#123;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line">        if(&quot;red&quot;.equals(color))&#123;</div><div class="line">            return new Red();</div><div class="line">        &#125;else if(&quot;black&quot;.equals(color))&#123;</div><div class="line">            return new Black();</div><div class="line">        &#125;else &#123;</div><div class="line">            return null;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    Shape getShapeFactory(String shape) &#123;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后写一个工厂创造器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.abs;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/18.</div><div class="line"> */</div><div class="line">public class FactoryProducer &#123;</div><div class="line">    public static AbstractFactory getFactory(String choice)&#123;</div><div class="line">        if(choice.equalsIgnoreCase(&quot;shape&quot;))&#123;</div><div class="line">            return new ShapeFactory();</div><div class="line">        &#125; else if(choice.equalsIgnoreCase(&quot;color&quot;))&#123;</div><div class="line">            return new ColorFactory();</div><div class="line">        &#125;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最后写一个测试类来试试输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.abs;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/6/18.</div><div class="line"> */</div><div class="line">public class AbstractFactoryPattern &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        AbstractFactory shapeFactory = FactoryProducer.getFactory(&quot;shape&quot;);</div><div class="line">        Shape shape1 = shapeFactory.getShapeFactory(&quot;circle&quot;);</div><div class="line">        shape1.draw();</div><div class="line">        Shape shape2 = shapeFactory.getShapeFactory(&quot;rectangle&quot;);</div><div class="line">        shape2.draw();</div><div class="line">        AbstractFactory colorFactory = FactoryProducer.getFactory(&quot;color&quot;);</div><div class="line">        Color color1 = colorFactory.getColorFactory(&quot;red&quot;);</div><div class="line">        color1.fill();</div><div class="line">        Color color2 = colorFactory.getColorFactory(&quot;black&quot;);</div><div class="line">        color2.fill();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>输出如果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Circle : draw()</div><div class="line">Rectangle : draw()</div><div class="line">Red : fill()</div><div class="line">Black : fill()</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -499,18 +503,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/20170618/Design_pattern/abstract-factory-pattern/" rel="next" title="抽象工厂模式">
-                <i class="fa fa-chevron-left"></i> 抽象工厂模式
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/20170616/Design_pattern/start/" rel="prev" title="设计模式">
-                设计模式 <i class="fa fa-chevron-right"></i>
+              <a href="/20170617/Design_pattern/factory_pattern/" rel="prev" title="设计模式——工厂模式">
+                设计模式——工厂模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -671,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工厂模式"><span class="nav-number">1.</span> <span class="nav-text">工厂模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">1.2.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DEMO"><span class="nav-number">1.3.</span> <span class="nav-text">DEMO</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象工厂模式"><span class="nav-number">1.</span> <span class="nav-text">抽象工厂模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和工厂模式区别"><span class="nav-number">1.2.</span> <span class="nav-text">和工厂模式区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DEMO"><span class="nav-number">1.3.</span> <span class="nav-text">DEMO</span></a></li></ol></li></ol></div>
             
 
           </div>

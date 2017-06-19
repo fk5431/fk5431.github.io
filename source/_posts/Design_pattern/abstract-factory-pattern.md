@@ -1,5 +1,5 @@
 ---
-title: abstract_factory_pattern
+title: 抽象工厂模式
 date: 2017-06-18 14:39:16
 comments: false
 tags: 
