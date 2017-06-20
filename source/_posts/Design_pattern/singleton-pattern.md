@@ -86,7 +86,7 @@ public class SingletonHungary {
 ```
 饿汉式会在类装载时候就进行实例的初始化,虽然没有了synchronize的效率影响,但是在类加载的时候就进行了初始化一方面浪费了内存,也没有实现lazy loading加载的效果.
 
-#### 双重校验锁
+#### ~~双重校验锁~~
 ```
 package factory.pattern.singleton;
 /**
@@ -108,6 +108,7 @@ public class DoubleCheckedLocking {
 }
 ```
 这种方式采用了双锁机制,一方面保证了多线程的安全,另一方面还提高了效率.
+但是看起来是完美,但是实际上这种方式是有缺陷的,是错误的一种.
 (双重检查锁定的问题下次专门内个文章)
 
 #### 静态内部类
