@@ -105,3 +105,46 @@ public class UnsafeLazyLoading {
 以上引用内容来自 http://ifeve.com/double-checked-locking-with-delay-initialization/
 
 ### 解决方案
+
+#### 基于volatile的双重检定
+只需要把要获取的实例unsafeLazyLoading声明为volatile就可以,如下:
+```
+public class UnsafeLazyLoading {
+    private volatile static UnsafeLazyLoading unsafeLazyLoading;
+    private UnsafeLazyLoading (){}
+    public static UnsafeLazyLoading getInstance(){
+        if( unsafeLazyLoading == null){                     //sign 1
+            synchronized (UnsafeLazyLoading.class){
+                if( unsafeLazyLoading == null){
+                    unsafeLazyLoading = new UnsafeLazyLoading();   
+                }
+            }
+            
+        }
+        return unsafeLazyLoading;
+    }
+}
+```
+当声明对象的引用为volatile后，上述说到的2和3之间的重排序，在多线程环境中将会被禁止。
+
+#### 基于类初始化
+
+> JVM在类的初始化阶段（即在Class被加载后，且被线程使用之前），会执行类的初始化。在执行类的初始化期间，JVM会去获取一个锁。这个锁可以同步多个线程对同一个类的初始化。
+因此就可以采用静态内部类的形式实现延迟加载的效果,像上一篇文章最后的代码一样.
+```
+package factory.pattern.singleton;
+/**
+ * Created by fk5431 on 6/19/17.
+ */
+public class SingletonStaticClass {
+    //静态内部类
+    private static class SingletonHodler{
+        private static final SingletonStaticClass INSTANCE = new SingletonStaticClass();
+    }
+    private SingletonStaticClass(){}
+    public static final SingletonStaticClass getInstance(){
+        return SingletonHodler.INSTANCE;
+    }
+}
+```
+这样虽然允许了上述的2,3之间的重排序,但是非构造线程无法被重排序所影响.
