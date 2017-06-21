@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/20170619/Design_pattern/singleton-pattern/index.html">
 <meta property="og:site_name" content="fk5431">
 <meta property="og:description" content="单例模式定义一个类有且仅有一个实例，并且自行实例化向整个系统提供。(创建型模式)设计模式中比较简单的几种之一,单例模式就是让一个类在系统运行过程中只会产生唯一的一个实例,单例模式主要:  单例类只能有一个实例。 单例类必须自己创建自己的唯一实例。 单例类必须给所有其他对象提供这一实例。  使用场景 需要频繁实例化然后销毁的对象。 创建对象时耗时过多或者耗资源过多，但又经常用到的对象。 有状态的工具">
-<meta property="og:updated_time" content="2017-06-19T13:50:53.195Z">
+<meta property="og:updated_time" content="2017-06-20T15:26:17.331Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单例模式">
 <meta name="twitter:description" content="单例模式定义一个类有且仅有一个实例，并且自行实例化向整个系统提供。(创建型模式)设计模式中比较简单的几种之一,单例模式就是让一个类在系统运行过程中只会产生唯一的一个实例,单例模式主要:  单例类只能有一个实例。 单例类必须自己创建自己的唯一实例。 单例类必须给所有其他对象提供这一实例。  使用场景 需要频繁实例化然后销毁的对象。 创建对象时耗时过多或者耗资源过多，但又经常用到的对象。 有状态的工具">
@@ -436,8 +436,8 @@
 <p>懒汉式的线程安全模式在进入获取实例方法时候就会加synchronize,可以保证线程安全获取唯一的实例,但是如果该方法调用过多会有性能方面的影响.</p>
 <h4 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.singleton;</div><div class="line">/**</div><div class="line"> * Created by fk5431 on 6/19/17.</div><div class="line"> */</div><div class="line">public class SingletonHungary &#123;</div><div class="line">    private static SingletonHungary singletonHungary = new SingletonHungary();</div><div class="line">    private SingletonHungary()&#123;&#125;</div><div class="line">    public static SingletonHungary getInstance()&#123;</div><div class="line">        return singletonHungary;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>饿汉式会在类装载时候就进行实例的初始化,虽然没有了synchronize的效率影响,但是在类加载的时候就进行了初始化一方面浪费了内存,也没有实现lazy loading加载的效果.</p>
-<h4 id="双重校验锁"><a href="#双重校验锁" class="headerlink" title="双重校验锁"></a>双重校验锁</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.singleton;</div><div class="line">/**</div><div class="line"> * Created by fk5431 on 6/19/17.</div><div class="line"> */</div><div class="line">public class DoubleCheckedLocking &#123;</div><div class="line">    private volatile static DoubleCheckedLocking doubleCheckedLocking;</div><div class="line">    private DoubleCheckedLocking()&#123;&#125;</div><div class="line">    public DoubleCheckedLocking getInstance()&#123;</div><div class="line">        if(doubleCheckedLocking == null)&#123;</div><div class="line">            synchronized (DoubleCheckedLocking.class)&#123;</div><div class="line">                if(doubleCheckedLocking == null)&#123;</div><div class="line">                    doubleCheckedLocking = new DoubleCheckedLocking();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return doubleCheckedLocking;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这种方式采用了双锁机制,一方面保证了多线程的安全,另一方面还提高了效率.<br>(双重检查锁定的问题下次专门内个文章)</p>
+<h4 id="双重校验锁"><a href="#双重校验锁" class="headerlink" title="双重校验锁"></a><del>双重校验锁</del></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.singleton;</div><div class="line">/**</div><div class="line"> * Created by fk5431 on 6/19/17.</div><div class="line"> */</div><div class="line">public class DoubleCheckedLocking &#123;</div><div class="line">    private volatile static DoubleCheckedLocking doubleCheckedLocking;</div><div class="line">    private DoubleCheckedLocking()&#123;&#125;</div><div class="line">    public DoubleCheckedLocking getInstance()&#123;</div><div class="line">        if(doubleCheckedLocking == null)&#123;</div><div class="line">            synchronized (DoubleCheckedLocking.class)&#123;</div><div class="line">                if(doubleCheckedLocking == null)&#123;</div><div class="line">                    doubleCheckedLocking = new DoubleCheckedLocking();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return doubleCheckedLocking;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这种方式采用了双锁机制,一方面保证了多线程的安全,另一方面还提高了效率.<br>但是看起来是完美,但是实际上这种方式是有缺陷的,是错误的一种.<br>(双重检查锁定的问题下次专门内个文章)</p>
 <h4 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.singleton;</div><div class="line">/**</div><div class="line"> * Created by fk5431 on 6/19/17.</div><div class="line"> */</div><div class="line">public class SingletonStaticClass &#123;</div><div class="line">    //静态内部类</div><div class="line">    private static class SingletonHodler&#123;</div><div class="line">        private static final SingletonStaticClass INSTANCE = new SingletonStaticClass();</div><div class="line">    &#125;</div><div class="line">    private SingletonStaticClass()&#123;&#125;</div><div class="line">    public static final SingletonStaticClass getInstance()&#123;</div><div class="line">        return SingletonHodler.INSTANCE;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这种方式利用了 classloder 机制来保证初始化 instance 时只有一个线程,但是这个是类装载的时候不一定会进行初始化,只有在调用 getInstance 方法时候才会显示的装载SingletonHodler,然后实例化instance.</p>
 
@@ -502,6 +502,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/20170620/Design_pattern/double-checked-locking/" rel="next" title="双重检查锁定">
+                <i class="fa fa-chevron-left"></i> 双重检查锁定
+              </a>
             
           </div>
 
@@ -585,7 +589,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
