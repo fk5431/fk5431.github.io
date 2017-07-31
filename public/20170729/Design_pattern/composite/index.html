@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="双重检查锁定" />
+  <meta name="keywords" content="设计模式, 组合模式" />
 
 
 
@@ -87,20 +87,17 @@
 
 
 
-<meta name="description" content="双重检查锁定产生原因在写Java程序的时候,有时候会推迟高开销对象的初始化,在使用的时候在进行初始化,达到lazy loading的效果.但是进行延迟初始化的时候可能会产生很多问题(多线程环境),例如:12345678910public class UnsafeLazyLoading &amp;#123;    private static UnsafeLazyLoading unsafeLazyLoad">
-<meta name="keywords" content="其他">
+<meta name="description" content="组合模式介绍组合模式将对象组合成树形结构表示“部分-整体”的层次结构，组合模式使用户对单个对象和组合对象的使用具有一致性。（结构型）就像文件系统一样，文件由目录和文件组成，每个目录都可以装载目录，目录的内容既可以是文件，也可以是目录。计算机的文件系统就是以递归结构来组织的，这种情景就适用于组合模式。 使用场景和涉及的角色适用性 你想表示对象的部分-整体层次结构 你希望用户忽略组合对象与单个对象的不">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="双重检查锁定">
-<meta property="og:url" content="http://yoursite.com/20170620/Design_pattern/double-checked-locking/index.html">
+<meta property="og:title" content="组合模式">
+<meta property="og:url" content="http://yoursite.com/20170729/Design_pattern/composite/index.html">
 <meta property="og:site_name" content="fk5431">
-<meta property="og:description" content="双重检查锁定产生原因在写Java程序的时候,有时候会推迟高开销对象的初始化,在使用的时候在进行初始化,达到lazy loading的效果.但是进行延迟初始化的时候可能会产生很多问题(多线程环境),例如:12345678910public class UnsafeLazyLoading &amp;#123;    private static UnsafeLazyLoading unsafeLazyLoad">
-<meta property="og:image" content="http://yoursite.com/uploads/double_checked_locking/double_checked_lock.png">
-<meta property="og:image" content="http://yoursite.com/uploads/double_checked_locking/double_checked_lock1.png">
-<meta property="og:updated_time" content="2017-07-24T01:34:36.662Z">
+<meta property="og:description" content="组合模式介绍组合模式将对象组合成树形结构表示“部分-整体”的层次结构，组合模式使用户对单个对象和组合对象的使用具有一致性。（结构型）就像文件系统一样，文件由目录和文件组成，每个目录都可以装载目录，目录的内容既可以是文件，也可以是目录。计算机的文件系统就是以递归结构来组织的，这种情景就适用于组合模式。 使用场景和涉及的角色适用性 你想表示对象的部分-整体层次结构 你希望用户忽略组合对象与单个对象的不">
+<meta property="og:updated_time" content="2017-07-31T01:14:01.743Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="双重检查锁定">
-<meta name="twitter:description" content="双重检查锁定产生原因在写Java程序的时候,有时候会推迟高开销对象的初始化,在使用的时候在进行初始化,达到lazy loading的效果.但是进行延迟初始化的时候可能会产生很多问题(多线程环境),例如:12345678910public class UnsafeLazyLoading &amp;#123;    private static UnsafeLazyLoading unsafeLazyLoad">
-<meta name="twitter:image" content="http://yoursite.com/uploads/double_checked_locking/double_checked_lock.png">
+<meta name="twitter:title" content="组合模式">
+<meta name="twitter:description" content="组合模式介绍组合模式将对象组合成树形结构表示“部分-整体”的层次结构，组合模式使用户对单个对象和组合对象的使用具有一致性。（结构型）就像文件系统一样，文件由目录和文件组成，每个目录都可以装载目录，目录的内容既可以是文件，也可以是目录。计算机的文件系统就是以递归结构来组织的，这种情景就适用于组合模式。 使用场景和涉及的角色适用性 你想表示对象的部分-整体层次结构 你希望用户忽略组合对象与单个对象的不">
 
 
 
@@ -128,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/20170620/Design_pattern/double-checked-locking/"/>
+  <link rel="canonical" href="http://yoursite.com/20170729/Design_pattern/composite/"/>
 
 
 
 
 
-  <title> 双重检查锁定 | fk5431 </title>
+  <title> 组合模式 | fk5431 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -317,7 +314,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20170620/Design_pattern/double-checked-locking/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20170729/Design_pattern/composite/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fk">
@@ -338,7 +335,7 @@
             
             
               
-                双重检查锁定
+                组合模式
               
             
           </h1>
@@ -353,8 +350,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T19:57:37+08:00">
-                2017-06-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-29T18:25:22+08:00">
+                2017-07-29
               </time>
             
 
@@ -376,8 +373,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/其他/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -394,9 +391,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/20170620/Design_pattern/double-checked-locking/#comments" itemprop="discussionUrl">
+                <a href="/20170729/Design_pattern/composite/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="20170620/Design_pattern/double-checked-locking/" itemprop="commentCount"></span>
+                        data-disqus-identifier="20170729/Design_pattern/composite/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -404,7 +401,7 @@
 
           
           
-             <span id="/20170620/Design_pattern/double-checked-locking/" class="leancloud_visitors" data-flag-title="双重检查锁定">
+             <span id="/20170729/Design_pattern/composite/" class="leancloud_visitors" data-flag-title="组合模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -433,74 +430,20 @@
       
 
       
-        <h2 id="双重检查锁定"><a href="#双重检查锁定" class="headerlink" title="双重检查锁定"></a>双重检查锁定</h2><h3 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h3><p>在写Java程序的时候,有时候会推迟高开销对象的初始化,在使用的时候在进行初始化,达到lazy loading的效果.但是进行延迟初始化的时候可能会产生很多问题(多线程环境),例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public class UnsafeLazyLoading &#123;</div><div class="line">    private static UnsafeLazyLoading unsafeLazyLoading;</div><div class="line">    private UnsafeLazyLoading ()&#123;&#125;</div><div class="line">    public static UnsafeLazyLoading getInstance()&#123;</div><div class="line">        if( unsafeLazyLoading == null)&#123;                     //sign 1</div><div class="line">            unsafeLazyLoading = new UnsafeLazyLoading();    //sing 2</div><div class="line">        &#125;</div><div class="line">        return unsafeLazyLoading;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>就比如简单的单例模式要获取唯一的实例,如果在多线程环境下如果线程A运行到 sign 1标识的行,此时线程B运行到 sing 2标识的行,线程A就会看到需要的实例还没有被初始化,就会产生问题.</p>
-<p>处理这个可以加同步锁,代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public class UnsafeLazyLoading &#123;</div><div class="line">    private static UnsafeLazyLoading unsafeLazyLoading;</div><div class="line">    private UnsafeLazyLoading ()&#123;&#125;</div><div class="line">    public synchronized static UnsafeLazyLoading getInstance()&#123;</div><div class="line">        if( unsafeLazyLoading == null)&#123;                     //sign 1</div><div class="line">            unsafeLazyLoading = new UnsafeLazyLoading();    //sing 2</div><div class="line">        &#125;</div><div class="line">        return unsafeLazyLoading;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>但是每次在获取实例的时候都会进入同步锁,会严重影响系统的性能.<br>所以通过双重检查锁定来实现延迟初始化,代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class UnsafeLazyLoading &#123;</div><div class="line">    private static UnsafeLazyLoading unsafeLazyLoading;</div><div class="line">    private UnsafeLazyLoading ()&#123;&#125;</div><div class="line">    public static UnsafeLazyLoading getInstance()&#123;</div><div class="line">        if( unsafeLazyLoading == null)&#123;                     //sign 1</div><div class="line">            synchronized (UnsafeLazyLoading.class)&#123;</div><div class="line">                if( unsafeLazyLoading == null)&#123;</div><div class="line">                    unsafeLazyLoading = new UnsafeLazyLoading();   </div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        return unsafeLazyLoading;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上面这种方法看起很好</p>
-<ul>
-<li>在多个线程试图在同一时间创建对象时，会通过加锁来保证只有一个线程能创建对象。</li>
-<li>在对象创建好之后，执行getInstance()将不需要获取锁，直接返回已创建好的对象。</li>
-</ul>
-<p>但是执行到 sing1 标识的地方的时候,线程有可能unsafeLazyLoading不为空的时候,但是unsafeLazyloading引用的对象还有可能没有完成初始化的过程.</p>
-<blockquote>
-<p>###问题根源<br>在上述代码执行到   unsafelazyloading = new UnsafeLazyLoading(); 的时候,此时创建一个对象可分解为以下三步:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; memory = allocate();   //1：分配对象的内存空间</div><div class="line">&gt; ctorInstance(memory);  //2：初始化对象</div><div class="line">&gt; instance = memory;     //3：设置instance指向刚分配的内存地址 </div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
-<p>上面三行伪代码中的2和3之间，可能会被重排序（在一些JIT编译器上，这种重排序是真实发生的，详情见参考文献1的“Out-of-order writes”部分）。2和3之间重排序之后的执行时序如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; memory = allocate();   //1：分配对象的内存空间</div><div class="line">&gt; instance = memory;     //3：设置instance指向刚分配的内存地址</div><div class="line">&gt;                        //注意，此时对象还没有被初始化！</div><div class="line">&gt; ctorInstance(memory);  //2：初始化对象</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
-<p>根据《The Java Language Specification, Java SE 7 Edition》（后文简称为java语言规范），所有线程在执行java程序时必须要遵守intra-thread semantics。intra-thread semantics保证重排序不会改变单线程内的程序执行结果。换句话来说，intra-thread semantics允许那些在单线程内，不会改变单线程程序执行结果的重排序。上面三行伪代码的2和3之间虽然被重排序了，但这个重排序并不会违反intra-thread semantics。这个重排序在没有改变单线程程序的执行结果的前提下，可以提高程序的执行性能。<br>为了更好的理解intra-thread semantics，请看下面的示意图（假设一个线程A在构造对象后，立即访问这个对象）：<br><img src="../../../uploads/double_checked_locking/double_checked_lock.png" alt="intra-thread semantics"><br>只要保证2排在4的前面，即使2和3之间重排序了，也不会违反intra-thread semantics。<br>但是在多线程执行并发的时候示意图如下:<br><img src="../../../uploads/double_checked_locking/double_checked_lock1.png" alt="intra-thread semantics"><br>由于单线程内要遵守intra-thread semantics，从而能保证A线程的程序执行结果不会被改变。但是当线程A和B按上图的时序执行时，B线程将看到一个还没有被初始化的对象。<br>所以在双重检查锁定代码的（unsafeLazyLoading = new UnsafeLazyLoading();  ）如果发生重排序，另一个并发执行的线程B就有可能在第4行判断instance不为null。线程B接下来将访问instance所引用的对象，但此时这个对象可能还没有被A线程初始化！下面是这个场景的具体执行时序：</p>
-<table>
-<thead>
-<tr>
-<th>时间</th>
-<th>线程A</th>
-<th>线程B</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>t1</td>
-<td>A1：分配对象的内存空间</td>
-<td></td>
-</tr>
-<tr>
-<td>t2</td>
-<td>A3：设置instance指向内存空间</td>
-<td></td>
-</tr>
-<tr>
-<td>t3</td>
-<td></td>
-<td>B1：判断instance是否为空</td>
-</tr>
-<tr>
-<td>t4</td>
-<td></td>
-<td>B2：由于instance不为null，线程B将访问instance引用的对象</td>
-</tr>
-<tr>
-<td>t5</td>
-<td>A2：初始化对象</td>
-<td></td>
-</tr>
-<tr>
-<td>t6</td>
-<td>A4：访问instance引用的对象</td>
-</tr>
-</tbody>
-</table>
-<p>这里A2和A3虽然重排序了，但java内存模型的intra-thread semantics将确保A2一定会排在A4前面执行。因此线程A的intra-thread semantics没有改变。但A2和A3的重排序，将导致线程B在B1处判断出instance不为空，线程B接下来将访问instance引用的对象。此时，线程B将会访问到一个还未初始化的对象。</p>
-<p>在知晓了问题发生的根源之后，我们可以想出两个办法来实现线程安全的延迟初始化：</p>
-<ol>
-<li>不允许2和3重排序；</li>
-<li>允许2和3重排序，但不允许其他线程“看到”这个重排序。</li>
+        <h2 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>组合模式将对象组合成树形结构表示“部分-整体”的层次结构，组合模式使用户对单个对象和组合对象的使用具有一致性。（结构型）<br>就像文件系统一样，文件由目录和文件组成，每个目录都可以装载目录，目录的内容既可以是文件，也可以是目录。计算机的文件系统就是以递归结构来组织的，这种情景就适用于组合模式。</p>
+<h3 id="使用场景和涉及的角色"><a href="#使用场景和涉及的角色" class="headerlink" title="使用场景和涉及的角色"></a>使用场景和涉及的角色</h3><h4 id="适用性"><a href="#适用性" class="headerlink" title="适用性"></a>适用性</h4><ol>
+<li>你想表示对象的部分-整体层次结构</li>
+<li>你希望用户忽略组合对象与单个对象的不同，用户将统一地使用组合结构中的所有对象。</li>
 </ol>
-</blockquote>
-<p>以上引用内容来自 <a href="http://ifeve.com/double-checked-locking-with-delay-initialization/" target="_blank" rel="external">http://ifeve.com/double-checked-locking-with-delay-initialization/</a></p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h4 id="基于volatile的双重检定"><a href="#基于volatile的双重检定" class="headerlink" title="基于volatile的双重检定"></a>基于volatile的双重检定</h4><p>只需要把要获取的实例unsafeLazyLoading声明为volatile就可以,如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class UnsafeLazyLoading &#123;</div><div class="line">    private volatile static UnsafeLazyLoading unsafeLazyLoading;</div><div class="line">    private UnsafeLazyLoading ()&#123;&#125;</div><div class="line">    public static UnsafeLazyLoading getInstance()&#123;</div><div class="line">        if( unsafeLazyLoading == null)&#123;                     //sign 1</div><div class="line">            synchronized (UnsafeLazyLoading.class)&#123;</div><div class="line">                if( unsafeLazyLoading == null)&#123;</div><div class="line">                    unsafeLazyLoading = new UnsafeLazyLoading();   </div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        return unsafeLazyLoading;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>当声明对象的引用为volatile后，上述说到的2和3之间的重排序，在多线程环境中将会被禁止。</p>
-<h4 id="基于类初始化"><a href="#基于类初始化" class="headerlink" title="基于类初始化"></a>基于类初始化</h4><blockquote>
-<p>JVM在类的初始化阶段（即在Class被加载后，且被线程使用之前），会执行类的初始化。在执行类的初始化期间，JVM会去获取一个锁。这个锁可以同步多个线程对同一个类的初始化。<br>因此就可以采用静态内部类的形式实现延迟加载的效果,像上一篇文章最后的代码一样.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.singleton;</div><div class="line">/**</div><div class="line"> * Created by fk5431 on 6/19/17.</div><div class="line"> */</div><div class="line">public class SingletonStaticClass &#123;</div><div class="line">    //静态内部类</div><div class="line">    private static class SingletonHodler&#123;</div><div class="line">        private static final SingletonStaticClass INSTANCE = new SingletonStaticClass();</div><div class="line">    &#125;</div><div class="line">    private SingletonStaticClass()&#123;&#125;</div><div class="line">    public static final SingletonStaticClass getInstance()&#123;</div><div class="line">        return SingletonHodler.INSTANCE;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>这样虽然允许了上述的2,3之间的重排序,但是非构造线程无法被重排序所影响. </p>
+<h4 id="涉及角色"><a href="#涉及角色" class="headerlink" title="涉及角色"></a>涉及角色</h4><ol>
+<li>Component 是组合中的对象声明接口，在适当的情况下，实现所有类共有接口的默认行为。声明一个接口用于访问和管理Component子部件。</li>
+<li>Leaf 在组合中表示叶子结点对象，叶子结点没有子结点。</li>
+<li>Composite 定义有枝节点行为，用来存储子部件，在Component接口中实现与子部件有关操作，如增加(add)和删除(remove)等。</li>
+</ol>
+<h4 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.composite.test;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/7/30.</div><div class="line"> */</div><div class="line">public abstract class Component &#123;</div><div class="line">    private String name;</div><div class="line"></div><div class="line">    public String getName() &#123;</div><div class="line">        return name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setName(String name) &#123;</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public Component()&#123;&#125;</div><div class="line"></div><div class="line">    public Component(String name) &#123;</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    protected abstract void add(Component company);</div><div class="line"></div><div class="line">    protected abstract void remove(Component company);</div><div class="line"></div><div class="line">    protected abstract void display(int depth);</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>枝节点行为，具体目录类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.composite.test;</div><div class="line"></div><div class="line">import java.util.ArrayList;</div><div class="line">import java.util.List;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/7/30.</div><div class="line"> */</div><div class="line">public class CatalogComponent extends Component &#123;</div><div class="line"></div><div class="line">    List&lt;Component&gt; list;</div><div class="line"></div><div class="line">    public List&lt;Component&gt; getList() &#123;</div><div class="line">        return list;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setList(List&lt;Component&gt; list) &#123;</div><div class="line">        this.list = list;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public CatalogComponent() &#123;</div><div class="line">        list = new ArrayList&lt;&gt;();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public CatalogComponent(String name) &#123;</div><div class="line">        super(name);</div><div class="line">        list = new ArrayList&lt;&gt;();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void add(Component company) &#123;</div><div class="line">        list.add(company);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void remove(Component company) &#123;</div><div class="line">        list.remove(company);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void display(int depth) &#123;</div><div class="line">        StringBuffer sb = new StringBuffer();</div><div class="line">        for(int i=0;i&lt;depth;i++)&#123;</div><div class="line">            sb.append(&quot;-&quot;);</div><div class="line">        &#125;</div><div class="line">        System.out.println(new String(sb) + this.getName());</div><div class="line">        for(Component c : list)&#123;</div><div class="line">            c.display(depth + 2);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>叶子结点对象,文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.composite.test;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/7/30.</div><div class="line"> */</div><div class="line">public class Leaf extends Component &#123;</div><div class="line">    public Leaf() &#123;</div><div class="line">        super();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public Leaf(String name) &#123;</div><div class="line">        super(name);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void add(Component company) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void remove(Component company) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void display(int depth) &#123;</div><div class="line">        StringBuffer sb = new StringBuffer();</div><div class="line">        for(int i=0;i&lt;depth;i++)&#123;</div><div class="line">            sb.append(&quot;-&quot;);</div><div class="line">        &#125;</div><div class="line">        System.out.println(new String(sb) + this.getName());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>测试类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.composite.test;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/7/30.</div><div class="line"> */</div><div class="line">public class Test &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        Component c = new CatalogComponent();</div><div class="line">        Component c1 = new CatalogComponent(&quot;一级目录1&quot;);</div><div class="line">        Component c2 = new CatalogComponent(&quot;二级目录1&quot;);</div><div class="line">        c2.add(new Leaf(&quot;文件1&quot;));</div><div class="line">        c1.add(c2);</div><div class="line">        c.add(c1);</div><div class="line">        c.add(new CatalogComponent(&quot;一级目录2&quot;));</div><div class="line">        c.display(0);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -551,7 +494,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/其他/" rel="tag"># 其他</a>
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
         </div>
       
@@ -564,18 +507,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/20170716/Design_pattern/builder/" rel="next" title="建造者模式">
-                <i class="fa fa-chevron-left"></i> 建造者模式
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/20170619/Design_pattern/singleton-pattern/" rel="prev" title="单例模式">
-                单例模式 <i class="fa fa-chevron-right"></i>
+              <a href="/20170727/Design_pattern/filter/" rel="prev" title="过滤器模式">
+                过滤器模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -747,7 +686,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#双重检查锁定"><span class="nav-number">1.</span> <span class="nav-text">双重检查锁定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#产生原因"><span class="nav-number">1.1.</span> <span class="nav-text">产生原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">1.2.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于volatile的双重检定"><span class="nav-number">1.2.1.</span> <span class="nav-text">基于volatile的双重检定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于类初始化"><span class="nav-number">1.2.2.</span> <span class="nav-text">基于类初始化</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#组合模式"><span class="nav-number">1.</span> <span class="nav-text">组合模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景和涉及的角色"><span class="nav-number">1.2.</span> <span class="nav-text">使用场景和涉及的角色</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#适用性"><span class="nav-number">1.2.1.</span> <span class="nav-text">适用性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#涉及角色"><span class="nav-number">1.2.2.</span> <span class="nav-text">涉及角色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DEMO"><span class="nav-number">1.2.3.</span> <span class="nav-text">DEMO</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -776,9 +715,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/20170620/Design_pattern/double-checked-locking/';
-          this.page.identifier = '20170620/Design_pattern/double-checked-locking/';
-          this.page.title = '双重检查锁定';
+          this.page.url = 'http://yoursite.com/20170729/Design_pattern/composite/';
+          this.page.identifier = '20170729/Design_pattern/composite/';
+          this.page.title = '组合模式';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://来自.disqus.com/embed.js';
