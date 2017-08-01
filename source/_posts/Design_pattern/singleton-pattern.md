@@ -93,7 +93,7 @@ package factory.pattern.singleton;
  * Created by fk5431 on 6/19/17.
  */
 public class DoubleCheckedLocking {
-    private volatile static DoubleCheckedLocking doubleCheckedLocking;
+    private static DoubleCheckedLocking doubleCheckedLocking;
     private DoubleCheckedLocking(){}
     public DoubleCheckedLocking getInstance(){
         if(doubleCheckedLocking == null){
@@ -109,7 +109,7 @@ public class DoubleCheckedLocking {
 ```
 这种方式采用了双锁机制,一方面保证了多线程的安全,另一方面还提高了效率.
 但是看起来是完美,但是实际上这种方式是有缺陷的,是错误的一种.
-(双重检查锁定的问题下次专门内个文章)
+(双重检查锁定的问题下次专门写个文章)
 
 #### 静态内部类
 ```
