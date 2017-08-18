@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo, github" />
+  <meta name="keywords" content="设计模式, 解释器模式" />
 
 
 
@@ -87,17 +87,20 @@
 
 
 
-<meta name="description" content="HexoHexo是一个可以快速搭建博客的框架，使用Markdown解析文章，生成静态的网页。（可以部署在github上哦） hexo的安装hexo只依赖于  Node.js Git  上面的两个的安装就不说了，自行百度，hexo基于上述环境可以使用nmp安装 1npm install -g hexo-cli hexo的基本命令 hexo init [folder]   #新建一个网站 hexo n">
-<meta name="keywords" content="其他">
+<meta name="description" content="解释器模式介绍解释器模式：给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。（行为型模式） 解释器模式uml图一般如下：   AbstractExpression 抽象解释器  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 具体的解释任务由各个实现类完成，具体的解释器分别由TerminalExpression和NonterminalExpressi">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo初步使用">
-<meta property="og:url" content="http://yoursite.com/20170417/start/index.html">
+<meta property="og:title" content="解释器模式">
+<meta property="og:url" content="http://yoursite.com/20170811/Design_pattern/interpreter/index.html">
 <meta property="og:site_name" content="fk5431">
-<meta property="og:description" content="HexoHexo是一个可以快速搭建博客的框架，使用Markdown解析文章，生成静态的网页。（可以部署在github上哦） hexo的安装hexo只依赖于  Node.js Git  上面的两个的安装就不说了，自行百度，hexo基于上述环境可以使用nmp安装 1npm install -g hexo-cli hexo的基本命令 hexo init [folder]   #新建一个网站 hexo n">
-<meta property="og:updated_time" content="2017-06-16T02:57:26.903Z">
+<meta property="og:description" content="解释器模式介绍解释器模式：给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。（行为型模式） 解释器模式uml图一般如下：   AbstractExpression 抽象解释器  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 具体的解释任务由各个实现类完成，具体的解释器分别由TerminalExpression和NonterminalExpressi">
+<meta property="og:image" content="http://yoursite.com/uploads/interpreter/1.gif">
+<meta property="og:image" content="http://yoursite.com/uploads/interpreter/2.gif">
+<meta property="og:updated_time" content="2017-08-18T00:50:34.644Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo初步使用">
-<meta name="twitter:description" content="HexoHexo是一个可以快速搭建博客的框架，使用Markdown解析文章，生成静态的网页。（可以部署在github上哦） hexo的安装hexo只依赖于  Node.js Git  上面的两个的安装就不说了，自行百度，hexo基于上述环境可以使用nmp安装 1npm install -g hexo-cli hexo的基本命令 hexo init [folder]   #新建一个网站 hexo n">
+<meta name="twitter:title" content="解释器模式">
+<meta name="twitter:description" content="解释器模式介绍解释器模式：给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。（行为型模式） 解释器模式uml图一般如下：   AbstractExpression 抽象解释器  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 具体的解释任务由各个实现类完成，具体的解释器分别由TerminalExpression和NonterminalExpressi">
+<meta name="twitter:image" content="http://yoursite.com/uploads/interpreter/1.gif">
 
 
 
@@ -125,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/20170417/start/"/>
+  <link rel="canonical" href="http://yoursite.com/20170811/Design_pattern/interpreter/"/>
 
 
 
 
 
-  <title> hexo初步使用 | fk5431 </title>
+  <title> 解释器模式 | fk5431 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -314,7 +317,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20170417/start/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20170811/Design_pattern/interpreter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fk">
@@ -335,7 +338,7 @@
             
             
               
-                hexo初步使用
+                解释器模式
               
             
           </h1>
@@ -350,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T14:40:10+08:00">
-                2017-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-11T09:08:34+08:00">
+                2017-08-11
               </time>
             
 
@@ -373,8 +376,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/其他/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -385,10 +388,23 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/20170811/Design_pattern/interpreter/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="20170811/Design_pattern/interpreter/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
           
           
-             <span id="/20170417/start/" class="leancloud_visitors" data-flag-title="hexo初步使用">
+             <span id="/20170811/Design_pattern/interpreter/" class="leancloud_visitors" data-flag-title="解释器模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -417,301 +433,55 @@
       
 
       
-        <h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><p>Hexo是一个可以快速搭建博客的框架，使用Markdown解析文章，生成静态的网页。（可以部署在github上哦）</p>
-<h3 id="hexo的安装"><a href="#hexo的安装" class="headerlink" title="hexo的安装"></a>hexo的安装</h3><p>hexo只依赖于</p>
+        <h2 id="解释器模式"><a href="#解释器模式" class="headerlink" title="解释器模式"></a>解释器模式</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>解释器模式：给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。（行为型模式）</p>
+<p>解释器模式uml图一般如下：</p>
+<p><img src="../../../uploads/interpreter/1.gif" alt="解释器模式"></p>
 <ul>
-<li>Node.js</li>
-<li>Git</li>
+<li>AbstractExpression 抽象解释器</li>
 </ul>
-<p>上面的两个的安装就不说了，自行百度，hexo基于上述环境可以使用nmp安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<h3 id="hexo的基本命令"><a href="#hexo的基本命令" class="headerlink" title="hexo的基本命令"></a>hexo的基本命令</h3><ul>
-<li>hexo init [folder]   #新建一个网站</li>
-<li>hexo n [layout] <title>    #新建一篇文章</title></li>
-<li>hexo g   #生成静态文件</li>
-<li>hexo d   #部署网站。</li>
-<li>hexo publish [layout] <filename>   #发表草稿</filename></li>
-<li>hexo s   #启动服务器</li>
-<li>hexo clean   #清除缓存文件 (db.json) 和已生成的静态文件 (public)</li>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; 具体的解释任务由各个实现类完成，具体的解释器分别由TerminalExpression和NonterminalExpression完成。</p>
+<ul>
+<li>TerminalExpression终结符表达式</li>
 </ul>
-<h3 id="hexo的配置"><a href="#hexo的配置" class="headerlink" title="hexo的配置"></a>hexo的配置</h3><p>配置内容来自官网</p>
-<h4 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>网站标题</td>
-</tr>
-<tr>
-<td>subtitle</td>
-<td>网站副标题</td>
-</tr>
-<tr>
-<td>description</td>
-<td>网站描述</td>
-</tr>
-<tr>
-<td>author</td>
-<td>您的名字</td>
-</tr>
-<tr>
-<td>language</td>
-<td>网站使用的语言</td>
-</tr>
-<tr>
-<td>timezone</td>
-<td>网站时区。Hexo 默认使用您电脑的时区。时区列表。比如说：America/New_York, Japan, 和 UTC 。</td>
-</tr>
-</tbody>
-</table>
-<p>其中，description主要用于SEO，告诉搜索引擎一个关于您站点的简单描述，通常建议在其中包含您网站的关键词。author参数用于主题显示文章的作者。</p>
-<h4 id="网址"><a href="#网址" class="headerlink" title="网址"></a>网址</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>url</td>
-<td>网址</td>
-<td></td>
-</tr>
-<tr>
-<td>root</td>
-<td>网站根目录</td>
-<td></td>
-</tr>
-<tr>
-<td>permalink</td>
-<td>文章的 永久链接 格式</td>
-<td>:year/:month/:day/:title/</td>
-</tr>
-<tr>
-<td>permalink_defaults</td>
-<td>永久链接中各部分的默认值</td>
-</tr>
-</tbody>
-</table>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;实现与文法中的元素相关联的解释操作，通常一个解释器模式中只有一个终结符表达式，但有多个实例，对应不同的终结符。具体到我们例子就是VarExpression类，表达式中的每个终结符都在堆栈中产生了一个VarExpression对象。</p>
+<ul>
+<li>NonterminalExpression 非终结符表达式</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;文法中的每条规则对应于一个非终结表达式，具体到我们的例子就是加减法规则分别对应到AddExpression和SubExpression两个类。非终结符表达式根据逻辑的复杂程度而增加，原则上每个文法规则都对应一个非终结符表达式。</p>
+<ul>
+<li>Context 环境角色</li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;具体到我们的例子中是采用HashMap代替。</p>
 <blockquote>
-<p>网站存放在子目录<br>如果您的网站存放在子目录中，例如 <a href="http://yoursite.com/blog，则请将您的">http://yoursite.com/blog，则请将您的</a> url 设为 <a href="http://yoursite.com/blog">http://yoursite.com/blog</a> 并把 root 设为 /blog/。</p>
+<p>正则表达式就是使用了解释器模式<br>解释器模式在实际的系统开发中使用的非常少，因为它会引起效率、性能以及维护等问题，一般在大中型的框架型项目能够找到它的身影，比如一些数据分析工具、报表设计工具、科学计算工具等等，若你确实遇到“一种特定类型的问题发生的频率足够高”的情况，准备使用解释器模式时，可以考虑一下Expression4J、MESP（Math Expression String Parser）、Jep等开源的解析工具包，功能都异常强大，而且非常容易使用，效率也还不错，实现大多数的数学运算完全没有问题.</p>
 </blockquote>
-<h4 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>source_dir</td>
-<td>资源文件夹，这个文件夹用来存放内容。</td>
-<td>source</td>
-</tr>
-<tr>
-<td>public_dir</td>
-<td>公共文件夹，这个文件夹用于存放生成的站点文件。</td>
-<td>public</td>
-</tr>
-<tr>
-<td>tag_dir</td>
-<td>标签文件夹</td>
-<td>tags</td>
-</tr>
-<tr>
-<td>archive_dir</td>
-<td>归档文件夹</td>
-<td>archives</td>
-</tr>
-<tr>
-<td>category_dir</td>
-<td>分类文件夹</td>
-<td>categories</td>
-</tr>
-<tr>
-<td>code_dir</td>
-<td>Include code 文件夹</td>
-<td>downloads/code</td>
-</tr>
-<tr>
-<td>i18n_dir</td>
-<td>国际化（i18n）文件夹</td>
-<td>:lang</td>
-</tr>
-<tr>
-<td>skip_render</td>
-<td>跳过指定文件的渲染，您可使用 glob 表达式来匹配路径。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>提示<br>如果您刚刚开始接触Hexo，通常没有必要修改这一部分的值。</p>
-</blockquote>
-<h4 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>new_post_name</td>
-<td>新文章的文件名称</td>
-<td>:title.md</td>
-</tr>
-<tr>
-<td>_layout</td>
-<td>预设布局</td>
-<td>post</td>
-</tr>
-<tr>
-<td>auto_spacing</td>
-<td>在中文和英文之间加入空格</td>
-<td>false</td>
-</tr>
-<tr>
-<td>titlecase</td>
-<td>把标题转换为 title case</td>
-<td>false</td>
-</tr>
-<tr>
-<td>external_link</td>
-<td>在新标签中打开链接</td>
-<td>true</td>
-</tr>
-<tr>
-<td>filename_case</td>
-<td>把文件名称转换为 (1) 小写或 (2) 大写</td>
-<td>0</td>
-</tr>
-<tr>
-<td>render_drafts</td>
-<td>显示草稿</td>
-<td>false</td>
-</tr>
-<tr>
-<td>post_asset_folder</td>
-<td>启动 Asset 文件夹</td>
-<td>false</td>
-</tr>
-<tr>
-<td>relative_link</td>
-<td>把链接改为与根目录的相对位址</td>
-<td>false</td>
-</tr>
-<tr>
-<td>future</td>
-<td>显示未来的文章</td>
-<td>true</td>
-</tr>
-<tr>
-<td>highlight</td>
-<td>代码块的设置</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>相对地址<br>默认情况下，Hexo生成的超链接都是绝对地址。例如，如果您的网站域名为example.com,您有一篇文章名为hello，那么绝对链接可能像这样：<a href="http://example.com/hello.html，它是绝对于域名的。相对链接像这样：/hello.html，也就是说，无论用什么域名访问该站点，都没有关系，这在进行反向代理时可能用到。通常情况下，建议使用绝对地址。" target="_blank" rel="external">http://example.com/hello.html，它是绝对于域名的。相对链接像这样：/hello.html，也就是说，无论用什么域名访问该站点，都没有关系，这在进行反向代理时可能用到。通常情况下，建议使用绝对地址。</a></p>
-</blockquote>
-<h4 id="分类-amp-标签"><a href="#分类-amp-标签" class="headerlink" title="分类 &amp; 标签"></a>分类 &amp; 标签</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default_category</td>
-<td>默认分类</td>
-<td>uncategorized</td>
-</tr>
-<tr>
-<td>category_map</td>
-<td>分类别名</td>
-<td></td>
-</tr>
-<tr>
-<td>tag_map</td>
-<td>标签别名</td>
-</tr>
-</tbody>
-</table>
-<h4 id="日期-时间格式"><a href="#日期-时间格式" class="headerlink" title="日期 / 时间格式"></a>日期 / 时间格式</h4><p>Hexo 使用 Moment.js 来解析和显示时间。</p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>date_format</td>
-<td>日期格式</td>
-<td>YYYY-MM-DD</td>
-</tr>
-<tr>
-<td>time_format</td>
-<td>时间格式</td>
-<td>H:mm:ss</td>
-</tr>
-</tbody>
-</table>
-<h4 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>per_page</td>
-<td>每页显示的文章量 (0 = 关闭分页功能)</td>
-<td>10</td>
-</tr>
-<tr>
-<td>pagination_dir</td>
-<td>分页目录</td>
-<td>page</td>
-</tr>
-</tbody>
-</table>
-<h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>theme</td>
-<td>当前主题名称。值为false时禁用主题</td>
-</tr>
-<tr>
-<td>deploy</td>
-<td>部署部分的设置</td>
-</tr>
-</tbody>
-</table>
-<p>###我的坑<br>我吧整个hexo init初始化的项目放到github个人blog下……然后github就说解析不了博客了……<br>然后想了想，我把master分支放hexo生成的public里面的东西，然后新建个分支放hexo的东西，这样就可以在哪里有环境就可以写，然后！！在编译器clone自己的项目，不能在同一个项目文件夹写完然后复制public的文件放到master分支，这样hexo的命令就用不了了，提示加载不到一个模块。<br>最后吧一个项目clone两次，一个专门该mater分支，一个写…………坑了一上午</p>
-
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>解释器是一个简单语法分析工具，它最显著的优点就是扩展性，修改语法规则只要修改相应的非终结符表达式就可以了，若扩展语法，则只要增加非终结符类就可以了。</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li><p>每个语法都要产生一个非终结符表达式，语法规则比较复杂时，就可能产生<em>大量的类文件</em>，为维护带来了非常多的麻烦。</p>
+</li>
+<li><p>解释器模式采用递归调用方法，如果要排查一个语法错误，要一个一个断点的调试下去，会很麻烦。</p>
+</li>
+<li><p>解释器模式使用了大量的循环和递归，特别是用于解析复杂、冗长的语法时，效率会很低。</p>
+</li>
+</ul>
+<h3 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h3><p>设计一个四则运算（这里只写了加减），可以应用各种模型公式。uml图如下：</p>
+<p><img src="../../../uploads/interpreter/2.gif" alt="解释器模式"></p>
+<p>代码如下：</p>
+<p>抽象解释器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.interpreter;</div><div class="line"></div><div class="line">import java.util.HashMap;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/11.</div><div class="line"> */</div><div class="line">public abstract class Expression &#123;</div><div class="line">   public abstract int interpreter(HashMap&lt;String, Integer&gt; var);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>抽象非终结符表达式，定义文法中的规则</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.interpreter;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/11.</div><div class="line"> */</div><div class="line">public abstract class SymbolExpression extends Expression &#123;</div><div class="line">    protected Expression left;</div><div class="line">    protected Expression right;</div><div class="line"></div><div class="line">    public SymbolExpression(Expression left, Expression right) &#123;</div><div class="line">        this.left = left;</div><div class="line">        this.right = right;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>具体的非终结符表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.interpreter;</div><div class="line"></div><div class="line">import java.util.HashMap;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/11.</div><div class="line"> */</div><div class="line">public class AddExpression  extends SymbolExpression&#123;</div><div class="line"></div><div class="line">    public AddExpression(Expression left, Expression right) &#123;</div><div class="line">        super(left, right);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int interpreter(HashMap&lt;String, Integer&gt; var) &#123;</div><div class="line">        return super.left.interpreter(var) + super.right.interpreter(var);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>具体的非终结符表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.interpreter;</div><div class="line"></div><div class="line">import java.util.HashMap;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/11.</div><div class="line"> */</div><div class="line">public class SubExpression extends SymbolExpression &#123;</div><div class="line">    public SubExpression(Expression left, Expression right) &#123;</div><div class="line">        super(left, right);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int interpreter(HashMap&lt;String, Integer&gt; var) &#123;</div><div class="line">        return super.left.interpreter(var) - super.right.interpreter(var);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>终结符表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.interpreter;</div><div class="line"></div><div class="line">import java.util.HashMap;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/11.</div><div class="line"> */</div><div class="line">public class VarExpression extends Expression &#123;</div><div class="line">    private String key;</div><div class="line"></div><div class="line">    public VarExpression(String key) &#123;</div><div class="line">        this.key = key;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int interpreter(HashMap&lt;String, Integer&gt; var) &#123;</div><div class="line">        return var.get(key);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Calcuator的作用是封装，根据迪米特原则，Client只与直接的朋友Calcuator交流，与其他类没关系。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.interpreter;</div><div class="line"></div><div class="line">import java.util.HashMap;</div><div class="line">import java.util.Stack;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/11.</div><div class="line"> */</div><div class="line">public class Calculator &#123;</div><div class="line">    //表达式</div><div class="line">    private Expression expression;</div><div class="line"></div><div class="line">    public Calculator(String expStr)&#123;</div><div class="line">        Stack&lt;Expression&gt; stack = new Stack&lt;&gt;();</div><div class="line">        //表达式拆分为字符数组</div><div class="line">        char[] charArray = expStr.toCharArray();</div><div class="line"></div><div class="line">        Expression left = null;</div><div class="line">        Expression right = null;</div><div class="line">        for(int i=0;i&lt;charArray.length;i++)&#123;</div><div class="line">            switch (charArray[i])&#123;</div><div class="line">                case &apos;+&apos; :</div><div class="line">                    left = stack.pop();</div><div class="line">                    right = new VarExpression(String.valueOf(charArray[++i]));</div><div class="line">                    stack.push(new AddExpression(left, right));</div><div class="line">                    break;</div><div class="line">                case &apos;-&apos;:</div><div class="line">                    left = stack.pop();</div><div class="line">                    right = new VarExpression(String.valueOf(charArray[++i]));</div><div class="line">                    stack.push(new SubExpression(left,right));</div><div class="line">                    break;</div><div class="line">                default:</div><div class="line">                    stack.push(new VarExpression(String.valueOf(charArray[i])));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        this.expression = stack.pop();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int run(HashMap&lt;String, Integer&gt; var)&#123;</div><div class="line">        return this.expression.interpreter(var);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.interpreter;</div><div class="line"></div><div class="line">import java.io.BufferedReader;</div><div class="line">import java.io.IOException;</div><div class="line">import java.io.InputStreamReader;</div><div class="line">import java.util.HashMap;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/11.</div><div class="line"> */</div><div class="line">public class Test &#123;</div><div class="line">    public static void main(String[] args) throws IOException &#123;</div><div class="line">        String expStr = getExpStr();</div><div class="line"></div><div class="line">        HashMap&lt;String, Integer&gt; var = getValue(expStr);</div><div class="line"></div><div class="line">        Calculator calculator = new Calculator(expStr);</div><div class="line">        System.out.println(&quot;运算结果为：&quot;+expStr +&quot;=&quot;+calculator.run(var));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static String getExpStr() throws IOException &#123;</div><div class="line">        System.out.println(&quot;输入表达式&quot;);</div><div class="line">        return (new BufferedReader((new InputStreamReader(System.in)))).readLine();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static HashMap&lt;String, Integer&gt; getValue(String expreStr) throws IOException &#123;</div><div class="line">        HashMap&lt;String, Integer&gt; map = new HashMap&lt;&gt;();</div><div class="line">        for(char ch : expreStr.toCharArray())&#123;</div><div class="line">            if(ch != &apos;+&apos; &amp;&amp; ch != &apos;-&apos;)&#123;</div><div class="line">                if(!map.containsKey(String.valueOf(ch)))&#123;</div><div class="line">                    System.out.print(&quot;请输入&quot;+ch+&quot;的值:&quot;);</div><div class="line">                    String in = (new BufferedReader(new InputStreamReader(System.in))).readLine();</div><div class="line">                    map.put(String.valueOf(ch),Integer.valueOf(in));</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return map;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>输出结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">输入表达式</div><div class="line">a+b-c</div><div class="line">请输入a的值:100</div><div class="line">请输入b的值:20</div><div class="line">请输入c的值:40</div><div class="line">运算结果为：a+b-c=80</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -761,7 +531,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/其他/" rel="tag"># 其他</a>
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
         </div>
       
@@ -774,8 +544,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/20170502/java/volatile/" rel="next" title="深入理解volatile">
-                <i class="fa fa-chevron-left"></i> 深入理解volatile
+              <a href="/20170817/Design_pattern/iterator/" rel="next" title="迭代器模式">
+                <i class="fa fa-chevron-left"></i> 迭代器模式
               </a>
             
           </div>
@@ -783,6 +553,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/20170808/Design_pattern/command/" rel="prev" title="命令模式">
+                命令模式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -812,6 +586,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -942,7 +727,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo"><span class="nav-number">1.</span> <span class="nav-text">Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo的安装"><span class="nav-number">1.1.</span> <span class="nav-text">hexo的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo的基本命令"><span class="nav-number">1.2.</span> <span class="nav-text">hexo的基本命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo的配置"><span class="nav-number">1.3.</span> <span class="nav-text">hexo的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#网站"><span class="nav-number">1.3.1.</span> <span class="nav-text">网站</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网址"><span class="nav-number">1.3.2.</span> <span class="nav-text">网址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目录"><span class="nav-number">1.3.3.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文章"><span class="nav-number">1.3.4.</span> <span class="nav-text">文章</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类-amp-标签"><span class="nav-number">1.3.5.</span> <span class="nav-text">分类 & 标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日期-时间格式"><span class="nav-number">1.3.6.</span> <span class="nav-text">日期 / 时间格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分页"><span class="nav-number">1.3.7.</span> <span class="nav-text">分页</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展"><span class="nav-number">1.3.8.</span> <span class="nav-text">扩展</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解释器模式"><span class="nav-number">1.</span> <span class="nav-text">解释器模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点"><span class="nav-number">1.2.</span> <span class="nav-text">优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">1.2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">1.2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DEMO"><span class="nav-number">1.3.</span> <span class="nav-text">DEMO</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -968,6 +753,18 @@
       <script id="dsq-count-scr" src="https://来自.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/20170811/Design_pattern/interpreter/';
+          this.page.identifier = '20170811/Design_pattern/interpreter/';
+          this.page.title = '解释器模式';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://来自.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
