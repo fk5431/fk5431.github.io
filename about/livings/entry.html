@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="css/living.css">
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/fetch.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript" src="js/weixing.js"></script>
+    <style>
+        [v-cloak] {
+            display: none!important;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="entry" id="app" v-cloak>
+       <div class="header">
+           <img src="img/logo.png" alt="诸英台logo">
+           <p class="logoName">诸英台</p>
+       </div>
+        <div class="content">
+            <div class="clearfix">
+                <img  class="del" v-show="is" src="img/del.png" @click="handleClick('inputVal')">
+                <input :class='{typeN:is}' type="number" ref='inputVal' placeholder="职业号/手机号码"  @input="handleInput('inputVal')" >
+
+                <img  v-show="!is" class="tu" src="img/people.png">
+                <img  v-show="is" class="tu" src="img/people1.png">
+
+            </div>
+          <div class="clearfix">
+              <img  class="del" v-show="iss" src="img/del.png" @click="handleClick('inputVal1')" >
+              <input type="password" :class='{typeN:iss}' ref='inputVal1' placeholder="请输入登录密码" @input="handleInput('inputVal1')" >
+
+              <img  v-show="!iss" class="tu" src="img/password.png">
+              <img  v-show="iss" class="tu" src="img/password1.png">
+
+
+          </div>
+
+        </div>
+        <p class="pass" @click="handlePass">忘记密码</p>
+        <div class="footer">
+            <button :class='{button1:(is && iss),"button": butt}' @click="handleButton" :disabled="!is || !iss">登录</button>
+        </div>
+        <div class="mask" v-show="show" ref="mess">{{message}}</div>
+    </div>
+
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+                is:false,
+                iss:false,
+                butt:true,
+                message:'',
+                show:false,
+                set:''
+
+            },
+            created:function(){
+
+
+            },
+            methods:{
+                handlePass:function(){
+                //    跳转至忘记密码页面
+                    window.location.href = 'resetRegister.html';
+                },
+                handleButton:function(){
+                //    判断用户名输入是否正确
+                    var that = this;
+                    var value = this.$refs.inputVal.value;
+                    if(value.length<11){
+                        this.show = true;
+                        this.message = '用户名输入错误，请重新输入';
+                       this.$nextTick(function(){
+                           this.$refs.mess.style.margin= '-'+this.$refs.mess.offsetHeight/2+'px 0 0'+'-'+this.$refs.mess.offsetWidth/2+'px';
+                       });
+                        that.set = setTimeout(function(){ that.show = false;}, 5000)
+                    }else{
+                        this.show = false;
+                        clearTimeout(that.set);
+                        var p= md5(this.$refs.inputVal1.value).toUpperCase();
+                        var that=this;
+                        this.$api.post('worker/user/login',{
+                            "mobile":this.$refs.inputVal.value,
+                            "password" : p
+                        },function(res){
+                          if(res.status==0){
+                              that.setCookie('userIdApp',res.body.userId);
+                              that.setCookie('tokenIdApp',res.body.tokenID);
+                              window.location.href = 'index.html';
+
+                          }else{
+                                  switch(res.errorcode){
+                                      case "NOT_CERTIFICATION":
+                                          that.setCookie('userIdApp',res.body.userId);
+                                          that.setCookie('tokenIdApp',res.body.tokenID);
+                                          window.location.href = 'index.html';
+                                          break;
+                                      case "PASSWORD_ERROR_LOCK":
+                                          that.show = true;
+                                          that.message = '密码输入错误5次，账号已被锁定';
+                                          that.$nextTick(function(){
+                                              that.$refs.mess.style.margin= '-'+that.$refs.mess.offsetHeight/2+'px 0 0'+'-'+that.$refs.mess.offsetWidth/2+'px';});
+                                          setTimeout(function(){ that.show = false;}, 5000)
+                                          break;
+                                      case 'PASSWORD_ERROR':
+                                          if(res.body.num >= 3){
+                                              that.show = true;
+                                              that.message = '密码已输入错误'+res.body.num+'次，输错五次账户将被锁定';
+                                              that.$nextTick(function(){
+                                                  that.$refs.mess.style.margin= '-'+that.$refs.mess.offsetHeight/2+'px 0 0'+'-'+that.$refs.mess.offsetWidth/2+'px';});
+                                              setTimeout(function(){ that.show = false;}, 5000)
+                                          }else{
+                                              that.show = true;
+                                              that.message = '密码输入错误，请重新输入';
+                                              that.$nextTick(function(){
+                                                  that.$refs.mess.style.margin= '-'+that.$refs.mess.offsetHeight/2+'px 0 0'+'-'+that.$refs.mess.offsetWidth/2+'px';});
+                                              setTimeout(function(){ that.show = false;}, 5000)
+
+                                          }
+                                          break;
+                                      case "USER_NOT_EXIST":
+                                          that.show = true;
+                                          that.message = '密码输入错误，请重新输入';
+                                          that.$nextTick(function(){
+                                              that.$refs.mess.style.margin= '-'+that.$refs.mess.offsetHeight/2+'px 0 0'+'-'+that.$refs.mess.offsetWidth/2+'px';});
+                                          setTimeout(function(){ that.show = false;}, 5000)
+                                          break;
+                                      case "NOT_CERTIFICATION":
+
+                                          break;
+
+                                      default:
+                                          break;
+                                  }
+
+
+                          }
+
+                        },function(e){
+
+
+                        });
+                    }
+
+
+                },
+                handleClick:function(v){
+
+                    if(v == 'inputVal'){
+                        this.$refs.inputVal.value = '';
+                        this.is=false;
+                    }else{
+                        this.$refs.inputVal1.value = '';
+                        this.iss=false;
+                    }
+
+                },
+                handleInput:function(v){
+                    if(v == 'inputVal'){
+                        var value = this.$refs.inputVal.value;
+                        if(value.length>11)this.$refs.inputVal.value=value.slice(0,11);
+                        if(value.length>0){
+                            this.is=true;
+                        }else{
+                            this.is = false;
+                        }
+                    }else{
+                        var value = this.$refs.inputVal1.value;
+                        if(value.length>0){
+                            this.iss = true;
+                        }else{
+                            this.iss = false;
+                        }
+                    }
+
+                }
+            },
+            filters:{}
+        });
+    </script>
+    <style scoped>
+        .entry{
+            margin:0 auto;
+            font-size:0.3rem;
+        }
+        .header{
+            margin:1rem auto 1.01rem;
+            text-align:center;
+            font-size:0.3rem;
+        }
+        .logoName{
+          color:#fb8125;
+          margin-top:0.18rem;
+            font-size:0.3rem;
+        }
+        .content{
+            padding:0 0.24rem;
+            font-size:0.3rem;
+        }
+
+        .content .tu{
+            position:relative;
+            bottom:0.55rem;
+            left:0.22rem;
+            margin-right:0.26rem;
+        }
+        .content .del{
+            position: absolute;
+            right: 0;
+            margin-right: 0.5rem;
+        }
+        .content>div{
+            height:0.53rem;
+            width: 6.52rem;
+            margin:0 auto;
+        }
+        .content>div:nth-child(1){
+            margin: 0px auto 0.46rem;
+        }
+
+        /*.content>div:nth-child(2){*/
+            /*margin: 0px auto 0.46rem;*/
+        /*}*/
+
+        .content input{
+            margin-bottom:0.4462rem;
+            padding-left:0.76rem;
+            padding-bottom:0.15rem;
+            padding-right: 0.84rem;
+            font-size:0.3rem;
+            /*line-height:0.3rem;*/
+            /*display:block;*/
+            margin:0 auto;
+            width:6.52rem;
+            border:none;
+            border-bottom:0.01rem solid #eeeeee;
+            outline:none;
+        }
+        .footer{
+            text-align: center;
+        }
+        .pass{
+          text-align:right;
+            margin:0.19rem 0.41rem 1rem 0;
+            color:#ff882d;
+            font-size:0.24rem;
+
+        }
+        .typeN{
+            border-bottom:0.01rem solid #ff882d !important;
+        }
+        .button{
+            width:6.56rem;
+            height:0.85rem;
+            font-size:0.3rem;
+            line-height:0.85rem;
+            border:0.01rem solid #cccccc;
+            border-radius: 0.1rem;
+            margin:0 auto;
+            text-align: center;
+            background:#cccccc;
+            color:#fff;
+            outline:none;
+        }
+        .button1{
+            width:6.56rem;
+            height:0.85rem;
+            font-size:0.3rem;
+            line-height:0.85rem;
+            border:0.01rem solid #ff882d;
+            border-radius: 0.1rem;
+            margin:0 auto;
+            text-align: center;
+            background:#ff882d;
+            color:#fff;
+            outline:none;
+        }
+        .mask{
+            height:0.6rem;
+            line-height:0.56rem;
+            text-align:center;
+            /*width:2.60rem;*/
+            padding:0 0.2rem;
+            border:0.01rem solid #3a3a3a;
+            background:#3a3a3a;
+            border-radius: 0.1rem;
+            font-size:0.24rem;
+            color:#fff;
+            position:absolute;
+            top:50%;
+            left:50%;
+            margin-top:-0.3rem;
+
+        }
+    </style>
+</body>
+
+</html>
