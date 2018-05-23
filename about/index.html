@@ -102,6 +102,7 @@
         data:{
             tokenID:this.getCookie('tokenIdApp'),
             userId:this.getCookie('userIdApp'),
+            code:'',
             show:false,
             sure:false,
             show0:false,
@@ -118,20 +119,21 @@
             lists:[]
         },
         created:function(){
-            var code= getUrlKey("code");
-            alert(code);
+            this.code= getUrlKey("code");
+
             this.sign ="jNSkd9P+I2U=";
             // this.sign = getUrlKey("sign");
            //登录微信
-           if(this.tokenID && this.userId){
-           //    微信的绑定
+            this.loginWithWX();
+           // if(this.tokenID && this.userId){
+           // //    微信的绑定
                this.bindWX();
                this.show=false;
                this.sure = false;
                 this.helps();
-           }else{
+           // }else{
                this.loginWithWX();
-           }
+           // }
         },
         methods:{
             //已挖到的钱和帮挖的名单
@@ -177,7 +179,7 @@
             loginWithWX:function(){
                 var that=this;
                 this.$api.post('/worker/user/loginWithWX',{
-                    wxOpenId : this.openId
+                    wxOpenId :  this.code
                 },function(res){
 
                    that.setCookie('userIdApp',res.body.userId);
@@ -204,9 +206,9 @@
             bindWX:function(){
                 var that=this;
                 this.$api.post('/worker/user/bindWX',{
-                    tokenID : this.tokenID,
-                    userId : this.userId,
-                    wxOpenId : this.openId
+                    // tokenID : this.tokenID,
+                    // userId : this.userId,
+                    wxOpenId :  this.code
                 },function(res){
                 //绑定微信成功-登录成功
                 },function(e){
