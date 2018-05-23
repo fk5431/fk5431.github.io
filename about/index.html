@@ -118,8 +118,10 @@
             lists:[]
         },
         created:function(){
-            // this.sign ="jNSkd9P+I2U=";
-            this.sign = getUrlKey("sign");
+            var code= getUrlKey("code");
+            alert(code);
+            this.sign ="jNSkd9P+I2U=";
+            // this.sign = getUrlKey("sign");
            //登录微信
            if(this.tokenID && this.userId){
            //    微信的绑定
