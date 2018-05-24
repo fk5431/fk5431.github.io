@@ -11,6 +11,7 @@
     <script type="text/javascript" src="js/fetch.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript" src="js/weixing.js"></script>
     <style>
         [v-cloak] {
             display: none!important;
@@ -55,7 +56,7 @@
             </div>
             <div v-if="!button_message">
                 <p>{{people_money1}}</p>
-                <p>您帮{{people}}挖到(元))</p>
+                <p>您帮{{people}}挖到(元)</p>
             </div>
 
         </div>
@@ -131,6 +132,8 @@
                  this.loginWithWX();
                  this.helps();
              }else{
+                 this.userId = this.getCookie('userIdApp');
+                 this.tokenID = this.getCookie('tokenIdApp');
                  this.sign =  this.getCookie('signApp');
                  this.code= this.getCookie('codeApp');
                  this.bindWX();

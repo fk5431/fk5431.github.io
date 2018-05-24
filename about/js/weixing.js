@@ -1,8 +1,6 @@
 var weixin = {
     config: {
-        url:'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2d2e96dd0762eada&redirect_uri='+encodeURIComponent(window.location.href)+'&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect',
-        userInfo:JSON.parse(localStorage.getItem('MY_USER_INFO')),
-        api:'http://192.168.1.114:8080/zyt-http/'
+
     },
     isweixin: function() {
         var ua = window.navigator.userAgent.toLowerCase();
@@ -46,3 +44,13 @@ var weixin = {
         }
     }
 }
+
+
+wx.config({
+    url:window.location.href,
+    api:'http://192.168.1.114:8080/zyt-http/'
+});
+wx.ready(function () {
+    media.src = "http://192.168.1.114:8080/zyt-http/music/music.mp3";
+    media.play();
+});
