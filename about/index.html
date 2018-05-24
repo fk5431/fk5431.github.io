@@ -116,23 +116,23 @@
             people_money1:'',
             people:'',
             sign:'',
-            lists:[]
+            lists:[],
+            no:false
         },
         created:function(){
             this.code= getUrlKey("code");
-
             this.sign ="jNSkd9P+I2U=";
             // this.sign = getUrlKey("sign");
            //登录微信
             this.loginWithWX();
            // if(this.tokenID && this.userId){
            // //    微信的绑定
-               this.bindWX();
-               this.show=false;
-               this.sure = false;
+           //     this.bindWX();
+           //     this.show=false;
+           //     this.sure = false;
                 this.helps();
            // }else{
-               this.loginWithWX();
+           //     this.loginWithWX();
            // }
         },
         methods:{
@@ -158,9 +158,9 @@
                      that.people =res.body.name;
                      that.lists = res.body.detail;
 
-                     if(res.body.status ==0){
+                     if(res.body.status ==0 || !res.body.status){
                          that.button_message = true;
-                     }else{
+                     }else if(res.body.status >0){
                          that.button_message = false;
                      }
 
@@ -188,15 +188,22 @@
                     that.tokenID = that.getCookie('tokenIdApp');
                     that.show=false;
                     that.sure = false;
-                    that.helps();
+                    that.no = false;
+                    // that.helps();
                     // that.show=true;
                     // that.sure = true;
                     //绑定微信成功-登录成功
                 },function(e){
                     switch(e.errorcode){
                         case "USER_NOT_EXIST":
-                            that.show=true;
-                            that.sure = true;
+                            that.no = true;
+                            // that.show=true;
+                            // that.sure = true;
+                            break;
+                        case "PARAM_INCOM":
+                            that.no = true;
+                            // that.show=true;
+                            // that.sure = true;
                             break;
                         default:
                             break;
@@ -253,20 +260,27 @@
                 });
             },
             handleClick:function(){
+                //判断其是否登录
 
-                this.show = true;
-                this.show0 = true;
-                var that = this;
-                setTimeout(function(){
-                    that.show0 = false;
-                    that.show1 = true;
-                }, 5500);
-                setTimeout(function(){
-                    that.show0 = false;
-                    that.show1 = false;
-                    that.show2 = true;
-                    that.getClick();
-                }, 8500);
+                if(this.no){//表示没有登录成功
+                    this.show=true;
+                    this.sure = true;
+                }else{
+                    this.show = true;
+                    this.show0 = true;
+                    var that = this;
+                    setTimeout(function(){
+                        that.show0 = false;
+                        that.show1 = true;
+                    }, 5500);
+                    setTimeout(function(){
+                        that.show0 = false;
+                        that.show1 = false;
+                        that.show2 = true;
+                        that.getClick();
+                    }, 8500);
+                }
+
 
             }
         },
