@@ -121,7 +121,7 @@
         },
         created:function(){
             this.code= getUrlKey("code");
-            this.sign = getUrlKey("sign");
+            this.sign = encodeURIComponent(getUrlKey("sign"));
 
             // this.sign = "jNSkd9P+I2U=";
            //登录微信
