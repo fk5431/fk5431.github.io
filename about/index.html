@@ -121,9 +121,9 @@
         },
         created:function(){
             this.code= getUrlKey("code");
-            // this.sign = getUrlKey("state");
+            this.sign = getUrlKey("sign");
 
-            this.sign = "jNSkd9P+I2U=";
+            // this.sign = "jNSkd9P+I2U=";
            //登录微信
            //  this.loginWithWX();
            if(this.tokenID && this.userId){
@@ -180,8 +180,9 @@
             },
             loginWithWX:function(){
                 var that=this;
+                console.log(this.code);
                 this.$api.post('/worker/user/loginWithWX',{
-                    wxOpenId :  this.code
+                    wxOpenId : this.code
                 },function(res){
 
                    that.setCookie('userIdApp',res.body.userId);
