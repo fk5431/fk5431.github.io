@@ -162,9 +162,9 @@
             // //     alert(1);
             // // })
             // console.log(document.getElementById("app"));
-            // document.getElementById("app").addEventListener("scroll", function(){
-            //     alert(1);
-            // });
+            document.getElementById("app").addEventListener("scroll", function(){
+                alert(1);
+            });
             //
         },
         methods:{
@@ -179,7 +179,6 @@
                       num : this.num
                 },function(res){
                     // status : 今天自己是否帮这个兄弟挖过 0 代表没挖过，其他代表挖过
-
                      that.people_money = res.body.totle;
                      if(that.people_money==0){
                          that.list_change = false;
