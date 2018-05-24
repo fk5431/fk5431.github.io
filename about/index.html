@@ -44,7 +44,7 @@
     <!--头部-->
     <div class="header">
         <div class="logo">
-            <img src="img/line.png" style="margin-right:0.2rem;">
+            <img src="img/line.png" style="margin-right:0.2rem;width:0.04rem;height:0.23rem;">
             <span>诸英台挖生活费</span>
         </div>
         <div class="money">
@@ -86,9 +86,9 @@
     <div class="footer clearfix">
         <div style="text-align: center;margin-bottom:0.25rem;">
               <span class="title">
-                <img src="img/line2.png" style="padding-top: 0.15rem;">
-                <img src="img/font.png" style="padding:0 0.2rem;">
-                <img src="img/line1.png"  style="padding-top: 0.15rem;">
+                <img src="img/line2.png" style="padding-top: 0.15rem;padding-right: 0.2rem;">
+                <img src="img/font.png" style="width:0.25rem;height:0.24rem;"><span style="float:left;font-size:0.3rem;padding-left:0.09rem;color:#723c0f">活动规则</span>
+                <img src="img/line1.png"  style="padding-top: 0.15rem;padding-left: 0.2rem;">
             </span>
         </div>
 
@@ -121,19 +121,21 @@
         },
         created:function(){
             this.code= getUrlKey("code");
-            this.sign ="jNSkd9P+I2U=";
-            // this.sign = getUrlKey("sign");
+            // this.sign = getUrlKey("state");
+
+            this.sign = "jNSkd9P+I2U=";
            //登录微信
-            this.loginWithWX();
-           // if(this.tokenID && this.userId){
-           // //    微信的绑定
-           //     this.bindWX();
+           //  this.loginWithWX();
+           if(this.tokenID && this.userId){
+           //    微信的绑定
+               this.bindWX();
            //     this.show=false;
            //     this.sure = false;
                 this.helps();
-           // }else{
-           //     this.loginWithWX();
-           // }
+           }else{
+               this.loginWithWX();
+               this.helps();
+           }
         },
         methods:{
             //已挖到的钱和帮挖的名单
@@ -189,7 +191,7 @@
                     that.show=false;
                     that.sure = false;
                     that.no = false;
-                    // that.helps();
+                    // that.bindWX();
                     // that.show=true;
                     // that.sure = true;
                     //绑定微信成功-登录成功
@@ -213,8 +215,8 @@
             bindWX:function(){
                 var that=this;
                 this.$api.post('/worker/user/bindWX',{
-                    // tokenID : this.tokenID,
-                    // userId : this.userId,
+                    tokenID : this.tokenID,
+                    userId : this.userId,
                     wxOpenId :  this.code
                 },function(res){
                 //绑定微信成功-登录成功
@@ -261,7 +263,7 @@
             },
             handleClick:function(){
                 //判断其是否登录
-
+               alert(this.no);
                 if(this.no){//表示没有登录成功
                     this.show=true;
                     this.sure = true;
@@ -293,6 +295,7 @@
         width:7.24rem;
         height:4.01rem;
         background: url("img/background.png") no-repeat;
+        background-size: 100% auto;
         margin:0 auto;
     }
     .logo{
@@ -371,7 +374,7 @@
     }
     .footer>p{
         color:#723c0f;
-        line-height:0.4rem;
+        line-height:0.6rem;
     }
     .title{
         display:inline-block;
