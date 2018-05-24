@@ -11,7 +11,7 @@
     <script type="text/javascript" src="js/fetch.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/md5.js"></script>
-    <script type="text/javascript" src="js/weixing.js"></script>
+
     <style>
         [v-cloak] {
             display: none!important;
@@ -117,8 +117,24 @@
             people_money1:'',
             people:'',
             sign:'',
-            lists:[],
-            no:false
+            lists:[
+                // { "name":'冯凯',
+                //   "amount": 100,
+                //   "iconUrl": ""
+                // }, { "name":'冯凯',
+                //     "amount": 100,
+                //     "iconUrl": ""
+                // }, { "name":'冯凯',
+                //     "amount": 100,
+                //     "iconUrl": ""
+                // }, { "name":'冯凯',
+                //     "amount": 100,
+                //     "iconUrl": ""
+                // },
+            ],
+            no:false,
+            start:0,
+            num:5
         },
         created:function(){
 
@@ -136,10 +152,20 @@
                  this.tokenID = this.getCookie('tokenIdApp');
                  this.sign =  this.getCookie('signApp');
                  this.code= this.getCookie('codeApp');
+                 // this.loginWithWX();
                  this.bindWX();
                  this.helps();
              }
-
+            // //  var helps = document.getElementsByClassName('help');
+            // //  console.log(helps);
+            // // helps.addEventListener('scroll',function(){
+            // //     alert(1);
+            // // })
+            // console.log(document.getElementById("app"));
+            // document.getElementById("app").addEventListener("scroll", function(){
+            //     alert(1);
+            // });
+            //
         },
         methods:{
             //已挖到的钱和帮挖的名单
@@ -149,8 +175,8 @@
                     tokenID : this.tokenID,
                      userId : this.userId,
                      sign : this.sign,
-                     start : 0,
-                      num : 30
+                     start : this.start,
+                      num : this.num
                 },function(res){
                     // status : 今天自己是否帮这个兄弟挖过 0 代表没挖过，其他代表挖过
 
@@ -196,7 +222,7 @@
                     that.show=false;
                     that.sure = false;
                     that.no = false;
-                    that.bindWX();
+                    // that.bindWX();
                     // that.show=true;
                     // that.sure = true;
                     //绑定微信成功-登录成功
