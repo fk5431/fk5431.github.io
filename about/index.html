@@ -124,13 +124,12 @@
              if(sessionStorage.getItem("signs")!=1){
                  this.setCookie('signApp',getUrlKey("sign"));
                  this.setCookie('codeApp',getUrlKey("code"));
-
+                 this.userId = this.getCookie('userIdApp');
+                 this.tokenID = this.getCookie('tokenIdApp');
              }
                  this.sign =  this.getCookie('signApp');
                   this.code= this.getCookie('codeApp');
 
-            // console.log(this.sign);alert(this.sign);
-            // this.sign = "jNSkd9P+I2U=";
            //登录微信
            //  this.loginWithWX();
            if(this.tokenID && this.userId){
@@ -214,6 +213,8 @@
                             // that.sure = true;
                             break;
                         case "PARAM_INCOM":
+                            that.setCookie('userIdApp','');
+                            that.setCookie('tokenIdApp','');
                             that.no = true;
                             // that.show=true;
                             // that.sure = true;
