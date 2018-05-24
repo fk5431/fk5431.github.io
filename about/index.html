@@ -72,7 +72,7 @@
             <ul class="rankings_name">
                 <li v-for="v in lists" class="clearfix">
                     <div style="float:left;">
-                        <img src="img/logo.png" class="rank_img" >
+                        <img :src=v.iconUrl class="rank_img" >
                       <!--<img :src=v.iconUrl style="width:0.65rem;height:0.65rem;border:0.01rem solid #fff">-->
                         <span style="padding:0 0 0 0.13rem;color:#5d2f08;">{{v.name}}</span>
                         <img src="img/shovel.png">
@@ -120,12 +120,14 @@
             no:false
         },
         created:function(){
-            this.code= getUrlKey("code");
+
              if(sessionStorage.getItem("signs")!=1){
                  this.setCookie('signApp',getUrlKey("sign"));
+                 this.setCookie('codeApp',getUrlKey("code"));
+
              }
                  this.sign =  this.getCookie('signApp');
-
+                  this.code= this.getCookie('codeApp');
 
             // console.log(this.sign);alert(this.sign);
             // this.sign = "jNSkd9P+I2U=";
