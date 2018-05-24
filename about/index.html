@@ -100,8 +100,8 @@
     var app=new Vue({
         el:"#app",
         data:{
-            tokenID:this.getCookie('tokenIdApp'),
-            userId:this.getCookie('userIdApp'),
+            tokenID:'',
+            userId:'',
             code:'',
             show:false,
             sure:false,
@@ -121,9 +121,13 @@
         },
         created:function(){
             this.code= getUrlKey("code");
-            this.sign = encodeURIComponent(getUrlKey("sign"));
+             if(sessionStorage.getItem("signs")!=1){
+                 this.setCookie('signApp',getUrlKey("sign"));
+             }
+                 this.sign =  this.getCookie('signApp');
 
-            console.log(this.sign);alert(this.sign);
+
+            // console.log(this.sign);alert(this.sign);
             // this.sign = "jNSkd9P+I2U=";
            //登录微信
            //  this.loginWithWX();
@@ -200,6 +204,9 @@
                 },function(e){
                     switch(e.errorcode){
                         case "USER_NOT_EXIST":
+
+                            that.setCookie('userIdApp','');
+                            that.setCookie('tokenIdApp','');
                             that.no = true;
                             // that.show=true;
                             // that.sure = true;

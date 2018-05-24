@@ -96,6 +96,7 @@
                           if(res.status==0){
                               that.setCookie('userIdApp',res.body.userId);
                               that.setCookie('tokenIdApp',res.body.tokenID);
+                              sessionStorage.setItem("signs",1);
                               window.location.href = 'index.html';
 
                           }else{
@@ -103,6 +104,7 @@
                                       case "NOT_CERTIFICATION":
                                           that.setCookie('userIdApp',res.body.userId);
                                           that.setCookie('tokenIdApp',res.body.tokenID);
+                                          sessionStorage.setItem("signs",1);
                                           window.location.href = 'index.html';
                                           break;
                                       case "PASSWORD_ERROR_LOCK":
