@@ -189,7 +189,7 @@
                       that.people_money1 = res.body.amount;
                      that.people =res.body.name;
                      that.lists = res.body.detail;
-                      alert(that.button_message);
+                      alert(res.body.status);
                      if(res.body.status ==0 || !res.body.status){
                          that.button_message = true;
                      }else if(res.body.status >0){
