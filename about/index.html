@@ -126,22 +126,17 @@
                  this.setCookie('codeApp',getUrlKey("code"));
                  this.userId = this.getCookie('userIdApp');
                  this.tokenID = this.getCookie('tokenIdApp');
-             }
                  this.sign =  this.getCookie('signApp');
-                  this.code= this.getCookie('codeApp');
+                 this.code= this.getCookie('codeApp');
+                 this.loginWithWX();
+                 this.helps();
+             }else{
+                 this.sign =  this.getCookie('signApp');
+                 this.code= this.getCookie('codeApp');
+                 this.bindWX();
+                 this.helps();
+             }
 
-           //登录微信
-           //  this.loginWithWX();
-           if(this.tokenID && this.userId){
-           //    微信的绑定
-               this.bindWX();
-           //     this.show=false;
-           //     this.sure = false;
-                this.helps();
-           }else{
-               this.loginWithWX();
-               this.helps();
-           }
         },
         methods:{
             //已挖到的钱和帮挖的名单
@@ -198,7 +193,7 @@
                     that.show=false;
                     that.sure = false;
                     that.no = false;
-                    // that.bindWX();
+                    that.bindWX();
                     // that.show=true;
                     // that.sure = true;
                     //绑定微信成功-登录成功
