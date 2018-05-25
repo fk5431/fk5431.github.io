@@ -143,7 +143,6 @@
                  this.sign =  this.getCookie('signApp');
                  this.code= this.getCookie('codeApp');
                  this.loginWithWX();
-                 this.start = 0 ;
                  // this.helps();
              }else{
                  this.userId = this.getCookie('userIdApp');
@@ -152,7 +151,6 @@
                  this.code= this.getCookie('codeApp');
                  // this.loginWithWX();
                  this.bindWX();
-                 this.start = 0 ;
                  this.helps();
 
              }
@@ -166,12 +164,11 @@
                          document.documentElement.clientHeight : document.body.clientHeight;
                      console.log(scrollTop,scrollHeight,windowHeight);
                      if(scrollHeight<=scrollTop+windowHeight){
-                         console.log('加载');
                      //    进行数据的加载
                          if(!that.showFooter){
                              that.loading =true;
                              that.start = that.start+ 10;
-                             that.helps('push');
+                             that.helps();
                          }
                      }
 
@@ -182,7 +179,7 @@
         },
         methods:{
             //已挖到的钱和帮挖的名单
-            helps:function(v){
+            helps:function(){
                 var that=this;
                 this.$api.post('/worker/activity/otherLivingCostInfo',{
                     tokenID : this.tokenID,
@@ -201,7 +198,7 @@
                       that.people_money1 = res.body.amount;
                      that.people =res.body.name;
                       var arr = res.body.detail;
-                      if(v){
+
                           for(var v in arr){
                               if(arr[v].iconUrl){
                                   arr[v].iconUrl = 'http://192.168.1.114:8080/zyt-http/'+arr[v].iconUrl;
@@ -209,10 +206,7 @@
                               that.lists.push(arr[v]);
                               that.loading =false;
                           }
-                      }else{
-                          that.lists = arr;
-                          that.loading =false;
-                      }
+
 
                       if(arr.length<10){
                           that.loading =false;
@@ -240,7 +234,7 @@
             },
             loginWithWX:function(){
                 var that=this;
-                console.log(this.code);
+
                 this.$api.post('/worker/user/loginWithWX',{
                     wxOpenId : this.code
                 },function(res){
@@ -326,7 +320,7 @@
                     if(that.getmoney<=0){
                         that.getmoney = 0;
                     }
-                    that.start = 0 ;
+                    that.start = 0;
                     that.helps();
                 },function(e){
                     switch(e.errorcode){
