@@ -134,24 +134,22 @@
             num:10
         },
         created:function(){
-
-
-             if(sessionStorage.getItem("signs")!=1){
+            this.userId = this.getCookie('userIdApp');
+            this.tokenID = this.getCookie('tokenIdApp');
+             if(!this.userId && !this.tokenID){
                  // this.setCookie('userIdApp','');
                  // this.setCookie('tokenIdApp','');
-                 // alert(1);
                  this.setCookie('signApp',getUrlKey("sign"));
                  this.setCookie('codeApp',getUrlKey("code"));
-                 this.userId = this.getCookie('userIdApp');
-                 this.tokenID = this.getCookie('tokenIdApp');
+                 // this.userId = this.getCookie('userIdApp');
+                 // this.tokenID = this.getCookie('tokenIdApp');
                  this.sign =  this.getCookie('signApp');
                  this.code= this.getCookie('codeApp');
                  this.loginWithWX();
                  // this.helps();
              }else{
                  // alert(2);
-                 this.userId = this.getCookie('userIdApp');
-                 this.tokenID = this.getCookie('tokenIdApp');
+
                  this.sign =  this.getCookie('signApp');
                  this.code= this.getCookie('codeApp');
                  // this.loginWithWX();
