@@ -137,27 +137,39 @@
             num:10
         },
         created:function(){
-            this.userId = this.getCookie('userIdApp');
-            this.tokenID = this.getCookie('tokenIdApp');
-            alert(this.userId); alert(this.tokenID);
-             if(!this.userId && !this.tokenID){
-                 this.setCookie('signApp',getUrlKey("sign"));
-                 this.setCookie('codeApp',getUrlKey("code"));
-                 this.sign =  this.getCookie('signApp');
-                 this.code= this.getCookie('codeApp');
-                 // console.log(this.sign,this.code);
-                 this.loginWithWX();
-                 // this.helps();
-             }else{
-                 // alert(2);
 
-                 this.sign =  this.getCookie('signApp');
-                 this.code= this.getCookie('codeApp');
-                 // this.loginWithWX();
-                 this.bindWX();
-                 this.helps();
+            if(getUrlKey("sign"))
+            {
+                this.sign = this.getCookie('signApp');
+                this.code = this.getCookie('codeApp');
+                // console.log(this.sign,this.code);
+                this.loginWithWX();
+            }
+            else
+            {
+                this.userId = this.getCookie('userIdApp');
+                this.tokenID = this.getCookie('tokenIdApp');
+                alert(this.userId);
+                alert(this.tokenID);
+                if (!this.userId && !this.tokenID) {
+                    this.setCookie('signApp', getUrlKey("sign"));
+                    this.setCookie('codeApp', getUrlKey("code"));
+                    this.sign = this.getCookie('signApp');
+                    this.code = this.getCookie('codeApp');
+                    // console.log(this.sign,this.code);
+                    this.loginWithWX();
+                    // this.helps();
+                } else {
+                    // alert(2);
 
-             }
+                    this.sign = this.getCookie('signApp');
+                    this.code = this.getCookie('codeApp');
+                    // this.loginWithWX();
+                    this.bindWX();
+                    this.helps();
+
+                }
+            }
 
             var that = this;
             this.$nextTick(function(){
