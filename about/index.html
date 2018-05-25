@@ -134,6 +134,8 @@
             num:10
         },
         created:function(){
+            this.setCookie('tokenIdApp','');
+            this.setCookie('userIdApp','');
 
              if(sessionStorage.getItem("signs")!=1){
                  this.setCookie('signApp',getUrlKey("sign"));
@@ -179,7 +181,7 @@
         },
         methods:{
             //已挖到的钱和帮挖的名单
-            helps:function(){
+            helps:function(val){
                 var that=this;
                 this.$api.post('/worker/activity/otherLivingCostInfo',{
                     tokenID : this.tokenID,
@@ -198,7 +200,9 @@
                       that.people_money1 = res.body.amount;
                      that.people =res.body.name;
                       var arr = res.body.detail;
-
+                         if(val){
+                             that.lists = [];
+                             }
                           for(var v in arr){
                               if(arr[v].iconUrl){
                                   arr[v].iconUrl = 'http://192.168.1.114:8080/zyt-http/'+arr[v].iconUrl;
@@ -321,7 +325,7 @@
                         that.getmoney = 0;
                     }
                     that.start = 0;
-                    that.helps();
+                    that.helps('ok');
                 },function(e){
                     switch(e.errorcode){
                         default:
