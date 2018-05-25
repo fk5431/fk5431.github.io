@@ -197,7 +197,9 @@
                      that.people =res.body.name;
                       var arr = res.body.detail;
                       for(var v in arr){
-                          arr[v].iconUrl = 'http://192.168.1.114:8080/zyt-http/'+arr[v].iconUrl;
+                          if(arr[v].iconUrl){
+                              arr[v].iconUrl = 'http://192.168.1.114:8080/zyt-http/'+arr[v].iconUrl;
+                          }
                           that.lists.push(arr[v]);
                           that.loading =false;
                       }
@@ -306,8 +308,8 @@
                 },function(res){
                     // status : 状态 是否挖到300元
                     // money : 挖到的钱
+                    alert(res.body.money);
                     that.getmoney = res.body.money;
-
                     that.helps();
                 },function(e){
                     switch(e.errorcode){
@@ -329,13 +331,13 @@
                     setTimeout(function(){
                         that.show0 = false;
                         that.show1 = true;
-                    }, 5500);
+                    }, 3000);
                     setTimeout(function(){
                         that.show0 = false;
                         that.show1 = false;
                         that.show2 = true;
                         that.getClick();
-                    }, 8500);
+                    }, 6000);
                 }
 
 
