@@ -74,7 +74,7 @@
             <ul class="rankings_name">
                 <li v-for="v in lists" class="clearfix">
                     <div style="float:left;">
-                        <img :src="http://192.168.1.114:8080/zyt-http/"+v.iconUrl class="rank_img" v-if=v.iconUrl>
+                        <img :src=v.iconUrl  class="rank_img" v-if=v.iconUrl>
                         <img src="img/people_img.png" class="rank_img" v-if=!v.iconUrl>
                       <!--<img :src=v.iconUrl style="width:0.65rem;height:0.65rem;border:0.01rem solid #fff">-->
                         <span style="padding:0 0 0 0.13rem;color:#5d2f08;">{{v.name}}</span>
@@ -197,6 +197,7 @@
                      that.people =res.body.name;
                       var arr = res.body.detail;
                       for(var v in arr){
+                          arr[v].iconUrl = 'http://192.168.1.114:8080/zyt-http/'+arr[v].iconUrl;
                           that.lists.push(arr[v]);
                           that.loading =false;
                       }
