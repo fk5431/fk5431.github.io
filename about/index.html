@@ -73,7 +73,7 @@
             <ul class="rankings_name">
                 <li v-for="v in lists" class="clearfix">
                     <div style="float:left;">
-                        <img :src=v.iconUrl class="rank_img" v-if=v.iconUrl>
+                        <img :src=root+v.iconUrl class="rank_img" v-if=v.iconUrl>
                         <img src="img/logo.png" class="rank_img" v-if=!v.iconUrl>
                       <!--<img :src=v.iconUrl style="width:0.65rem;height:0.65rem;border:0.01rem solid #fff">-->
                         <span style="padding:0 0 0 0.13rem;color:#5d2f08;">{{v.name}}</span>
