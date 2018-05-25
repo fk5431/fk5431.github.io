@@ -20,7 +20,8 @@
     </style>
 </head>
 <body>
-<div class="help" id="app" v-cloak style="font-size:0.3rem;">
+<div class="help" id="app" v-cloak style="font-size:0.3rem;height: 100%;
+                overflow: auto;" ref="viewBox">
     <div class="mask" v-if="show"></div>
     <div v-if="sure" class="sure_show">
       <p>帮挖生活费，需先登录诸英台</p>
@@ -36,7 +37,7 @@
             <source src="music/music.mp3" type="audio/mp3"/>
         </audio>
         <!--<embed src="music/music.mp3" autostart=true loop=true hidden=no >-->
-        <p class="font_money" v-if="getmoney>0 && show2">{{getmoney}}<span style="font-size:0.3rem;">元</span></p>
+        <p class="font_money" v-if="show2">{{getmoney}}<span style="font-size:0.3rem;">元</span></p>
         <img  v-if="getmoney>0 && show2" class="packet" src="img/hb2.png">
         <img  v-if="getmoney<=0 && show2" class="packet" src="img/hb1.png">
         <img  class="button_money" src="img/anniu.png" @click="handleButton">
@@ -66,15 +67,15 @@
     <div class="button" v-if="!button_message" @click="handle">我也要挖</div>
     <!--名单列表-->
     <div class="list clearfix" v-if="this.list_change">
-        <p style="display:inline-block;border-bottom:0.01rem solid #ea281c;padding-bottom:0.09rem">查看排名</p>
+        <!--<p style="display:inline-block;border-bottom:0.01rem solid #ea281c;padding-bottom:0.09rem">查看排名</p>-->
 
         <div class="rankings">
             <p class="see">帮挖工友名单</p>
             <ul class="rankings_name">
                 <li v-for="v in lists" class="clearfix">
                     <div style="float:left;">
-                        <img :src=root+v.iconUrl class="rank_img" v-if=v.iconUrl>
-                        <img src="img/logo.png" class="rank_img" v-if=!v.iconUrl>
+                        <img :src="http://192.168.1.114:8080/zyt-http/"+v.iconUrl class="rank_img" v-if=v.iconUrl>
+                        <img src="img/people_img.png" class="rank_img" v-if=!v.iconUrl>
                       <!--<img :src=v.iconUrl style="width:0.65rem;height:0.65rem;border:0.01rem solid #fff">-->
                         <span style="padding:0 0 0 0.13rem;color:#5d2f08;">{{v.name}}</span>
                         <img src="img/shovel.png" style="width:0.27rem;height:0.27rem;">
@@ -82,10 +83,11 @@
                     <div class="lists_money">{{v.amount}}元</div>
                 </li>
             </ul>
+            <img src="img/loading.gif" alt="加载..." v-if="loading">
         </div>
 
     </div>
-    <div class="footer clearfix">
+    <div class="footer clearfix" v-if="showFooter">
         <div style="text-align: center;margin-bottom:0.25rem;">
               <span class="title">
                 <img src="img/line2.png" style="padding-top: 0.15rem;padding-right: 0.2rem;">
@@ -110,32 +112,20 @@
             show0:false,
             show1:false,
             show2:false,
+            showFooter:false,
+            loading:false,
             getmoney:'',
             button_message:true,
             list_change:true,
             openId:'',
-            people_money:'10',
+            people_money:'',
             people_money1:'',
             people:'',
             sign:'',
-            lists:[
-                { "name":'冯凯',
-                  "amount": 100,
-                  "iconUrl": ""
-                }, { "name":'冯凯',
-                    "amount": 100,
-                    "iconUrl": ""
-                }, { "name":'冯凯',
-                    "amount": 100,
-                    "iconUrl": ""
-                }, { "name":'冯凯',
-                    "amount": 100,
-                    "iconUrl": ""
-                },
-            ],
+            lists:[],
             no:false,
             start:0,
-            num:5
+            num:10
         },
         created:function(){
 
@@ -157,17 +147,32 @@
                  this.bindWX();
                  this.helps();
              }
-            // //  var helps = document.getElementsByClassName('help');
-            // //  console.log(helps);
-            // // helps.addEventListener('scroll',function(){
-            // //     alert(1);
-            // // })
-            // console.log(document.getElementById("app"));
-            var ele =  document.getElementsByClassName("help");
-             console.log(ele)
+
+            var that = this;
+
+            this.$nextTick(function(){
             window.addEventListener("scroll", function(){
-                // alert(1);
-            });
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                     var scrollHeight = that.$refs.viewBox.offsetHeight;
+                     var windowHeight = document.compatMode=="CSS1Compat" ?
+                         document.documentElement.clientHeight : document.body.clientHeight;
+                     console.log(scrollTop,scrollHeight,windowHeight);
+                     if(scrollHeight<=scrollTop+windowHeight){
+                         console.log('加载');
+                     //    进行数据的加载
+                         if(!that.showFooter){
+                             that.loading =true;
+                             that.start = that.start+ 10;
+                             that.helps();
+                         }
+
+
+                     //    判断停止加载
+                     }
+
+                 });
+             })
+
             //
         },
         methods:{
@@ -190,7 +195,17 @@
                      }
                       that.people_money1 = res.body.amount;
                      that.people =res.body.name;
-                     that.lists = res.body.detail;
+                      var arr = res.body.detail;
+                      for(var v in arr){
+                          that.lists.push(arr[v]);
+                          that.loading =false;
+                      }
+                      if(arr.length<10){
+                          that.loading =false;
+                          that.showFooter = true;
+
+                      }
+
 
                      if(res.body.status ==0 || !res.body.status){
                          that.button_message = true;
@@ -291,6 +306,7 @@
                     // status : 状态 是否挖到300元
                     // money : 挖到的钱
                     that.getmoney = res.body.money;
+
                     that.helps();
                 },function(e){
                     switch(e.errorcode){
@@ -370,7 +386,7 @@
         font-size:0.3rem;
         background: #ff9c42;
         border-radius: 0.1rem;
-        margin:0.25rem auto 0.21rem;
+        margin:0.25rem auto 0.25rem;
     }
     .list{
         text-align:center;
