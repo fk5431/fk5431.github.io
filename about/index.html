@@ -140,8 +140,9 @@
 
             if(getUrlKey("sign"))
             {
-                this.sign = this.getCookie('signApp');
-                this.code = this.getCookie('codeApp');
+                this.sign = getUrlKey('signApp');
+                this.code = getUrlKey('codeApp');
+                alert(this.sign);
                 // console.log(this.sign,this.code);
                 this.loginWithWX();
             }
