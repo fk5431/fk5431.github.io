@@ -6,6 +6,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <link rel="stylesheet" href="css/living.css">
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/fetch.js"></script>
@@ -137,12 +140,8 @@
             this.userId = this.getCookie('userIdApp');
             this.tokenID = this.getCookie('tokenIdApp');
              if(!this.userId && !this.tokenID){
-                 // this.setCookie('userIdApp','');
-                 // this.setCookie('tokenIdApp','');
                  this.setCookie('signApp',getUrlKey("sign"));
                  this.setCookie('codeApp',getUrlKey("code"));
-                 // this.userId = this.getCookie('userIdApp');
-                 // this.tokenID = this.getCookie('tokenIdApp');
                  this.sign =  this.getCookie('signApp');
                  this.code= this.getCookie('codeApp');
                  this.loginWithWX();
