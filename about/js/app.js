@@ -55,7 +55,6 @@ Vue.prototype.$api= {
 
 
         }).catch(function(err){
-            alert(err);
             failure(err);
         })
     }

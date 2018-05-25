@@ -46,7 +46,7 @@
     <div class="header">
         <div class="logo">
             <img src="img/line.png" style="margin-right:0.2rem;width:0.04rem;height:0.23rem;">
-            <span>诸英台挖生活费</span>
+            <span style="font-weight: bold">诸英台挖生活费</span>
         </div>
         <div class="money">
             <!--接口-->
@@ -66,17 +66,18 @@
     <div class="button" v-if="!button_message" @click="handle">我也要挖</div>
     <!--名单列表-->
     <div class="list clearfix" v-if="this.list_change">
-        <p>查看排名</p>
+        <p style="display:inline-block;border-bottom:0.01rem solid #ea281c;padding-bottom:0.09rem">查看排名</p>
 
         <div class="rankings">
             <p class="see">帮挖工友名单</p>
             <ul class="rankings_name">
                 <li v-for="v in lists" class="clearfix">
                     <div style="float:left;">
-                        <img :src=v.iconUrl class="rank_img" >
+                        <img :src=v.iconUrl class="rank_img" v-if=v.iconUrl>
+                        <img src="img/logo.png" class="rank_img" v-if=!v.iconUrl>
                       <!--<img :src=v.iconUrl style="width:0.65rem;height:0.65rem;border:0.01rem solid #fff">-->
                         <span style="padding:0 0 0 0.13rem;color:#5d2f08;">{{v.name}}</span>
-                        <img src="img/shovel.png">
+                        <img src="img/shovel.png" style="width:0.27rem;height:0.27rem;">
                     </div>
                     <div class="lists_money">{{v.amount}}元</div>
                 </li>
@@ -113,24 +114,24 @@
             button_message:true,
             list_change:true,
             openId:'',
-            people_money:'',
+            people_money:'10',
             people_money1:'',
             people:'',
             sign:'',
             lists:[
-                // { "name":'冯凯',
-                //   "amount": 100,
-                //   "iconUrl": ""
-                // }, { "name":'冯凯',
-                //     "amount": 100,
-                //     "iconUrl": ""
-                // }, { "name":'冯凯',
-                //     "amount": 100,
-                //     "iconUrl": ""
-                // }, { "name":'冯凯',
-                //     "amount": 100,
-                //     "iconUrl": ""
-                // },
+                { "name":'冯凯',
+                  "amount": 100,
+                  "iconUrl": ""
+                }, { "name":'冯凯',
+                    "amount": 100,
+                    "iconUrl": ""
+                }, { "name":'冯凯',
+                    "amount": 100,
+                    "iconUrl": ""
+                }, { "name":'冯凯',
+                    "amount": 100,
+                    "iconUrl": ""
+                },
             ],
             no:false,
             start:0,
@@ -162,8 +163,10 @@
             // //     alert(1);
             // // })
             // console.log(document.getElementById("app"));
-            document.getElementById("app").addEventListener("scroll", function(){
-                alert(1);
+            var ele =  document.getElementsByClassName("help");
+             console.log(ele)
+            window.addEventListener("scroll", function(){
+                // alert(1);
             });
             //
         },
@@ -188,7 +191,7 @@
                       that.people_money1 = res.body.amount;
                      that.people =res.body.name;
                      that.lists = res.body.detail;
-                      alert(res.body.status);
+
                      if(res.body.status ==0 || !res.body.status){
                          that.button_message = true;
                      }else if(res.body.status >0){
@@ -298,7 +301,7 @@
             },
             handleClick:function(){
                 //判断其是否登录
-               alert(this.no);
+
                 if(this.no){//表示没有登录成功
                     this.show=true;
                     this.sure = true;
@@ -325,13 +328,17 @@
     });
 </script>
 <style scoped>
+    body{
+        background-color: #fff8e2;
+    }
     .header{
         font-size:0.3rem;
-        width:7.24rem;
-        height:4.01rem;
+        width:7.20rem;
+        height:4.30rem;
         background: url("img/background.png") no-repeat;
-        background-size: 100% auto;
+        background-size: 100% 4.30rem;
         margin:0 auto;
+
     }
     .logo{
         font-size:0.3rem;
@@ -365,7 +372,9 @@
         border-radius: 0.1rem;
         margin:0.25rem auto 0.21rem;
     }
-
+    .list{
+        text-align:center;
+    }
     .list>p{
         font-weight: bold;
         font-size:0.24rem;

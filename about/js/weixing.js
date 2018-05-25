@@ -46,11 +46,11 @@ var weixin = {
 }
 
 
-wx.config({
-    url:window.location.href,
-    api:'http://192.168.1.114:8080/zyt-http/'
-});
-wx.ready(function () {
-    media.src = "http://192.168.1.114:8080/zyt-http/music/music.mp3";
-    media.play();
-});
+// wx.config({
+//     url:window.location.href,
+//     api:'http://192.168.1.114:8080/zyt-http/'
+// });
+// wx.ready(function () {
+//     media.src = "http://192.168.1.114:8080/zyt-http/music/music.mp3";
+//     media.play();
+// });
