@@ -55,6 +55,8 @@
                 return;
             }
             ctx.textBaseline = "middle";
+            ctx.textAlign="center";
+            // ctx.textalign = "left";
             ctx.fillStyle = randomColor(180, 240);
             ctx.fillRect(0, 0, this.options.width, this.options.height);//绘制矩形
             /* x:矩形起点横坐标（坐标原点为canvas的左上角，当然确切的来说是原始原点，后面写到变形的时候你就懂了，现在暂时不用关系）

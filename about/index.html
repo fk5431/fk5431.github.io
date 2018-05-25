@@ -37,6 +37,7 @@
             <source src="music/music.mp3" type="audio/mp3"/>
         </audio>
         <!--<embed src="music/music.mp3" autostart=true loop=true hidden=no >-->
+        <!--<p class="font_money" v-if="show2">0<span style="font-size:0.3rem;">元</span></p>-->
         <p class="font_money" v-if="show2">{{getmoney}}<span style="font-size:0.3rem;">元</span></p>
         <img  v-if="getmoney>0 && show2" class="packet" src="img/hb2.png">
         <img  v-if="getmoney<=0 && show2" class="packet" src="img/hb1.png">
@@ -51,13 +52,18 @@
         </div>
         <div class="money">
             <!--接口-->
+            <!--<div v-if="button_message">-->
+                <!--<p>10</p>-->
+                <!--<p style="font-size:0.24rem;color:#666"><span >马静</span> 已挖到(元)</p>-->
+            <!--</div>-->
+            <!---->
             <div v-if="button_message">
                 <p>{{people_money}}</p>
-                <p>{{people}}已挖到(元)</p>
+                <p><span>{{people}}</span> 已挖到(元)</p>
             </div>
             <div v-if="!button_message">
                 <p>{{people_money1}}</p>
-                <p>您帮{{people}}挖到(元)</p>
+                <p>您帮 <span>{{people}}</span> 挖到(元)</p>
             </div>
 
         </div>
@@ -137,7 +143,8 @@
                  this.sign =  this.getCookie('signApp');
                  this.code= this.getCookie('codeApp');
                  this.loginWithWX();
-                 this.helps();
+                 this.start = 0 ;
+                 // this.helps();
              }else{
                  this.userId = this.getCookie('userIdApp');
                  this.tokenID = this.getCookie('tokenIdApp');
@@ -145,11 +152,12 @@
                  this.code= this.getCookie('codeApp');
                  // this.loginWithWX();
                  this.bindWX();
+                 this.start = 0 ;
                  this.helps();
+
              }
 
             var that = this;
-
             this.$nextTick(function(){
             window.addEventListener("scroll", function(){
                 var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -163,11 +171,8 @@
                          if(!that.showFooter){
                              that.loading =true;
                              that.start = that.start+ 10;
-                             that.helps();
+                             that.helps('push');
                          }
-
-
-                     //    判断停止加载
                      }
 
                  });
@@ -177,7 +182,7 @@
         },
         methods:{
             //已挖到的钱和帮挖的名单
-            helps:function(){
+            helps:function(v){
                 var that=this;
                 this.$api.post('/worker/activity/otherLivingCostInfo',{
                     tokenID : this.tokenID,
@@ -196,19 +201,24 @@
                       that.people_money1 = res.body.amount;
                      that.people =res.body.name;
                       var arr = res.body.detail;
-                      for(var v in arr){
-                          if(arr[v].iconUrl){
-                              arr[v].iconUrl = 'http://192.168.1.114:8080/zyt-http/'+arr[v].iconUrl;
+                      if(v){
+                          for(var v in arr){
+                              if(arr[v].iconUrl){
+                                  arr[v].iconUrl = 'http://192.168.1.114:8080/zyt-http/'+arr[v].iconUrl;
+                              }
+                              that.lists.push(arr[v]);
+                              that.loading =false;
                           }
-                          that.lists.push(arr[v]);
+                      }else{
+                          that.lists = arr;
                           that.loading =false;
                       }
+
                       if(arr.length<10){
                           that.loading =false;
                           that.showFooter = true;
 
                       }
-
 
                      if(res.body.status ==0 || !res.body.status){
                          that.button_message = true;
@@ -242,6 +252,7 @@
                     that.show=false;
                     that.sure = false;
                     that.no = false;
+                    that.helps();
                     // that.bindWX();
                     // that.show=true;
                     // that.sure = true;
@@ -253,6 +264,7 @@
                             that.setCookie('userIdApp','');
                             that.setCookie('tokenIdApp','');
                             that.no = true;
+                            that.helps();
                             // that.show=true;
                             // that.sure = true;
                             break;
@@ -260,6 +272,7 @@
                             that.setCookie('userIdApp','');
                             that.setCookie('tokenIdApp','');
                             that.no = true;
+                            that.helps();
                             // that.show=true;
                             // that.sure = true;
                             break;
@@ -306,10 +319,14 @@
                     userId : this.userId,
                     sign : this.sign
                 },function(res){
-                    // status : 状态 是否挖到300元
-                    // money : 挖到的钱
-                    alert(res.body.money);
+                    // // status : 状态 是否挖到300元
+                    // // money : 挖到的钱
+                    // alert(res.body.money);
                     that.getmoney = res.body.money;
+                    if(that.getmoney<=0){
+                        that.getmoney = 0;
+                    }
+                    that.start = 0 ;
                     that.helps();
                 },function(e){
                     switch(e.errorcode){
@@ -367,18 +384,23 @@
         /*position:relative;*/
         margin:0 auto;
         text-align: center;
-        margin-top:0.34rem;
+        margin-top:0.2rem;
     }
     .money p:nth-child(1){
         font-size: 0.6rem;
         color:#dd2328;
-        margin-bottom:0.3rem;
+        margin-bottom:0.2rem;
         font-weight: bold;
     }
     .money p:nth-child(2){
-        font-size: 0.24rem;
-        color:#a9a9a9;
         margin-bottom:0.3rem;
+        font-size:0.24rem;
+        color:#666
+    }
+    .money p:nth-child(2)>span{
+        font-weight:bold;
+        font-size:0.32rem;
+        color:#333
     }
     .button{
         width:6.56rem;
@@ -389,7 +411,7 @@
         font-size:0.3rem;
         background: #ff9c42;
         border-radius: 0.1rem;
-        margin:0.25rem auto 0.25rem;
+        margin:0.25rem auto 0.3rem;
     }
     .list{
         text-align:center;
@@ -456,7 +478,7 @@
 
   .money_show{
       width: 3.58rem;
-      position:absolute;
+      position:fixed;
       left:50%;
       top:50%;
       margin-left: -1.7rem;
@@ -470,22 +492,27 @@
   }
     .font_money{
         position: relative;
-        left: 1.2rem;
-        top: 1.38rem;
+
         color: #d80e0e;
         z-index: 100;
         font-size: 0.6rem;
         font-weight: bolder;
+        left: 1.36rem;
+        top: 1.2rem;
 
     }
     .button_money{
         position: relative;
         left: 1.3rem;
         z-index: 100;
-
+        width:0.65rem;
+        height:0.65rem;
     }
      .packet{
         position:relative;
+         width:3.58rem;
+         height:4.01rem;
+         margin-bottom: 0.3rem;
         /*left:50%;*/
         /*top:50%;*/
         /*margin-left: -1.7rem;*/

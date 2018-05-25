@@ -47,9 +47,8 @@
     </div>
 
     <div class="footer">
-        <button :class='{button1:(is && iss),"button": butt}' :disabled="!is || !iss" @click="handleButton">下一步,设置密码</button>
+        <button :class='{button1:(is && iss),"button": butt}' :disabled="!is || !iss" @click="handleButton">下一步</button>
 
-        <p class="tip">注册即表示您同意诸英台<span style="color:#4691f7" @click="handleR">《用户服务协议》</span></p>
     </div>
     <div class="mask" v-show="show" ref="mess">{{message}}</div>
 </div>
@@ -112,6 +111,13 @@
                             window.location.href = 'resetPassword.html';
                         },function(e){
                             switch(e.errorcode){
+                                case "USER_NOT_EXIST":
+                                    that.show = true;
+                                    that.message = '用户不存在';
+                                    that.$nextTick(function(){
+                                        that.$refs.mess.style.margin= '-'+that.$refs.mess.offsetHeight/2+'px 0 0'+'-'+that.$refs.mess.offsetWidth/2+'px';});
+                                    setTimeout(function(){ that.show = false;}, 5000)
+                                    break;
                                 case "SEND_CODE_ERROR":
                                     break;
                                 case "SEND_CODE_OVER_TIME":
