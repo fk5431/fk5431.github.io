@@ -134,10 +134,12 @@
             num:10
         },
         created:function(){
-            this.setCookie('tokenIdApp','');
-            this.setCookie('userIdApp','');
+
 
              if(sessionStorage.getItem("signs")!=1){
+                 // this.setCookie('userIdApp','');
+                 // this.setCookie('tokenIdApp','');
+                 // alert(1);
                  this.setCookie('signApp',getUrlKey("sign"));
                  this.setCookie('codeApp',getUrlKey("code"));
                  this.userId = this.getCookie('userIdApp');
@@ -147,6 +149,7 @@
                  this.loginWithWX();
                  // this.helps();
              }else{
+                 // alert(2);
                  this.userId = this.getCookie('userIdApp');
                  this.tokenID = this.getCookie('tokenIdApp');
                  this.sign =  this.getCookie('signApp');
@@ -251,6 +254,8 @@
                     that.sure = false;
                     that.no = false;
                     that.helps();
+                    // that.setCookie('userIdApp','');
+                    // that.setCookie('tokenIdApp','');
                     // that.bindWX();
                     // that.show=true;
                     // that.sure = true;
@@ -346,13 +351,13 @@
                     setTimeout(function(){
                         that.show0 = false;
                         that.show1 = true;
-                    }, 3000);
+                    }, 1000);
                     setTimeout(function(){
                         that.show0 = false;
                         that.show1 = false;
                         that.show2 = true;
                         that.getClick();
-                    }, 6000);
+                    }, 2000);
                 }
 
 
@@ -368,9 +373,9 @@
     .header{
         font-size:0.3rem;
         width:7.20rem;
-        height:4.30rem;
+        height:4.44rem;
         background: url("img/background.png") no-repeat;
-        background-size: 100% 4.30rem;
+        background-size: 100% 4.44rem;
         margin:0 auto;
 
     }
@@ -490,12 +495,12 @@
   }
     .font_money{
         position: relative;
-
+        text-align: right;
+        right: 1.41rem;
         color: #d80e0e;
         z-index: 100;
         font-size: 0.6rem;
         font-weight: bolder;
-        left: 1.36rem;
         top: 1.2rem;
 
     }

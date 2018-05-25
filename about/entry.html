@@ -28,7 +28,7 @@
         <div class="content">
             <div class="clearfix">
                 <img  class="del" v-show="is" src="img/del.png" @click="handleClick('inputVal')" style="width:0.3rem;height:0.3rem;">
-                <input :class='{typeN:is}' type="number" ref='inputVal' placeholder="职业号/手机号码"  @input="handleInput('inputVal')">
+                <input :class='{typeN:is}' type="number" ref='inputVal' placeholder="职业号/手机号码"  @input="handleInput('inputVal')" min="0">
 
                 <img  v-show="!is" class="tu" src="img/people.png" style="width:0.27rem;height:0.39rem;">
                 <img  v-show="is" class="tu" src="img/people1.png" style="width:0.27rem;height:0.39rem;">
@@ -89,7 +89,7 @@
                         clearTimeout(that.set);
                         var p= md5(this.$refs.inputVal1.value).toUpperCase();
                         var that=this;
-                        this.$api.post('worker/user/login',{
+                        this.$api.post('worker/user/login_web',{
                             "mobile":this.$refs.inputVal.value,
                             "password" : p
                         },function(res){
