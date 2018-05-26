@@ -127,8 +127,9 @@
                             mobile :this.$refs.phone.value,
                             deviceId : 1
                         },function(res){
-                            sessionStorage.setItem('phoneApp',that.$refs.phone.value);
-                            window.location.href = 'password.html';
+                            // sessionStorage.setItem('phoneApp',that.$refs.phone.value);
+                            // window.location.href = 'password.html';
+                            window.location.href = 'password.html?phoneApp='+that.$refs.phone.value;
                         },function(e){
                             switch(e.errorcode){
                                 case "SEND_CODE_ERROR":
@@ -167,6 +168,7 @@
             handleInput:function(v){
                 if(v == 'phone'){
                     var value = this.$refs.phone.value;
+                    if(value.length>11)this.$refs.phone.value=value.slice(0,11);
                     if(!value  && this.oldInput.length==1){
                         this.$refs.phone.value = '';
                     }else if(!value && this.oldInput.length!=1){
@@ -179,7 +181,7 @@
                     // }else{
                     //     this.oldInput = this.$refs.phone.value;
                     // }
-                    if(value.length>11)this.$refs.phone.value=value.slice(0,11);
+
                     if(value.length>0){
                         this.is=true;
                     }else{
@@ -187,6 +189,7 @@
                     }
                 }else{
                     var value = this.$refs.code.value;
+                    if(value.length>4)this.$refs.code.value=value.slice(0,4);
                     if(!value  && this.oldInput1.length==1){
                         this.$refs.code.value = '';
                     }else if(!value && this.oldInput1.length!=1){
@@ -199,7 +202,7 @@
                     // }else{
                     //     this.oldInput1 = this.$refs.code.value;
                     // }
-                    if(value.length>4)this.$refs.code.value=value.slice(0,4);
+
                     if(value.length>0){
                         this.iss=true;
                     }else{

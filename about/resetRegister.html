@@ -109,8 +109,8 @@
                             mobile :this.$refs.phone.value,
                             deviceId : 1
                         },function(res){
-                            sessionStorage.setItem('phoneApp',that.$refs.phone.value);
-                            window.location.href = 'resetPassword.html';
+                            // sessionStorage.setItem('phoneApp',that.$refs.phone.value);
+                            window.location.href = 'resetPassword.html?phoneApp='+that.$refs.phone.value;
                         },function(e){
                             switch(e.errorcode){
                                 case "USER_NOT_EXIST":
