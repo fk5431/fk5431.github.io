@@ -348,12 +348,20 @@
                     //     that.show0 = false;
                     //     that.show1 = true;
                     // }, 1000);
+
                     setTimeout(function(){
                         that.show0 = false;
                         // that.show1 = false;
                         that.show2 = true;
+                        that.$nextTick(function(){
+                            var globalAudio=document.getElementById("musicAudio");
+                            globalAudio.play();
+                        })
                         that.getClick();
+
+
                     }, 3000);
+
                 }
 
 
