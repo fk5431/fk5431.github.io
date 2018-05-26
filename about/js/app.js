@@ -31,7 +31,6 @@ var root = "http://192.168.1.114:8080/zyt-http/";
 // <!--var root = "http://api.54zyt.com:81/zyt-http/";-->
 Vue.prototype.$api= {
     post: function(url, params, success, failure) {
-        alert("33");
         return fetch(root+url,{method:'POST',
             body:JSON.stringify(params),
             headers: {
