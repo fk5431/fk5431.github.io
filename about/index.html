@@ -36,7 +36,7 @@
     <img v-if="show0" style="position:absolute;width:100%;height:100%;" src="img/dug1.gif">
     <!--<img v-if="show1" style="position:absolute;width:100%;height:100%;" src="img/dug2.gif">-->
     <div class="money_show clearfix" v-if="show2" >
-        <audio autoplay="autoplay">
+        <audio autoplay="autoplay" id="musicAudio">
             <source src="music/music.mp3" type="audio/mp3"/>
         </audio>
         <!--<embed src="music/music.mp3" autostart=true loop=true hidden=no >-->
@@ -170,7 +170,18 @@
 
                  });
              })
+            window.addEventListener('DOMContentLoaded', function() {
 
+                function audioAutoPlay() {
+                    var audio = document.getElementById('musicAudio');
+                    audio.play();
+                    document.addEventListener("WeixinJSBridgeReady", function() {
+                        audio.play();
+                    }, false);
+                }
+                audioAutoPlay();
+
+            });
             //
         },
         methods:{
