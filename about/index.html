@@ -137,9 +137,6 @@
             num:10
         },
         created:function(){
-            this.userId = this.getCookie('userIdApp');
-            this.tokenID = this.getCookie('tokenIdApp');
-
             if(getUrlKey("sign")){
                  this.setCookie('signApp',getUrlKey("sign"));
                  this.setCookie('codeApp',getUrlKey("code"));
@@ -147,6 +144,8 @@
                  this.code= this.getCookie('codeApp');
                  this.loginWithWX();
              }else{
+                this.userId = this.getCookie('userIdApp');
+                this.tokenID = this.getCookie('tokenIdApp');
                  this.sign =  this.getCookie('signApp');
                  this.code= this.getCookie('codeApp');
                  this.bindWX();
@@ -213,7 +212,7 @@
                           that.showFooter = true;
 
                       }
-                       alert(res.body.status);
+
                      if(res.body.status ==0 || !res.body.status){
                          that.button_message = true;
                      }else if(res.body.status >0){
@@ -247,11 +246,7 @@
                     that.sure = false;
                     that.no = false;
                     that.helps();
-                    // that.setCookie('userIdApp','');
-                    // that.setCookie('tokenIdApp','');
-                    // that.bindWX();
-                    // that.show=true;
-                    // that.sure = true;
+
                     //绑定微信成功-登录成功
                 },function(e){
                     switch(e.errorcode){
