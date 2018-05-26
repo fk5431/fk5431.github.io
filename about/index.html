@@ -241,7 +241,7 @@
                 this.$api.post('/worker/user/loginWithWX',{
                     wxOpenId : this.code
                 },function(res){
-
+                    alert("22");
                    that.setCookie('userIdApp',res.body.userId);
                    that.setCookie('tokenIdApp',res.body.tokenID);
                     that.userId = that.getCookie('userIdApp');
@@ -253,6 +253,7 @@
 
                     //绑定微信成功-登录成功
                 },function(e){
+                    alert(e.errorcode);
                     switch(e.errorcode){
                         case "USER_NOT_EXIST":
 
