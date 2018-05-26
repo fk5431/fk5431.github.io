@@ -75,7 +75,9 @@
             sets:'',
             set:'',
             show_register:false,
-            sure:false
+            sure:false,
+            oldInput:'',
+            oldInput1:'',
         },
         created:function(){
             this.$nextTick(function(){
@@ -165,6 +167,11 @@
             handleInput:function(v){
                 if(v == 'phone'){
                     var value = this.$refs.phone.value;
+                    if(!value && this.oldInput.length!=1){
+                        this.$refs.phone.value = this.oldInput;
+                    }else{
+                        this.oldInput = this.$refs.phone.value;
+                    }
                     if(value.length>11)this.$refs.phone.value=value.slice(0,11);
                     if(value.length>0){
                         this.is=true;
@@ -173,6 +180,11 @@
                     }
                 }else{
                     var value = this.$refs.code.value;
+                    if(!value && this.oldInput1.length!=1){
+                        this.$refs.code.value = this.oldInput1;
+                    }else{
+                        this.oldInput1 = this.$refs.code.value;
+                    }
                     if(value.length>4)this.$refs.code.value=value.slice(0,4);
                     if(value.length>0){
                         this.iss=true;

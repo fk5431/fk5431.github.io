@@ -33,8 +33,8 @@
             <span @click="register">去注册</span>
         </div>
     </div>
-    <img v-if="show0" style="position:absolute;width:100%;height:100%;" src="img/dug.gif">
-    <img v-if="show1" style="position:absolute;width:100%;height:100%;" src="img/dug2.gif">
+    <img v-if="show0" style="position:absolute;width:100%;height:100%;" src="img/dug1.gif">
+    <!--<img v-if="show1" style="position:absolute;width:100%;height:100%;" src="img/dug2.gif">-->
     <div class="money_show clearfix" v-if="show2" >
         <audio autoplay="autoplay">
             <source src="music/music.mp3" type="audio/mp3"/>
@@ -137,40 +137,18 @@
             num:10
         },
         created:function(){
-
-            if(getUrlKey("sign"))
-            {
-                this.sign = getUrlKey('sign');
-                this.code = getUrlKey('code');
-//                alert(this.sign);
-                // console.log(this.sign,this.code);
-                this.loginWithWX();
-            }
-            else
-            {
-                this.userId = this.getCookie('userIdApp');
-                this.tokenID = this.getCookie('tokenIdApp');
-                alert(this.userId);
-                alert(this.tokenID);
-                if (!this.userId && !this.tokenID) {
-                    this.setCookie('signApp', getUrlKey("sign"));
-                    this.setCookie('codeApp', getUrlKey("code"));
-                    this.sign = this.getCookie('signApp');
-                    this.code = this.getCookie('codeApp');
-                    // console.log(this.sign,this.code);
-                    this.loginWithWX();
-                    // this.helps();
-                } else {
-                    // alert(2);
-
-                    this.sign = this.getCookie('signApp');
-                    this.code = this.getCookie('codeApp');
-                    // this.loginWithWX();
-                    this.bindWX();
-                    this.helps();
-
-                }
-            }
+             if(getUrlKey("sign")){
+                 this.setCookie('signApp',getUrlKey("sign"));
+                 this.setCookie('codeApp',getUrlKey("code"));
+                 this.sign =  this.getCookie('signApp');
+                 this.code= this.getCookie('codeApp');
+                 this.loginWithWX();
+             }else{
+                 this.sign =  this.getCookie('signApp');
+                 this.code= this.getCookie('codeApp');
+                 this.bindWX();
+                 this.helps();
+             }
 
             var that = this;
             this.$nextTick(function(){
@@ -360,13 +338,13 @@
                     this.show = true;
                     this.show0 = true;
                     var that = this;
+                    // setTimeout(function(){
+                    //     that.show0 = false;
+                    //     that.show1 = true;
+                    // }, 1000);
                     setTimeout(function(){
                         that.show0 = false;
-                        that.show1 = true;
-                    }, 1000);
-                    setTimeout(function(){
-                        that.show0 = false;
-                        that.show1 = false;
+                        // that.show1 = false;
                         that.show2 = true;
                         that.getClick();
                     }, 2000);
@@ -497,7 +475,7 @@
       left:50%;
       top:50%;
       margin-left: -1.7rem;
-      margin-top: -2.5rem;
+      margin-top: -3rem;
       animation:mymove 3s infinite;
       -moz-animation:mymove 3s infinite; /* Firefox */
       -webkit-animation:mymove 3s infinite; /* Safari and Chrome */
