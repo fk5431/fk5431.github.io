@@ -137,18 +137,17 @@
             num:10
         },
         created:function(){
-            alert(getUrlKey("sign"));
             if(getUrlKey("sign")){
-
-                 this.setCookie('signApp',getUrlKey("sign"));
-                 this.setCookie('codeApp',getUrlKey("code"));
-                 this.sign =  this.getCookie('signApp');
-                 this.code= this.getCookie('codeApp');
-                 alert("1");
+            	 this.sign = getUrlKey("sign");
+            	 this.code = getUrlKey("code");
+                 this.setCookie('signApp',this.sign);
+                 this.setCookie('codeApp',this.code);
+                 //this.sign =  this.getCookie('signApp');
+                 //this.code= this.getCookie('codeApp');
                  this.loginWithWX();
              }else{
-                this.userId = this.getCookie('userIdApp');
-                this.tokenID = this.getCookie('tokenIdApp');
+                 this.userId = this.getCookie('userIdApp');
+                 this.tokenID = this.getCookie('tokenIdApp');
                  this.sign =  this.getCookie('signApp');
                  this.code= this.getCookie('codeApp');
                  this.bindWX();
@@ -182,11 +181,11 @@
             helps:function(val){
                 var that=this;
                 this.$api.post('/worker/activity/otherLivingCostInfo',{
-                    tokenID : this.tokenID,
+                     tokenID : this.tokenID,
                      userId : this.userId,
                      sign : this.sign,
                      start : this.start,
-                      num : this.num
+                     num : this.num
                 },function(res){
                     // status : 今天自己是否帮这个兄弟挖过 0 代表没挖过，其他代表挖过
                      that.people_money = res.body.totle;
@@ -235,17 +234,18 @@
                 });
             },
             loginWithWX:function(){
-                alert(this.code);
                 var that=this;
 
                 this.$api.post('/worker/user/loginWithWX',{
                     wxOpenId : this.code
                 },function(res){
-                    alert("22");
-                   that.setCookie('userIdApp',res.body.userId);
-                   that.setCookie('tokenIdApp',res.body.tokenID);
-                    that.userId = that.getCookie('userIdApp');
-                    that.tokenID = that.getCookie('tokenIdApp');
+
+					that.userId = res.body.userId;
+                    that.tokenID = res.body.tokenID;
+                    that.setCookie('userIdApp',that.userId);
+                    that.setCookie('tokenIdApp',that.tokenID);
+                    //that.userId = that.getCookie('userIdApp');
+                    //that.tokenID = that.getCookie('tokenIdApp');
                     that.show=false;
                     that.sure = false;
                     that.no = false;
@@ -253,7 +253,6 @@
 
                     //绑定微信成功-登录成功
                 },function(e){
-                    alert(e.errorcode);
                     switch(e.errorcode){
                         case "USER_NOT_EXIST":
 
@@ -273,6 +272,12 @@
                             // that.sure = true;
                             break;
                         default:
+                        	that.setCookie('userIdApp','');
+                            that.setCookie('tokenIdApp','');
+                            that.no = true;
+                            that.helps();
+                            // that.show=true;
+                            // that.sure = true;
                             break;
                     }
                 });
