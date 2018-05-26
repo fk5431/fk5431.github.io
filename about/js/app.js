@@ -61,7 +61,7 @@ Vue.prototype.$api= {
 
         }).then(function(json){
             //登录的时候实名认证情况单独处理接口
-            if(url == 'worker/user/login'){
+            if(url == 'worker/user/login_web'){
 
                 success(json);
             }else{
