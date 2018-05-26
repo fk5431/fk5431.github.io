@@ -139,11 +139,12 @@
         created:function(){
             alert(getUrlKey("sign"));
             if(getUrlKey("sign")){
+
                  this.setCookie('signApp',getUrlKey("sign"));
                  this.setCookie('codeApp',getUrlKey("code"));
                  this.sign =  this.getCookie('signApp');
                  this.code= this.getCookie('codeApp');
-
+                 alert("1");
                  this.loginWithWX();
              }else{
                 this.userId = this.getCookie('userIdApp');
@@ -234,6 +235,7 @@
                 });
             },
             loginWithWX:function(){
+                alert(this.code);
                 var that=this;
 
                 this.$api.post('/worker/user/loginWithWX',{
