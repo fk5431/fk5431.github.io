@@ -137,7 +137,10 @@
             num:10
         },
         created:function(){
-             if(getUrlKey("sign")){
+            this.userId = this.getCookie('userIdApp');
+            this.tokenID = this.getCookie('tokenIdApp');
+
+            if(getUrlKey("sign")){
                  this.setCookie('signApp',getUrlKey("sign"));
                  this.setCookie('codeApp',getUrlKey("code"));
                  this.sign =  this.getCookie('signApp');
