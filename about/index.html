@@ -63,6 +63,7 @@
             <!---->
             <div v-if="button_message">
                 <p>{{people_money}}</p>
+                <!--<p><span>{{people}}</span> 已挖到(元)</p>-->
                 <p><span>{{people}}</span> 已挖到(元)</p>
             </div>
             <div v-if="!button_message">
@@ -194,6 +195,7 @@
                      }
                       that.people_money1 = res.body.amount;
                      that.people =res.body.name;
+                    if(that.people.length>4)that.people=that.people.slice(0,4);
                       var arr = res.body.detail;
                          if(val){
                              that.lists = [];
@@ -201,6 +203,9 @@
                           for(var v in arr){
                               if(arr[v].iconUrl){
                                   arr[v].iconUrl = 'http://192.168.1.114:8080/zyt-http/'+arr[v].iconUrl;
+                              }
+                              if(arr[v].name.length>4){
+                                  arr[v].name = arr[v].name.slice(0,4);
                               }
                               that.lists.push(arr[v]);
                               that.loading =false;
@@ -210,7 +215,6 @@
                       if(arr.length<10){
                           that.loading =false;
                           that.showFooter = true;
-
                       }
 
                      if(res.body.status ==0 || !res.body.status){
@@ -342,7 +346,7 @@
                         // that.show1 = false;
                         that.show2 = true;
                         that.getClick();
-                    }, 2000);
+                    }, 3000);
                 }
 
 
