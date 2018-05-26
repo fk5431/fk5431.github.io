@@ -50,6 +50,7 @@
         <div class="footer">
             <button :class='{button1:(is && iss),"button": butt}' @click="handleButton" :disabled="!is || !iss">登录</button>
         </div>
+        <p style="margin-top:0.4rem;text-align: center"><span style="color:#666;font-size:0.24rem;">还没有账号？</span> <span style="color:#fb8125;font-size:0.24rem;cursor:pointer"  @click="handleP" >去注册</span></p>
         <div class="mask" v-show="show" ref="mess">{{message}}</div>
     </div>
 
@@ -71,6 +72,10 @@
 
             },
             methods:{
+                handleP:function(){
+                    //    跳转至忘记密码页面
+                    window.location.href = 'register.html';
+                },
                 handlePass:function(){
                 //    跳转至忘记密码页面
                     window.location.href = 'resetRegister.html';
