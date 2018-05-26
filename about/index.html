@@ -137,11 +137,13 @@
             num:10
         },
         created:function(){
+            alert(getUrlKey("sign"));
             if(getUrlKey("sign")){
                  this.setCookie('signApp',getUrlKey("sign"));
                  this.setCookie('codeApp',getUrlKey("code"));
                  this.sign =  this.getCookie('signApp');
                  this.code= this.getCookie('codeApp');
+
                  this.loginWithWX();
              }else{
                 this.userId = this.getCookie('userIdApp');
