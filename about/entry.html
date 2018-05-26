@@ -174,9 +174,9 @@
                         if(value.length>11)this.$refs.inputVal.value=value.slice(0,11);
                         this.$nextTick(function(){
                             console.log('huhu','q'+value,'w'+this.oldInput,this.oldInput.length);
-                            if(value && this.oldInput.length==0){
+                            if(!value && this.oldInput.length==1){
                                 this.$refs.inputVal.value = '';
-                            }else if(!value && this.oldInput.length!=0){
+                            }else if(!value && this.oldInput.length!=1){
                                 this.$refs.inputVal.value = this.oldInput;
                             }else{
                                 this.oldInput = this.$refs.inputVal.value;
