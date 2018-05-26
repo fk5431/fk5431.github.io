@@ -1,4 +1,23 @@
+
+function autoPlayAudio() {
+    wx.config({
+        // 配置信息, 即使不正确也能使用 wx.ready
+        debug: false,
+        appId: 'wx032c564a32073fee',
+        timestamp: 1,
+        nonceStr: '',
+        signature: '',
+        jsApiList: []
+    });
+    wx.ready(function() {
+        var globalAudio=document.getElementById("musicAudio");
+        globalAudio.play();
+    });
+};
+// 解决ios音乐不自动播放的问题
+autoPlayAudio();
 // <!--截取 ? & 之间 namebutt= 后面的值一般用来截取url?后面的参数-->
+
 function getUrlKey(name){
     return decodeURIComponent((new RegExp('[?|&]'+name+'='+'([^&;]+?)(&|#|;|$)').exec(location.href)||[,""])[1].replace(/\+/g,'%20'))||null;
 }

@@ -14,7 +14,7 @@
     <script type="text/javascript" src="js/fetch.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/md5.js"></script>
-
+    <script type="text/javascript" src="js/weixin.js"></script>
     <style>
         [v-cloak] {
             display: none!important;
@@ -170,18 +170,7 @@
 
                  });
              })
-            window.addEventListener('DOMContentLoaded', function() {
 
-                function audioAutoPlay() {
-                    var audio = document.getElementById('musicAudio');
-                    audio.play();
-                    document.addEventListener("WeixinJSBridgeReady", function() {
-                        audio.play();
-                    }, false);
-                }
-                audioAutoPlay();
-
-            });
             //
         },
         methods:{
