@@ -140,6 +140,7 @@
         },
         created:function(){
             if(getUrlKey("sign")){
+                alert(document.referrer);
                  this.setCookie('signApp',getUrlKey("sign"));
                  this.setCookie('codeApp',getUrlKey("code"));
                  this.sign =  this.getCookie('signApp');
