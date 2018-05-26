@@ -62,7 +62,7 @@
                 message:'',
                 show:false,
                 set:'',
-                oldInput:'',
+                oldInput:'1'
 
             },
             created:function(){
@@ -78,14 +78,14 @@
                 //    判断用户名输入是否正确
                     var that = this;
                     var value = this.$refs.inputVal.value;
-                    if(value.length<11){
-                        this.show = true;
-                        this.message = '用户名输入错误，请重新输入';
-                       this.$nextTick(function(){
-                           this.$refs.mess.style.margin= '-'+this.$refs.mess.offsetHeight/2+'px 0 0'+'-'+this.$refs.mess.offsetWidth/2+'px';
-                       });
-                        that.set = setTimeout(function(){ that.show = false;}, 5000)
-                    }else{
+                    // if(value.length<11){
+                    //     this.show = true;
+                    //     this.message = '用户名输入错误，请重新输入';
+                    //    this.$nextTick(function(){
+                    //        this.$refs.mess.style.margin= '-'+this.$refs.mess.offsetHeight/2+'px 0 0'+'-'+this.$refs.mess.offsetWidth/2+'px';
+                    //    });
+                    //     that.set = setTimeout(function(){ that.show = false;}, 5000)
+                    // }else{
                         this.show = false;
                         clearTimeout(that.set);
                         var p= md5(this.$refs.inputVal1.value).toUpperCase();
@@ -152,7 +152,7 @@
 
 
                         });
-                    }
+                    // }
 
 
                 },
@@ -170,16 +170,19 @@
                 handleInput:function(v){
                     if(v == 'inputVal'){
                         //限制只能输入数字
-
                         var value = this.$refs.inputVal.value;
-                        if(!value && this.oldInput.length!=1){
+                        if(value.length>11)this.$refs.inputVal.value=value.slice(0,11);
+                        console.log('huhu','q'+value,'w'+this.oldInput,this.oldInput.length);
+                        if(!value && this.oldInput.length==1){
+                            this.$refs.inputVal.value = '';
+                        }else if(!value && this.oldInput.length!=1){
                             this.$refs.inputVal.value = this.oldInput;
                         }else{
                             this.oldInput = this.$refs.inputVal.value;
                         }
-                        if(value.length>11)this.$refs.inputVal.value=value.slice(0,11);
+
                         if(value.length>0){
-                            this.is=true;
+                            this.is = true;
                         }else{
                             this.is = false;
                         }
