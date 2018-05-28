@@ -14,6 +14,7 @@ function autoPlayAudio() {
         globalAudio.play();
     });
 };
+
 // 解决ios音乐不自动播放的问题
 autoPlayAudio();
 // <!--截取 ? & 之间 namebutt= 后面的值一般用来截取url?后面的参数-->
