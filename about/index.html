@@ -219,14 +219,16 @@
                           that.loading =false;
                           that.showFooter = true;
                       }
-                    alert(window.name);
-                     if(res.body.status ==0 && window.name!= 1 || !res.body.status && window.name!= 1){
+
+                     if(res.body.status ==0|| !res.body.status){
 
                          that.button_message = true;
                      }else if(res.body.status >0 ){
                          that.button_message = false;
                      }
-
+                     if(window.name ==1){
+                         that.button_message = false;
+                     }
                     //绑定微信成功-登录成功
                 },function(e){
                     switch(e.errorcode){
