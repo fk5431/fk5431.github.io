@@ -140,9 +140,12 @@
         },
         created:function(){
             //根据全局变量判断是否是下载页面过来；
+            // if(window.name ==1){
+            //     this.userId = this.getCookie('userIdApp');
+            //     this.tokenID = this.getCookie('tokenIdApp');
+            // }
 
-
-            if(getUrlKey("sign")){
+            if(getUrlKey("sign") && window.name !=1){
                  this.setCookie('signApp',getUrlKey("sign"));
                  this.setCookie('codeApp',getUrlKey("code"));
                  this.sign =  this.getCookie('signApp');
@@ -219,16 +222,12 @@
                           that.loading =false;
                           that.showFooter = true;
                       }
+                    if(res.body.status ==0|| !res.body.status){
+                        that.button_message = true;
+                    }else if(res.body.status >0 ){
+                        that.button_message = false;
+                    }
 
-                     if(res.body.status ==0|| !res.body.status){
-
-                         that.button_message = true;
-                     }else if(res.body.status >0 ){
-                         that.button_message = false;
-                     }
-                     if(window.name ==1){
-                         that.button_message = false;
-                     }
                     //绑定微信成功-登录成功
                 },function(e){
                     switch(e.errorcode){
