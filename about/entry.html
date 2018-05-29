@@ -7,7 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="stylesheet" href="css/living.css">
-    <script type="text/javascript" src="js/weixin.js"></script>
+
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/fetch.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
@@ -29,7 +29,7 @@
         <div class="content">
             <div class="clearfix">
                 <img  class="del" v-show="is" src="img/del.png" @click="handleClick('inputVal')" style="width:0.3rem;height:0.3rem;">
-                <input :class='{typeN:is}' type="number" ref='inputVal' placeholder="职业号/手机号码"  @input="handleInput('inputVal')">
+                <input :class='{typeN:is}' type="number" ref='inputVal' placeholder="职业号/手机号码"  @input="handleInput('inputVal')" @focus="handleFocus">
 
                 <img  v-show="!is" class="tu" src="img/people.png" style="width:0.27rem;height:0.39rem;">
                 <img  v-show="is" class="tu" src="img/people1.png" style="width:0.27rem;height:0.39rem;">
@@ -37,7 +37,7 @@
             </div>
           <div class="clearfix">
               <img  class="del" v-show="iss" src="img/del.png" @click="handleClick('inputVal1')" style="width:0.3rem;height:0.3rem;">
-              <input type="password" :class='{typeN:iss}' ref='inputVal1' placeholder="请输入登录密码" @input="handleInput('inputVal1')" >
+              <input type="password" :class='{typeN:iss}' ref='inputVal1' placeholder="请输入登录密码" @input="handleInput('inputVal1')" @focus="handleFocus">
 
               <img  v-show="!iss" class="tu" src="img/password.png" style="width:0.27rem;height:0.39rem;">
               <img  v-show="iss" class="tu" src="img/password1.png" style="width:0.28rem;height:0.37rem;">
@@ -46,7 +46,7 @@
           </div>
 
         </div>
-        <p class="pass" @click="handlePass">忘记密码</p>
+        <p class="pass"><span @click="handlePass">忘记密码</span></p>
         <div class="footer">
             <button :class='{button1:(is && iss),"button": butt}' @click="handleButton" :disabled="!is || !iss">登录</button>
         </div>
@@ -72,6 +72,9 @@
 
             },
             methods:{
+                handleFocus:function(){
+                    this.show = false;
+                },
                 handleP:function(){
                     //    跳转至忘记密码页面
                     window.location.href = 'register.html';

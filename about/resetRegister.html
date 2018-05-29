@@ -7,7 +7,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="stylesheet" href="css/living.css">
-    <script type="text/javascript" src="js/weixin.js"></script>
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/fetch.js"></script>
     <script type="text/javascript" src="js/checkCode.js"></script>
@@ -27,7 +26,7 @@
 
             <span>手机号</span>
             <div style="float:right;" class="clearfix">
-                <input type="number" ref="phone" @input="handleInput('phone')" placeholder="请输入11位手机号码">
+                <input type="number" ref="phone" @input="handleInput('phone')" @focus="handleFocus" placeholder="请输入11位手机号码">
                 <span  class="del">
                     <img v-show="is" src="img/del.png" @click="handleClick">
                 </span>
@@ -38,7 +37,7 @@
         <div class="box clearfix">
             <span>验证码</span>
             <div style="float:right;" class="clearfix">
-                <input type="number"  ref="code" @input="handleInput('code')" placeholder="请输入图形验证码">
+                <input type="number"  ref="code" @input="handleInput('code')" @focus="handleFocus" placeholder="请输入图形验证码">
                 <div id="v_container" class="del">
                     <canvas id="verifyCanvas" style="cursor: pointer;"></canvas>
                 </div>
@@ -75,6 +74,9 @@
 
         },
         methods:{
+            handleFocus:function(){
+                this.show = false;
+            },
             // handleR:function(){
             //     window.location.href ="http://192.168.1.114:8080/zyt-http/workregisteragreement.html"
             // },
