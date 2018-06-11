@@ -48,7 +48,7 @@ Vue.prototype.delCookie = function(name){
 var root = "http://192.168.1.114:8080/zyt-http/";
 
 <!--正式-->
-// <!--var root = "http://api.54zyt.com:81/zyt-http/";-->
+// var root = "http://api.54zyt.com:81/zyt-http/";
 Vue.prototype.$api= {
     post: function(url, params, success, failure) {
         return fetch(root+url,{method:'POST',

@@ -7,7 +7,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="stylesheet" href="css/living.css">
-
     <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript" src="js/fetch.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
@@ -30,19 +29,14 @@
             <div class="clearfix">
                 <img  class="del" v-show="is" src="img/del.png" @click="handleClick('inputVal')" style="width:0.3rem;height:0.3rem;">
                 <input :class='{typeN:is}' type="number" ref='inputVal' placeholder="职业号/手机号码"  @input="handleInput('inputVal')" @focus="handleFocus">
-
                 <img  v-show="!is" class="tu" src="img/people.png" style="width:0.27rem;height:0.39rem;">
                 <img  v-show="is" class="tu" src="img/people1.png" style="width:0.27rem;height:0.39rem;">
-
             </div>
           <div class="clearfix">
               <img  class="del" v-show="iss" src="img/del.png" @click="handleClick('inputVal1')" style="width:0.3rem;height:0.3rem;">
               <input type="password" :class='{typeN:iss}' ref='inputVal1' placeholder="请输入登录密码" @input="handleInput('inputVal1')" @focus="handleFocus">
-
               <img  v-show="!iss" class="tu" src="img/password.png" style="width:0.27rem;height:0.39rem;">
               <img  v-show="iss" class="tu" src="img/password1.png" style="width:0.28rem;height:0.37rem;">
-
-
           </div>
 
         </div>
@@ -76,15 +70,15 @@
                     this.show = false;
                 },
                 handleP:function(){
-                    //    跳转至忘记密码页面
+                 //跳转至忘记密码页面
                     window.location.href = 'register.html';
                 },
                 handlePass:function(){
-                //    跳转至忘记密码页面
+                //跳转至忘记密码页面
                     window.location.href = 'resetRegister.html';
                 },
                 handleButton:function(){
-                //    判断用户名输入是否正确
+                //判断用户名输入是否正确
                     var that = this;
                     var value = this.$refs.inputVal.value;
                     // if(value.length<11){
@@ -107,15 +101,14 @@
                               that.setCookie('userIdApp',res.body.userId);
                               that.setCookie('tokenIdApp',res.body.tokenID);
 
-                              window.location.href = 'index.html';
+                              window.location.href = 'active.html';
 
                           }else{
                                   switch(res.errorcode){
                                       case "NOT_CERTIFICATION":
                                           that.setCookie('userIdApp',res.body.userId);
                                           that.setCookie('tokenIdApp',res.body.tokenID);
-
-                                          window.location.href = 'index.html';
+                                          window.location.href = 'active.html';
                                           break;
                                       case "PASSWORD_ERROR_LOCK":
                                           that.show = true;
@@ -137,7 +130,6 @@
                                               that.$nextTick(function(){
                                                   that.$refs.mess.style.margin= '-'+that.$refs.mess.offsetHeight/2+'px 0 0'+'-'+that.$refs.mess.offsetWidth/2+'px';});
                                               setTimeout(function(){ that.show = false;}, 5000)
-
                                           }
                                           break;
                                       case "USER_NOT_EXIST":
@@ -148,7 +140,6 @@
                                           setTimeout(function(){ that.show = false;}, 5000)
                                           break;
                                       case "NOT_CERTIFICATION":
-
                                           break;
                                       default:
                                           break;
