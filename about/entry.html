@@ -101,14 +101,14 @@
                               that.setCookie('userIdApp',res.body.userId);
                               that.setCookie('tokenIdApp',res.body.tokenID);
 
-                              window.location.href = 'active.html';
+                              window.location.href = 'index.html';
 
                           }else{
                                   switch(res.errorcode){
                                       case "NOT_CERTIFICATION":
                                           that.setCookie('userIdApp',res.body.userId);
                                           that.setCookie('tokenIdApp',res.body.tokenID);
-                                          window.location.href = 'active.html';
+                                          window.location.href = 'index.html';
                                           break;
                                       case "PASSWORD_ERROR_LOCK":
                                           that.show = true;
