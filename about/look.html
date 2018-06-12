@@ -64,23 +64,7 @@
             // this.val();
         },
         methods:{
-            val:function(){
-                var that=this;
-                this.$api.post('/api/user/getJsapiSignConfigOfWXe',{
-                    "signUrl":window.location.href
-                },function(res){
-                    that.url = res.body.url;
-                    that.jsapi_ticket = res.body.jsapi_ticket;
-                    that.nonceStr = res.body.nonceStr;
-                    that.timestamp = res.body.timestamp;
-                    that.signature = res.body.signature;
-                },function(e){
-                    switch(e.errorcode){
-                        default:
-                            break;
-                    }
-                });
-            },
+
             handleClick:function(){
                 var that=this;
                 this.$api.post('/api/report/receive',{
@@ -106,11 +90,9 @@
             helps:function(val){
 
                 var that=this;
-                if(val){
-                    this.QRcode = val;
-                }
+               var QRcode_val = this.QRcode;
                 this.$api.post('/api/report/activityInfo',{
-                    "QRcode": this.QRcode
+                    "QRcode": QRcode_val
                 },function(res){
                     that.num = res.body.num;
                     that.arr = res.body.detail;
@@ -167,12 +149,14 @@
         //点击按钮扫描二维码
         var that = this;
         document.querySelector('#scanQRCode').onclick = function() {
+            alert(1);
             wx.scanQRCode({
                 needResult : 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
                 scanType : [ "qrCode"], // 可以指定扫二维码还是一维码，默认二者都有
                 success : function(res) {
                     var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
-                    that.helps(result);
+
+                    alert(result);
                     // window.location.href = result;//因为我这边是扫描后有个链接，然后跳转到该页面
                 }
             });
