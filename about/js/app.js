@@ -19,6 +19,8 @@
 // autoPlayAudio();
 // <!--截取 ? & 之间 namebutt= 后面的值一般用来截取url?后面的参数-->
 
+
+
 function getUrlKey(name){
     return decodeURIComponent((new RegExp('[?|&]'+name+'='+'([^&;]+?)(&|#|;|$)').exec(location.href)||[,""])[1].replace(/\+/g,'%20'))||null;
 }
@@ -45,7 +47,7 @@ Vue.prototype.delCookie = function(name){
         document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
 }
 <!-- 测试 -->
-var root = "http://192.168.1.114:8080/zyt-http/";
+var root = "http://192.168.1.114:8580/zyt/";
 
 <!--正式-->
 // var root = "http://api.54zyt.com:81/zyt-http/";

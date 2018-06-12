@@ -1,8 +1,9 @@
 /* CSS Document */
 
+
 html{font-size:10px}
 @media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
-@media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+@media screen and (min-width:376px) and (max-width:414px){html{ font-size: 12px;}}
 @media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
 @media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}
 @media screen and (min-width:720px) and (max-width:749px){html{font-size:22.5px}}
@@ -11,6 +12,8 @@ html{font-size:10px}
 html, body,img{
     font-size: calc(100vw/7.2);
 }
+
+
 html, body, div, span, object, iframe,h1, h2,
 h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn,
 em, img, ins,kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd,
@@ -33,6 +36,7 @@ audio, video {
 }
 
 body {
+
     line-height:1;
 }
 a{

@@ -425,6 +425,7 @@
       var xhr = new XMLHttpRequest()
 
       xhr.onload = function() {
+        alert(1);
         var options = {
           status: xhr.status,
           statusText: xhr.statusText,
