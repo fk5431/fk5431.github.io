@@ -72,20 +72,21 @@
                         var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
 
                         alert('结果'+result);
-                        // window.location.href = result;//因为我这边是扫描后有个链接，然后跳转到该页面
+
                     }
                 });
             },
             val:function(){
-                wx.ready(function() {
-                        wx.checkJsApi({
-                            jsApiList : ['scanQRCode'],
-                            success : function(res) {
-                                  alert('监听');
-                            }
-                        });})
+                alert('opopop');
+                // wx.ready(function() {
+                //     wx.checkJsApi({
+                //         jsApiList : ['scanQRCode'],
+                //         success : function(res) {
+                //             alert('监听');
+                //         }
+                //     });})
                 var that=this;
-                this.$api.post('/api/user/getJsapiSignConfigOfWXe',{
+                this.$api.post('api/user/getJsapiSignConfigOfWX',{
                     "signUrl":'http://fk5431.com/about/look.html'
                 },function(res){
                     alert('调微信接口');
