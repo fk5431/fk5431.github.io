@@ -153,6 +153,11 @@
 
                 var that=this;
                var QRcode_val = this.QRcode;
+               if(val)
+               {
+                   QRcode_val = val;
+               }
+
                 this.$api.post('/api/report/activityInfo',{
                     "QRcode": QRcode_val
                 },function(res){
