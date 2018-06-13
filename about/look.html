@@ -61,9 +61,30 @@
             signature:''
         },
         created:function(){
-            this.val();
+            //this.val();
+            wx.config({
+                // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                debug: true,
+                // 必填，公众号的唯一标识
+                appId: 'wx032c564a32073fee',
+                // 必填，生成签名的时间戳
+                timestamp:1528857474,
+                // 必填，生成签名的随机串
+                nonceStr:"31f374e7092e461c",
+                // 必填，签名，见附录1
+                signature:"20764bb88d25da6178530cfd9729a02834b182fa",
+                // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                jsApiList : [ 'checkJsApi', 'scanQRCode' ]
+            });
         },
         methods:{
+            /*
+            {"body":{"timestamp":1528857474,
+                     "nonceStr":"31f374e7092e461c",
+                     "jsapi_ticket":"HoagFKDcsGMVCIY2vOjf9tuxCLBcxLAyNFPwWs9VJDRZpZqK6ByuAyefrnMbylej4-wfL5O_NCUf_4doeYjX0w",
+                     "signature":"20764bb88d25da6178530cfd9729a02834b182fa",
+                     "url":"http://fk5431.com/about/look.html"},"errorcode":"0","status":0}
+             */
             handle_val:function(){
                 wx.scanQRCode({
                     needResult : 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
