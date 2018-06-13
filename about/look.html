@@ -70,27 +70,20 @@
                     scanType : [ "qrCode"], // 可以指定扫二维码还是一维码，默认二者都有
                     success : function(res) {
                         var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
-
                         alert('结果'+result);
-
+                        this.helps(result);
                     }
                 });
             },
             val:function(){
-                alert('opopop');
-                // wx.ready(function() {
-                //     wx.checkJsApi({
-                //         jsApiList : ['scanQRCode'],
-                //         success : function(res) {
-                //             alert('监听');
-                //         }
-                //     });})
                 alert(location.href.split('#')[0]);
                 var that=this;
                 this.$api.post('api/user/getJsapiSignConfigOfWX',{
                     "signUrl": location.href.split('#')[0]
                 },function(res){
-                    alert('调微信接口');
+                    alert(res.body.timestamp);
+                    alert(res.body.nonceStr);
+                    alert(res.body.signature);
                     wx.config({
                         // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
                         debug: true,
