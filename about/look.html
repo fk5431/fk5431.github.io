@@ -92,7 +92,7 @@
                     scanType : [ "qrCode"], // 可以指定扫二维码还是一维码，默认二者都有
                     success : function(res) {
                         var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
-                        alert('结果'+result);
+                        that.QRcode = result;
                         that.helps(result);
                     }
                 });
@@ -153,11 +153,6 @@
 
                 var that=this;
                var QRcode_val = this.QRcode;
-               if(val)
-               {
-                   QRcode_val = val;
-               }
-
                 this.$api.post('/api/report/activityInfo',{
                     "QRcode": QRcode_val
                 },function(res){
