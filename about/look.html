@@ -101,7 +101,7 @@
             },
             val:function(){
                 var that=this;
-                this.$api.post('api/user/getJsapiSignConfigOfWX',{
+                this.$api.post('/api/user/getJsapiSignConfigOfWX',{
                     "signUrl": location.href.split('#')[0]
                 },function(res){
                     alert(res.body.timestamp);
