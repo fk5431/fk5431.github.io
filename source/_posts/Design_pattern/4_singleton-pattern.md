@@ -130,3 +130,10 @@ public class SingletonStaticClass {
 ```
 这种方式利用了 classloder 机制来保证初始化 instance 时只有一个线程,但是这个是类装载的时候不一定会进行初始化,只有在调用 getInstance 方法时候才会显示的装载SingletonHodler,然后实例化instance.
 
+#### 枚举的方式
+````
+public enum EnumSingleton {
+    INSTANCE;
+}
+````
+枚举的方式最简单，又是线程安全的（默认枚举实例的创建是线程安全的）
