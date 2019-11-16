@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/20170619/Design_pattern/4_singleton-pattern/index.html">
 <meta property="og:site_name" content="fk5431">
 <meta property="og:description" content="单例模式定义一个类有且仅有一个实例，并且自行实例化向整个系统提供。(创建型模式)设计模式中比较简单的几种之一,单例模式就是让一个类在系统运行过程中只会产生唯一的一个实例,单例模式主要:  单例类只能有一个实例。 单例类必须自己创建自己的唯一实例。 单例类必须给所有其他对象提供这一实例。  使用场景 需要频繁实例化然后销毁的对象。 创建对象时耗时过多或者耗资源过多，但又经常用到的对象。 有状态的工具">
-<meta property="og:updated_time" content="2019-08-08T08:33:34.000Z">
+<meta property="og:updated_time" content="2019-11-14T09:17:21.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单例模式">
 <meta name="twitter:description" content="单例模式定义一个类有且仅有一个实例，并且自行实例化向整个系统提供。(创建型模式)设计模式中比较简单的几种之一,单例模式就是让一个类在系统运行过程中只会产生唯一的一个实例,单例模式主要:  单例类只能有一个实例。 单例类必须自己创建自己的唯一实例。 单例类必须给所有其他对象提供这一实例。  使用场景 需要频繁实例化然后销毁的对象。 创建对象时耗时过多或者耗资源过多，但又经常用到的对象。 有状态的工具">
@@ -440,6 +440,8 @@
 <p>这种方式采用了双锁机制,一方面保证了多线程的安全,另一方面还提高了效率.<br>但是看起来是完美,但是实际上这种方式是有缺陷的,是错误的一种.<br>(双重检查锁定的问题下次专门写个文章)</p>
 <h4 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.singleton;</div><div class="line">/**</div><div class="line"> * Created by fk5431 on 6/19/17.</div><div class="line"> */</div><div class="line">public class SingletonStaticClass &#123;</div><div class="line">    //静态内部类</div><div class="line">    private static class SingletonHodler&#123;</div><div class="line">        private static final SingletonStaticClass INSTANCE = new SingletonStaticClass();</div><div class="line">    &#125;</div><div class="line">    private SingletonStaticClass()&#123;&#125;</div><div class="line">    public static final SingletonStaticClass getInstance()&#123;</div><div class="line">        return SingletonHodler.INSTANCE;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这种方式利用了 classloder 机制来保证初始化 instance 时只有一个线程,但是这个是类装载的时候不一定会进行初始化,只有在调用 getInstance 方法时候才会显示的装载SingletonHodler,然后实例化instance.</p>
+<h4 id="枚举的方式"><a href="#枚举的方式" class="headerlink" title="枚举的方式"></a>枚举的方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public enum EnumSingleton &#123;</div><div class="line">    INSTANCE;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>枚举的方式最简单，又是线程安全的（默认枚举实例的创建是线程安全的）</p>
 
       
     </div>
@@ -589,7 +591,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -675,7 +677,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#单例模式"><span class="nav-number">1.</span> <span class="nav-text">单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">1.2.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例模式的实现"><span class="nav-number">1.3.</span> <span class="nav-text">单例模式的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#懒汉式典型实现"><span class="nav-number">1.3.1.</span> <span class="nav-text">懒汉式典型实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#懒汉式线程安全形式"><span class="nav-number">1.3.2.</span> <span class="nav-text">懒汉式线程安全形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#饿汉式"><span class="nav-number">1.3.3.</span> <span class="nav-text">饿汉式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双重校验锁"><span class="nav-number">1.3.4.</span> <span class="nav-text">双重校验锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态内部类"><span class="nav-number">1.3.5.</span> <span class="nav-text">静态内部类</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#单例模式"><span class="nav-number">1.</span> <span class="nav-text">单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">1.2.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例模式的实现"><span class="nav-number">1.3.</span> <span class="nav-text">单例模式的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#懒汉式典型实现"><span class="nav-number">1.3.1.</span> <span class="nav-text">懒汉式典型实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#懒汉式线程安全形式"><span class="nav-number">1.3.2.</span> <span class="nav-text">懒汉式线程安全形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#饿汉式"><span class="nav-number">1.3.3.</span> <span class="nav-text">饿汉式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双重校验锁"><span class="nav-number">1.3.4.</span> <span class="nav-text">双重校验锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态内部类"><span class="nav-number">1.3.5.</span> <span class="nav-text">静态内部类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#枚举的方式"><span class="nav-number">1.3.6.</span> <span class="nav-text">枚举的方式</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
