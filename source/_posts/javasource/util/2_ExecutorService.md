@@ -11,7 +11,7 @@ keywords: ExecutorService, ThreadPoolExecutor，线程池
 
 ### 类继承的结构
 
-![结构图](../../../uploads/javasource/util/executor.jpeg)
+![结构图](../../../../uploads/javasource/util/executor.jpeg)
 
 Executor是最顶层的接口，定义了execute(Runnable runnable)方法。ExecutorService继承了Executor，继承了execute方法，还定义很多接口方法，例如shutdown、isTerminated、submit等方法。
 

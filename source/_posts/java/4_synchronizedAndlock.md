@@ -35,3 +35,134 @@ keywords: synchronized,lock,并发
 
 ### synchronized和lock的用法
 
+#### synchronized
+
+synchronized是Java的关键字，当它用来修饰一个方法或者一个代码块的时候，能够保证在同一时刻最多只有一个线程执行该段代码，同时它还可以保证共享变量的内存可见性。
+
+##### 修饰代码块
+
+```
+public void method(){
+    synchronized (Object o){
+        //
+    }
+}
+```
+> 作用于代码块，synchronized后跟括号，括号里是变量，每次只会有一个线程进入该代码块。
+
+##### 修饰方法
+
+```
+public synchronized void method(){
+    //
+}
+```
+
+> 作用于方法时，一次只有一个线程进入该方法，其他线程此时想调用只能排队等候。
+
+##### 修饰类
+
+```
+public static void menthed(){
+    synchronized(Service.class) {
+    }
+}
+```
+
+> 如果线程进入，则线程在该类中所有操作不能进行，包括静态变量和静态方法，对于含有静态方法和静态变量的代码块的同步，通常使用这种方式。
+
+#### Lock
+
+java.util.concurrent.locks 包下有以下这些类：
+
+![类](../../uploads/javasource/lock.jpeg)
+
+ReetrantLock实现了Lock接口，ReadWriteLock是读写锁的接口，由ReentrantReadWriteLock实现。
+
+##### Lock
+
+```
+public interface Lock {
+
+    void lock();
+
+    void lockInterruptibly() throws InterruptedException;
+
+    boolean tryLock();
+
+    boolean tryLock(long time, TimeUnit unit) throws InterruptedException;
+
+    void unlock();
+
+    Condition newCondition();
+}
+```
+
+Lock接口中定义了这6个接口。
+
+- lock():用来获取锁，如果锁已经被其他线程获取，则会处于等待状态。使用Lock则必须主动释放锁，发生异常也不会自动释放锁，所以要在try{}catch()中进行，finally中释放锁。
+- lockInterruptibly():通过这个方法去获取锁时，如果线程正在等待获取锁，则这个线程能够响应中断，即中断线程的等待状态。
+- tryLock():尝试获取锁，如果获取成功，则返回true，如果获取失败则返回false。这个方法会立即返回，拿不到锁也不会等待。
+- tryLock(long time, TimeUnit unit):也是尝试获取锁，不过会有设定的等待时间。
+- unlock():释放锁
+- newCondition(): 创建一个Condition，Condition接口也提供了类似Object的监视器方法，与Lock配合可以实现等待/通知模式。
+
+##### ReentrantLock
+
+ReentrantLock 实现了Lock接口，是一个可重入锁，内部定义了公平锁和非公平锁，默认是非公平锁。
+
+```
+public class ReentrantLockTest {
+
+    public static void main(String[] args) throws InterruptedException {
+
+        ReentrantLock lock = new ReentrantLock();
+
+        for (int i = 1; i <= 3; i++) {
+            lock.lock();
+        }
+
+        for(int i=1;i<=3;i++){
+            try {
+
+            } finally {
+                lock.unlock();
+            }
+        }
+    }
+}
+```
+
+> ReentrantLock 可以通过lock()方法加锁多次，在通过unlock()方法释放锁多次使得程序正常退出，所以ReentrantLocl是可重入锁。
+
+- ReentrantLock和synchronized都是独占锁,只允许线程互斥的访问临界区。synchronized是隐式的，ReentrantLocl是显示的。
+- ReentrantLock和synchronized都是可重入的。synchronized因为可重入因此可以放在被递归执行的方法上,且不用担心线程最后能否正确释放锁；而ReentrantLock在重入时要却确保重复获取锁的次数必须和重复释放锁的次数一样，否则可能导致其他线程无法获得该锁。
+
+##### ReadWriteLock
+
+```
+public interface ReadWriteLock {
+    Lock readLock();
+
+    Lock writeLock();
+}
+```
+
+ReadWriteLock是读写锁，定义了一个获取读锁，一个获取写锁的方法。如果有一个线程已经占用了读锁，则此时其他线程如果要申请写锁，则申请写锁的线程会一直等待释放读锁；如果有一个线程已经占用了写锁，则此时其他线程如果申请写锁或者读锁，则申请的线程会一直等待释放写锁。
+
+#### synchronized和lock的区别
+
+- Lock是一个接口，而synchronized是java中的关键字。
+- synchronized在发生异常的时候会自动释放锁，而Lock在发生异常的时候仍需要手动去释放锁。
+- Lock可以让等待的线程响应中断，而synchronized不可以，会是等待线程一直等待下去，直到获取锁。
+- Lock可以知道是否获取到锁。
+- ReadWriteLock可以提高多读的效率。
+
+
+
+
+
+
+
+
+
