@@ -179,7 +179,9 @@ private Node addWaiter(Node mode) {
 ```
 addWaiter方法包装node节点，放入node双向链表。如果tail不为空则说明初始化过了直接将node加入链表尾部，如果为空则进行初始化再将node加入链表尾部。
 
-##### acquireShared
+##### 共享模式
+
+###### acquireShared（获取锁）
 
 ```
 public final void acquireShared(int arg) {
@@ -190,7 +192,7 @@ public final void acquireShared(int arg) {
 
 尝试去获取资源，如果没有获取资源返回负数，tryAcquireShared方法需要子类自己去实现，如果不实现会直接抛异常（在读写锁的Sync实现）；如果没有获取到资源加入等待队列等待获取资源。
 
-##### doAcquireShared
+###### doAcquireShared
 
 ```
 private void doAcquireShared(int arg) {
@@ -228,45 +230,42 @@ private void doAcquireShared(int arg) {
 }
 ```
 
-先吧当前节点加入到队列尾部，如果前面的节点已经获取到锁，自己会尝试获取锁，唤醒后续节点，否则挂起
+先吧当前节点加入到队列尾部，然后进入自旋，自旋的目的是为了获取资源或者阻塞，如果此节点的前一个node是head节点，就去获取资源，如果获取失败就执行shouldParkAfterFailedAcquire，将前一个node设置为SIGNAL，获取成功就setHeadAndPropagate。
 
-###### setHeadAndPropagate
-
-##### unparkSuccessor方法
+####### setHeadAndPropagate
 
 ```
- private void unparkSuccessor(Node node) {
-    int ws = node.waitStatus;
-    if (ws < 0)
-        compareAndSetWaitStatus(node, ws, 0);
-
-    Node s = node.next;
-    //如果为空或已取消
-    if (s == null || s.waitStatus > 0) {
-        s = null;
-        //从后向前找
-        for (Node t = tail; t != null && t != node; t = t.prev)
-            if (t.waitStatus <= 0)
-                s = t;
+////两个入参，一个是当前成功获取共享锁的节点，一个就是tryAcquireShared方法的返回值，它可能大于0也可能等于0
+private void setHeadAndPropagate(Node node, int propagate) {
+    Node h = head; // Record old head for check below
+    //设置新的头节点
+    setHead(node);
+    //propagate > 0 代表还有资源，还可以继续唤醒  | h.waitStatus 是 -1 or -3
+    if (propagate > 0 || h == null || h.waitStatus < 0) {
+        Node s = node.next;
+        //如果当前节点的后继节点是共享类型获取没有后继节点，则进行唤醒
+        if (s == null || s.isShared())
+            doReleaseShared();
     }
-    if (s != null)
-        LockSupport.unpark(s.thread);
 }
 ```
 
-唤醒等待队列中下一个线程，node的waitStatus为signal或condition，则可以唤醒，先重置node的waitStatus为0（允许失败），找到下一个需要唤醒的节点唤醒。
+> 会唤醒后面的所有节点
 
-##### doReleaseShared
+####### doReleaseShared（唤醒）
 ```
 private void doReleaseShared() {
     for (;;) {
+        //从头结点开始 head已是上面设置的head节点
         Node h = head;
         if (h != null && h != tail) {
             int ws = h.waitStatus;
-            //表示后继节点需要被唤醒
+            //表示需要唤醒（-1）
             if (ws == Node.SIGNAL) {
+                //CAS 将状态置为0
                 if (!compareAndSetWaitStatus(h, Node.SIGNAL, 0))
                     continue;            // loop to recheck cases
+                //唤醒
                 unparkSuccessor(h);
             }
             //如果后继节点暂时不需要唤醒，则把当前节点状态设置为PROPAGATE确保以后可以传递下去
@@ -282,35 +281,66 @@ private void doReleaseShared() {
 }
 ```
 
-##### setHeadAndPropagate
+####### unparkSuccessor方法
 
 ```
-////两个入参，一个是当前成功获取共享锁的节点，一个就是tryAcquireShared方法的返回值，它可能大于0也可能等于0
-private void setHeadAndPropagate(Node node, int propagate) {
-    Node h = head; // Record old head for check below
-    //设置新的头节点
-    setHead(node);
-    //propagate > 0 表示调用方指明了后继节点需要被唤醒 头节点后面的节点需要被唤醒（waitStatus<0）
-    if (propagate > 0 || h == null || h.waitStatus < 0) {
-        Node s = node.next;
-        //如果当前节点的后继节点是共享类型获取没有后继节点，则进行唤醒
-        if (s == null || s.isShared())
-            doReleaseShared();
+ private void unparkSuccessor(Node node) {
+    int ws = node.waitStatus;
+    if (ws < 0)
+        compareAndSetWaitStatus(node, ws, 0);
+
+    Node s = node.next;
+    //next 节点为空 或者状态为取消
+    if (s == null || s.waitStatus > 0) {
+        s = null;
+        //从后向前找
+        for (Node t = tail; t != null && t != node; t = t.prev)
+            if (t.waitStatus <= 0)
+                s = t;
     }
+    if (s != null)
+        LockSupport.unpark(s.thread);
 }
 ```
 
+用unpark()唤醒等待队列中最前边的那个未放弃线程，node的waitStatus为signal或condition，则可以唤醒，先重置node的waitStatus为0（允许失败），找到下一个需要唤醒的节点唤醒。
 
+> 从后往前找是因为下一个任务有可能被取消了，节点就有可能为null
 
+####### shouldParkAfterFailedAcquire
 
+```
+private static boolean shouldParkAfterFailedAcquire(Node pred, Node node) {
+    int ws = pred.waitStatus;
+    if (ws == Node.SIGNAL)
+        return true;
+    if (ws > 0) {
+        do {
+            node.prev = pred = pred.prev;
+        } while (pred.waitStatus > 0);
+        pred.next = node;
+    } else {
+        compareAndSetWaitStatus(pred, ws, Node.SIGNAL);
+    }
+    return false;
+}
+```
 
+> 主要是进行的状态的检查，如果前一个节点的状态是-1则返回true；如果前一个节点取消了，那就向前找到一个没有被取消的节点，将取消的节点舍弃，如果前一个节点没有被取消则将节点状态设置为-1.
 
+###### releaseShared（ 释放锁）
 
-
-
-
-
-
+```
+public final boolean releaseShared(int arg) {
+    if (tryReleaseShared(arg)) {
+        doReleaseShared();
+        return true;
+    }
+    return false;
+}
+```
+https://www.cnblogs.com/lfls/p/7599863.html
+##### 独占模式
 
 
 
