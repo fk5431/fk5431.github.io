@@ -188,8 +188,10 @@ public final void acquireShared(int arg) {
 }
 ```
 
-###### doAcquireShared
-TODO
+尝试去获取资源，如果没有获取资源返回负数，tryAcquireShared方法需要子类自己去实现，如果不实现会直接抛异常（在读写锁的Sync实现）；如果没有获取到资源加入等待队列等待获取资源。
+
+##### doAcquireShared
+
 ```
 private void doAcquireShared(int arg) {
     final Node node = addWaiter(Node.SHARED);
@@ -197,30 +199,38 @@ private void doAcquireShared(int arg) {
     try {
         boolean interrupted = false;
         for (;;) {
+            //找先驱结点
             final Node p = node.predecessor();
             if (p == head) {
+                //尝试获取资源
                 int r = tryAcquireShared(arg);
                 if (r >= 0) {
+                    //获取锁之后，设置当前节点为头节点，去唤醒
                     setHeadAndPropagate(node, r);
                     p.next = null; // help GC
+                    //如果是因为中断醒来则设置中断标记位
                     if (interrupted)
                         selfInterrupt();
                     failed = false;
                     return;
                 }
             }
+            //挂起
             if (shouldParkAfterFailedAcquire(p, node) &&
                 parkAndCheckInterrupt())
                 interrupted = true;
         }
     } finally {
+        // 获取锁失败
         if (failed)
             cancelAcquire(node);
     }
 }
 ```
 
-尝试去获取资源，如果没有获取资源返回负数，tryAcquireShared方法需要子类自己去实现，如果不实现会直接抛异常（在读写锁的Sync实现）；如果没有获取到资源加入等待队列等待获取资源。
+先吧当前节点加入到队列尾部，如果前面的节点已经获取到锁，自己会尝试获取锁，唤醒后续节点，否则挂起
+
+###### setHeadAndPropagate
 
 ##### unparkSuccessor方法
 
