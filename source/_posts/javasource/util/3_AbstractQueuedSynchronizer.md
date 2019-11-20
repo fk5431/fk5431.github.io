@@ -333,20 +333,124 @@ private static boolean shouldParkAfterFailedAcquire(Node pred, Node node) {
 ```
 public final boolean releaseShared(int arg) {
     if (tryReleaseShared(arg)) {
-        doReleaseShared();
+            doReleaseShared();
         return true;
     }
     return false;
 }
 ```
-https://www.cnblogs.com/lfls/p/7599863.html
+
 ##### 独占模式
 
+###### acquire（获取锁）
+```
+public final void acquire(int arg) {
+    if (!tryAcquire(arg) &&
+        acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+        selfInterrupt();
+}
+```
+首先也是尝试获取资源，如果获取到资源则直接返回了，如果没有获取到资源则执行acquireQueued(addWaiter(Node.EXCLUSIVE), arg)，将该线程加入队列节点尾部。
 
+###### acquireQueued
+```
+final boolean acquireQueued(final Node node, int arg) {
+    boolean failed = true;
+    try {
+        boolean interrupted = false;
+        for (;;) {
+            final Node p = node.predecessor();
+            if (p == head && tryAcquire(arg)) {
+                setHead(node);
+                p.next = null; // help GC
+                failed = false;
+                return interrupted;
+            }
+            if (shouldParkAfterFailedAcquire(p, node) &&
+                parkAndCheckInterrupt())
+                interrupted = true;
+        }
+    } finally {
+        if (failed)
+            cancelAcquire(node);
+    }
+}
+```
 
+和共享模式类似，先获取该节点的前一个节点，如果前一个节点是头结点就尝试获取资源。如果获取到资源则把这个接地点设为头节点 直接返回了；如果没有获取到资源则进入阻塞挂起。
 
+> 挂起逻辑同上。
 
+###### cancelAcquire
 
+```
+private void cancelAcquire(Node node) {
+    //如果节点不存在直接返回
+    if (node == null)
+        return;
+    node.thread = null;
+
+    Node pred = node.prev;
+    //跳过前面已经取消的前置节点
+    while (pred.waitStatus > 0)
+        node.prev = pred = pred.prev;
+    Node predNext = pred.next;
+    //将node的状态设置为1 其他节点在处理时就可以跳过
+    node.waitStatus = Node.CANCELLED;
+    //如果是尾节点直接删除返回
+    if (node == tail && compareAndSetTail(node, pred)) {
+        compareAndSetNext(pred, predNext, null);
+    } else {
+        int ws;
+        //否则当前节点的前置节点不是头节点且它后面的节点等待它唤醒
+        if (pred != head &&
+            ((ws = pred.waitStatus) == Node.SIGNAL ||
+             (ws <= 0 && compareAndSetWaitStatus(pred, ws, Node.SIGNAL))) &&
+            pred.thread != null) {
+            Node next = node.next;
+            if (next != null && next.waitStatus <= 0)
+                //删除该node
+                compareAndSetNext(pred, predNext, next);
+        } else {
+            //要么当前节点的前置节点是头结点,直接唤醒当前节点的后继节点
+            unparkSuccessor(node);
+        }
+        node.next = node; // help GC
+    }
+}
+```
+
+获取锁资源失败的处理，即自己实现的获取资源的逻辑出异常的时候会进入到这里。（共享模式同这里的）
+
+###### release（释放锁）
+
+```
+public final boolean release(int arg) {
+    if (tryRelease(arg)) {
+        Node h = head;
+        if (h != null && h.waitStatus != 0)
+            unparkSuccessor(h);
+        return true;
+    }
+    return false;
+}
+
+private void unparkSuccessor(Node node) {
+    int ws = node.waitStatus;
+    if (ws < 0)
+        compareAndSetWaitStatus(node, ws, 0);
+
+    Node s = node.next;
+    if (s == null || s.waitStatus > 0) {
+        s = null;
+        for (Node t = tail; t != null && t != node; t = t.prev)
+            if (t.waitStatus <= 0)
+                s = t;
+    }
+    if (s != null)
+        LockSupport.unpark(s.thread);
+}
+```
 
 
 
