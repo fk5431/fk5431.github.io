@@ -6,7 +6,7 @@ tags:
 - java
 categories: 
 - java
-keywords: ExecutorService, ThreadPoolExecutor，线程池
+keywords: ExecutorService,ThreadPoolExecutor,线程池
 ---
 
 ### 类继承的结构

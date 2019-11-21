@@ -225,7 +225,7 @@ void addEntry(int hash, K key, V value, int bucketIndex) {
 ```
 
 > addEntry方法中判断了这个bucketIndex的链表没有冲突且元素size超过负载因子*容量的大小就进行resize的操作，然后重新计算key 的hash值和在table的index，最后进行createEntry。
-> createEntry 在链表中增加了一个节点。
+> createEntry 在链表头部中增加了一个节点。
 
 ```
 void resize(int newCapacity) {
