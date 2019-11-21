@@ -452,7 +452,183 @@ private void unparkSuccessor(Node node) {
 }
 ```
 
-##### 条件队列
+##### 条件队列(ConditionObject)
 
-https://www.jianshu.com/p/3f8b08ca21cd
+使用场景
+```
+//首先创建一个可重入锁，它本质是独占锁
+private final ReentrantLock takeLock = new ReentrantLock();
+//创建该锁上的条件队列
+private final Condition notEmpty = takeLock.newCondition();
+//使用过程
+public E take() throws InterruptedException {
+    //首先进行加锁
+    takeLock.lockInterruptibly();
+    try {
+        //如果队列是空的，则进行等待
+        notEmpty.await();
+        //取元素的操作...
+        
+        //如果有剩余，则唤醒等待元素的线程
+        notEmpty.signal();
+    } finally {
+        //释放锁
+        takeLock.unlock();
+    }
+    //取完元素以后唤醒等待放入元素的线程
+}
+```
+
+Condition一般都是配合一个显式锁Lock一起使用，Lock接口的方法中有一个newCondition()方法用于生成Condition对象。
+通过ReentrantLock的lock方法，如果获取不到锁当前线程会进入AQS队列阻塞；被唤醒后继续获取锁，如果获取到锁，移出AQS队列，继续执行；遇到Condition的await方法，加入“条件队列”，阻塞线程；被其他线程的signal方法唤醒，从“条件队列”中删除，并加入到AQS队列，如果获取到锁就继续执行。可以看到上述操作，线程节点（Node）其实在两个队列之间切换，由于“条件队列”在被唤醒时 都是从头开始遍历，所以只需要使用单向链表实现即可。
+
+```
+public interface Condition {
+
+    void await() throws InterruptedException;
+
+    void awaitUninterruptibly();
+
+    long awaitNanos(long nanosTimeout) throws InterruptedException;
+
+    boolean await(long time, TimeUnit unit) throws InterruptedException;
+
+    boolean awaitUntil(Date deadline) throws InterruptedException;
+
+    void signal();
+
+    void signalAll();
+}
+```
+
+ConditionObject 实现了 Condition接口，Condition接口中一个有7个接口：
+
+- await : 使用这个锁必须放在一个显式锁的lock和unlock之间，调用该方法后当前线程会释放锁并被阻塞，直到其他线程通过调用同一个Condition对象的signal或者signalAll方法或被中断，再次被唤醒。（可被中断）
+- awaitUninterruptibly : 此方式是不可被中断的，只能通过其他线程调用同一个Condition对象的signal或者signalAll方法，才能被唤醒。（不响应中断）
+- awaitNanos : 等待纳秒时间
+- await(long time, TimeUnit unit) : 等待一个指定时间
+- awaitUntil : 等待直到一个截止时间
+- signal : 唤醒等待队列中的第一个节点
+- signalAll : 唤醒等待队列中的所有节点
+
+###### await 
+
+```
+public final void await() throws InterruptedException {
+    if (Thread.interrupted())
+        throw new InterruptedException();
+    //加入条件队列
+    Node node = addConditionWaiter();
+    //释放当前线程占用的排它锁  
+    int savedState = fullyRelease(node);
+    int interruptMode = 0;
+    //节点不在AQS的阻塞队列中
+    while (!isOnSyncQueue(node)) {
+        //阻塞该线程
+        LockSupport.park(this);
+        //判断中断标记在阻塞等待期间 是否改变  
+        if ((interruptMode = checkInterruptWhileWaiting(node)) != 0)
+            break;
+    }
+    //当被唤醒后，该线程会尝试去获取锁，只有获取到了才会从await()方法返回，否则的话，会挂起自己
+    if (acquireQueued(node, savedState) && interruptMode != THROW_IE)
+        interruptMode = REINTERRUPT;
+    if (node.nextWaiter != null) // clean up if cancelled
+        //清理取消节点对应的线程 
+        unlinkCancelledWaiters();
+    if (interruptMode != 0)
+        //抛出中断异常，或者重新进入中断  
+        reportInterruptAfterWait(interruptMode);
+}
+```
+
+先将该节点加入到条件队列，然后释放掉当前的锁，如果该节点不在AQS的阻塞队列中就阻塞该线程，等待signal；被唤醒后该线程会尝试去获取锁
+
+###### signal
+
+```
+public final void signal() {
+    if (!isHeldExclusively())
+        throw new IllegalMonitorStateException();
+    //第一个节点
+    Node first = firstWaiter;
+    if (first != null)
+        doSignal(first);
+}
+
+private void doSignal(Node first) {
+    do {
+        //firstWaiter 下一个节点
+        if ( (firstWaiter = first.nextWaiter) == null)
+            lastWaiter = null;
+        first.nextWaiter = null;
+    } while (!transferForSignal(first) &&
+             (first = firstWaiter) != null);
+}
+
+final boolean transferForSignal(Node node) {
+    //改变线程状态
+    if (!compareAndSetWaitStatus(node, Node.CONDITION, 0))
+        return false;
+    //加入AQS阻塞队列
+    Node p = enq(node);
+    int ws = p.waitStatus;
+    //唤醒
+    if (ws > 0 || !compareAndSetWaitStatus(p, ws, Node.SIGNAL))
+        LockSupport.unpark(node.thread);
+    return true;
+}
+``` 
+
+将条件队列的第一个节点移除，加入到AQS的阻塞队列中。
+
+###### signalAll
+
+```
+public final void signalAll() {
+    if (!isHeldExclusively())
+        throw new IllegalMonitorStateException();
+    Node first = firstWaiter;
+    if (first != null)
+        doSignalAll(first);
+}
+
+private void doSignalAll(Node first) {
+    lastWaiter = firstWaiter = null;
+    do {
+        Node next = first.nextWaiter;
+        first.nextWaiter = null;
+        transferForSignal(first);
+        first = next;
+    } while (first != null);
+}
+```
+
+signalAll 会遍历全部节点唤醒加入到AQS阻塞队列。
+
+##### 条件队列与同步队列
+
+1.同步队列依赖一个双向链表来完成同步状态的管理，当前线程获取同步状态失败 后，同步器会将线程构建成一个节点，并将其加入同步队列中。
+2.通过signal或signalAll将条件队列中的节点转移到同步队列。（由条件队列转化为同步队列）
+
+![condition](../../../../uploads/javasource/util/aqs1.png)
+
+条件队列节点来源：
+
+1. 调用await方法阻塞线程；
+2. 当前线程存在于同步队列的头结点，调用await方法进行阻塞（从同步队列转化到条件队列）
+
+例如：
+
+1. 假设初始状态如下，节点A、节点B在同步队列中。
+
+![condition](../../../../uploads/javasource/util/aqs2.png)
+
+2. 节点A的线程获取锁权限，此时调用await方法。节点A从同步队列移除， 并加入条件队列中。
+
+![condition](../../../../uploads/javasource/util/aqs3.png)
+
+3. 调用 signal方法，从条件队列中取出第一个节点，并加入同步队列中，等待获取资源
+
+![condition](../../../../uploads/javasource/util/aqs4.png)
 
