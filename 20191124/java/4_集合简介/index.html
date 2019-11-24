@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="设计模式, 迭代器模式" />
+  <meta name="keywords" content="java,集合,List,Set,Map,Collection" />
 
 
 
@@ -87,19 +87,20 @@
 
 
 
-<meta name="description" content="迭代器模式介绍迭代器模式：提供一种方法访问一个容器对象中各个元素，而又不暴露该对象的内部细节。（行为型模式）迭代器模式是应该是java中使用的最多的一种设计模式，迭代器模式如下：  抽象容器：一般是一个接口，提供一个iterator()方法，例如java中的Collection接口，List接口，Set接口等。  具体容器：就是抽象容器的具体实现类，比如List接口的有序列表实现ArrayList">
-<meta name="keywords" content="设计模式">
+<meta name="description" content="java集合java集合类存放在java.util下面，主要有三种：Set，List，Map。  Collection 是集合Set、List和Queue最基本的接口 Iterator 可以使用迭代器遍历集合中的元素 Map 是key value映射形式的基本接口                 ArrayList 有序，底层是数组，查询快，增删慢，线程不安全，扩容 n*1.5+1     Lis">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="迭代器模式">
-<meta property="og:url" content="http://yoursite.com/20170817/Design_pattern/19_iterator/index.html">
+<meta property="og:title" content="java集合简述">
+<meta property="og:url" content="http://yoursite.com/20191124/java/4_集合简介/index.html">
 <meta property="og:site_name" content="fk5431">
-<meta property="og:description" content="迭代器模式介绍迭代器模式：提供一种方法访问一个容器对象中各个元素，而又不暴露该对象的内部细节。（行为型模式）迭代器模式是应该是java中使用的最多的一种设计模式，迭代器模式如下：  抽象容器：一般是一个接口，提供一个iterator()方法，例如java中的Collection接口，List接口，Set接口等。  具体容器：就是抽象容器的具体实现类，比如List接口的有序列表实现ArrayList">
-<meta property="og:image" content="http://yoursite.com/20170817/uploads/iterator/1.jpg">
-<meta property="og:updated_time" content="2019-11-23T09:24:34.304Z">
+<meta property="og:description" content="java集合java集合类存放在java.util下面，主要有三种：Set，List，Map。  Collection 是集合Set、List和Queue最基本的接口 Iterator 可以使用迭代器遍历集合中的元素 Map 是key value映射形式的基本接口                 ArrayList 有序，底层是数组，查询快，增删慢，线程不安全，扩容 n*1.5+1     Lis">
+<meta property="og:image" content="http://fk5431.com/20191114/javasource/util/1_HashMap/">
+<meta property="og:image" content="http://fk5431.com/20191114/javasource/util/4_ConcurrentHashMap/">
+<meta property="og:updated_time" content="2019-11-24T13:34:00.477Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="迭代器模式">
-<meta name="twitter:description" content="迭代器模式介绍迭代器模式：提供一种方法访问一个容器对象中各个元素，而又不暴露该对象的内部细节。（行为型模式）迭代器模式是应该是java中使用的最多的一种设计模式，迭代器模式如下：  抽象容器：一般是一个接口，提供一个iterator()方法，例如java中的Collection接口，List接口，Set接口等。  具体容器：就是抽象容器的具体实现类，比如List接口的有序列表实现ArrayList">
-<meta name="twitter:image" content="http://yoursite.com/20170817/uploads/iterator/1.jpg">
+<meta name="twitter:title" content="java集合简述">
+<meta name="twitter:description" content="java集合java集合类存放在java.util下面，主要有三种：Set，List，Map。  Collection 是集合Set、List和Queue最基本的接口 Iterator 可以使用迭代器遍历集合中的元素 Map 是key value映射形式的基本接口                 ArrayList 有序，底层是数组，查询快，增删慢，线程不安全，扩容 n*1.5+1     Lis">
+<meta name="twitter:image" content="http://fk5431.com/20191114/javasource/util/1_HashMap/">
 
 
 
@@ -127,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/20170817/Design_pattern/19_iterator/"/>
+  <link rel="canonical" href="http://yoursite.com/20191124/java/4_集合简介/"/>
 
 
 
 
 
-  <title> 迭代器模式 | fk5431 </title>
+  <title> java集合简述 | fk5431 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -316,7 +317,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20170817/Design_pattern/19_iterator/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191124/java/4_集合简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fk">
@@ -337,7 +338,7 @@
             
             
               
-                迭代器模式
+                java集合简述
               
             
           </h1>
@@ -352,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T09:19:52+08:00">
-                2017-08-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-24T20:21:33+08:00">
+                2019-11-24
               </time>
             
 
@@ -375,8 +376,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -387,23 +388,10 @@
           
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/20170817/Design_pattern/19_iterator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="20170817/Design_pattern/19_iterator/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
 
           
           
-             <span id="/20170817/Design_pattern/19_iterator/" class="leancloud_visitors" data-flag-title="迭代器模式">
+             <span id="/20191124/java/4_集合简介/" class="leancloud_visitors" data-flag-title="java集合简述">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -432,36 +420,154 @@
       
 
       
-        <h2 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>迭代器模式：提供一种方法访问一个容器对象中各个元素，而又不暴露该对象的内部细节。（行为型模式）<br>迭代器模式是应该是java中使用的最多的一种设计模式，迭代器模式如下：<br><img src="../../uploads/iterator/1.jpg" alt="迭代器模式"></p>
+        <h3 id="java集合"><a href="#java集合" class="headerlink" title="java集合"></a>java集合</h3><p>java集合类存放在java.util下面，主要有三种：Set，List，Map。</p>
 <ul>
-<li><p>抽象容器：一般是一个接口，提供一个iterator()方法，例如java中的Collection接口，List接口，Set接口等。</p>
+<li>Collection 是集合Set、List和Queue最基本的接口</li>
+<li>Iterator 可以使用迭代器遍历集合中的元素</li>
+<li>Map 是key value映射形式的基本接口</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>ArrayList</td>
+<td>有序，底层是数组，查询快，增删慢，线程不安全，扩容 n*1.5+1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>List</td>
+<td>Vector</td>
+<td>有序，底层是数组，查询快，增删慢，线程安全，扩容n*2</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>LinkedList</td>
+<td>有序，底层双向循环链表，查询慢，增删快，线程不安全</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Collection</td>
+<td></td>
+<td>HashSet</td>
+<td>无序，元素不可重复，封装HashMap实现，存取都比较快</td>
+</tr>
+<tr>
+<td>集合</td>
+<td></td>
+<td>Set</td>
+<td>TreeSet</td>
+<td>无序，元素不可重复，底层使用二叉树实现，内部是TreeMap的SortedSet</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>LinkedHashSet</td>
+<td>使用Hash表存储，用双向链表记录插入顺序</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Queue</td>
+<td></td>
+<td>在两端出入的List，可使用数组或者链表进行实现</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>HashMap</td>
+<td>底层是hash存储，线程不安全，key和value都可为null</td>
+</tr>
+<tr>
+<td></td>
+<td>Map</td>
+<td></td>
+<td>HashTable</td>
+<td>底层是hash存储，线程安全，key和value都不可以为null</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>TreeMap</td>
+<td>使用二叉树实现</td>
+</tr>
+</tbody>
+</table>
+<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><p>List的实现类主要是ArrayList，Vector，LinkedList</p>
+<h5 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h5><p>ArrayList是最常用的List实现类，内部是通过数组实现的，它允许对元素进行快速随机访问。数组的缺点是每个元素之间不能有间隔，当数组大小不满足时需要增加存储能力，就要将已经有数组的数据复制到新的存储空间中。当从 ArrayList 的中间位置插入或者删除元素时，需要对数组进行复制、移动、代价比较高。因此，它适合随机查找和遍历，不适合插入和删除。</p>
+<h5 id="Vector（线程安全）"><a href="#Vector（线程安全）" class="headerlink" title="Vector（线程安全）"></a>Vector（线程安全）</h5><p>Vector 与 ArrayList 一样，也是通过数组实现的，不同的是它支持线程的同步，即某一时刻只有一个线程能够写 Vector，避免多线程同时写而引起的不一致性，但实现同步需要很高的花费，因此，访问它比访问 ArrayList 慢。</p>
+<h5 id="LinkList（链表）"><a href="#LinkList（链表）" class="headerlink" title="LinkList（链表）"></a>LinkList（链表）</h5><p>LinkedList是用链表结构存储数据的，很适合数据的动态插入和删除，随机访问和遍历速度比较慢。另外，他还提供了 List 接口中没有定义的方法，专门用于操作表头和表尾元素，可以当作堆 栈、队列和双向队列使用。</p>
+<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><p>set主要是存储无序元素，元素的值不能重复。主要有HashSet，TreeSet和LinkedHashSet。</p>
+<h5 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h5><p>HashSet内部其实是封装了HashMap，通过对内部HashMap的操作来实现HashSet的功能。</p>
+<h5 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h5><p>TreeSet是使用二叉树的原理对新 add()的对象按照指定的顺序排序(升序、降序)，每增加一个对象都会进行排序，将对象插入的二叉树指定的位置。TreeSet是基于TreeMap实现的，TreeSet的元素支持2种排序方式：自然排序或者根据提供的Comparator进行排序。<br>TreeSet的特点：</p>
+<ol>
+<li>不能有重复的元素；</li>
+<li>具有排序功能；</li>
+<li>TreeSet中的元素必须实现Comparable接口并重写compareTo()方法，TreeSet判断元素是否重复 、以及确定元素的顺序 靠的都是这个方法；<ul>
+<li>对于Java类库中定义的类，TreeSet可以直接对其进行存储，如String，Integer等,因为这些类已经实现了Comparable接口);</li>
+<li>对于自定义类，如果不做适当的处理，TreeSet中只能存储一个该类型的对象实例，否则无法判断是否重复。</li>
+</ul>
 </li>
-<li><p>具体容器：就是抽象容器的具体实现类，比如List接口的有序列表实现ArrayList，List接口的链表实现LinkList，Set接口的哈希列表的实现HashSet等。</p>
-</li>
-<li><p>抽象迭代器：定义遍历元素所需要的方法，一般来说会有这么三个方法：取得第一个元素的方法first()，取得下一个元素的方法next()，判断是否遍历结束的方法isDone()（或者叫hasNext()），移出当前对象的方法remove(),</p>
-</li>
-<li><p>迭代器实现：实现迭代器接口中定义的方法，完成集合的迭代。</p>
+<li>依赖TreeMap。</li>
+<li>相对HashSet,TreeSet的优势是有序，劣势是相对读取慢。根据不同的场景选择不同的集合。</li>
+</ol>
+<h5 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h5><p>LinkedHashSet具有set集合不重复的特点，同时具有可预测的迭代顺序，也就是我们插入的顺序，它也是线程不安全的集合。<br>LinkedHashSet继承自HashSet，唯一的区别是LinkedHashSet内部使用的是LinkHashMap。这样做的意义或者好处就是LinkedHashSet中的元素顺序是可以保证的，也就是说遍历序和插入序是一致的。</p>
+<h4 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h4><p>队列就是一个先入先出（FIFO）的数据结构。</p>
+<ul>
+<li>没有实现的阻塞接口的LinkedList，实现了java.util.Queue接口和java.util.AbstractQueue接口</li>
+<li>实现阻塞接口的（BlockingQueue）：<ul>
+<li>ArrayBlockingQueue ：一个由数组支持的有界队列。</li>
+<li>LinkedBlockingQueue ：一个由链接节点支持的可选有界队列。</li>
+<li>PriorityBlockingQueue ：一个由优先级堆支持的无界优先级队列。</li>
+<li>DelayQueue ：一个由优先级堆支持的、基于时间的调度队列。</li>
+<li>SynchronousQueue ：一个利用 BlockingQueue 接口的简单聚集（rendezvous）机制。</li>
+</ul>
 </li>
 </ul>
-<h3 id="优缺点和适用场景"><a href="#优缺点和适用场景" class="headerlink" title="优缺点和适用场景"></a>优缺点和适用场景</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
-<li><p>迭代器简化了聚合的接口</p>
-</li>
-<li><p>可以提供多种遍历方式</p>
-</li>
-<li><p>在同一个聚合上可以有多个遍历</p>
-</li>
-</ul>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
-<li>对于比较简单的遍历（像数组或者有序列表），使用迭代器方式遍历较为繁琐，大家可能都有感觉，像ArrayList，我们宁可愿意使用for循环和get方法来遍历集合</li>
-</ul>
-<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><p>一般来说，我们只要实现一个集合，就需要同时提供这个集合的迭代器，就像java中的Collection，List、Set、Map等，这些集合都有自己的迭代器。java本身已经把迭代器做到内部中了，我们一般情况自己很少自定义的迭代器。</p>
-<h3 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h3><p>看了JDK源码简单写了一个</p>
-<p>首先是抽象迭代器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.iterator;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/17.</div><div class="line"> * 抽象迭代器类</div><div class="line"> */</div><div class="line">public interface Iterator&lt;E&gt; &#123;</div><div class="line">    public boolean hasNext();</div><div class="line">    public E next();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>抽象集合<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.iterator;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/17.</div><div class="line"> */</div><div class="line">public interface List&lt;E&gt; extends Iterable&lt;E&gt; &#123;</div><div class="line">    void add(E e);</div><div class="line">    E get(int index);</div><div class="line">    Iterator&lt;E&gt; iterator();</div><div class="line">    int getSize();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>抽象集合继承了iterable,iterable可以使得多个迭代器互不干扰<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.iterator;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/17.</div><div class="line"> */</div><div class="line">public interface Iterable&lt;T&gt; &#123;</div><div class="line">    Iterator&lt;T&gt; iterator();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>具体的集合实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.iterator;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/17.</div><div class="line"> */</div><div class="line">public class ArrayList&lt;E&gt; implements List&lt;E&gt; &#123;</div><div class="line"></div><div class="line">    private Object[] elementData;</div><div class="line">    private int size = 0;</div><div class="line">    private int index = 0;</div><div class="line"></div><div class="line">    public ArrayList() &#123;</div><div class="line">        this.elementData = new Object[10];</div><div class="line">        this.size = 0;</div><div class="line">        this.index = 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void add(E e) &#123;</div><div class="line">        elementData[index++] = e;</div><div class="line">        size++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public E get(int index) &#123;</div><div class="line">        return (E) elementData[index];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public Iterator&lt;E&gt; iterator() &#123;</div><div class="line">        return new ConcreteIterator();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getSize() &#123;</div><div class="line">        return size;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private class ConcreteIterator implements Iterator&lt;E&gt;&#123;</div><div class="line">        int cursor;</div><div class="line">        @Override</div><div class="line">        public boolean hasNext() &#123;</div><div class="line">            return cursor != size ;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public E next() &#123;</div><div class="line">            return (E) elementData[cursor++];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>测试类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.iterator;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/17.</div><div class="line"> */</div><div class="line">public class Test &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        List&lt;String&gt; list = new ArrayList&lt;&gt;();</div><div class="line">        list.add(&quot;one&quot;);</div><div class="line">        list.add(&quot;two&quot;);</div><div class="line">        list.add(&quot;three&quot;);</div><div class="line">        list.add(&quot;four&quot;);</div><div class="line">        Iterator&lt;String&gt; iterator = list.iterator();</div><div class="line">        while (iterator.hasNext())&#123;</div><div class="line">            String str = iterator.next();</div><div class="line">            System.out.println(str);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p>Map是存储的key value形式的数据，Map的主要是实现有5种，HashMap，ConcurrentHashMap，HashTable，TreeMap，LinkedHashMap</p>
+<h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><p>HashMap是通过hash表来实现键值对的存储，在JDK1.8与1.7的实现上还不同，具体的源码分析可以见 <img src="http://fk5431.com/20191114/javasource/util/1_HashMap/" alt="HashMap阅读 （1.8|1.7）"></p>
+<h5 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h5><p>ConcurrentHashMap 是线程安全的HashMap，但是此实现下的get方法其实是弱一致性的，有可能获取到过期的数据，具体的源码分析可以见 <img src="http://fk5431.com/20191114/javasource/util/4_ConcurrentHashMap/" alt="ConcurrentHashMap(1.7|1.8)阅读"></p>
+<h5 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h5><p>Hashtable 是遗留类，很多映射的常用功能与 HashMap 类似，不同的是它承自 Dictionary 类，并且是线程安全的，任一时间只有一个线程能写 Hashtable，并发性不如 ConcurrentHashMap，因为ConcurrentHashMap(1.7)引入了分段锁。但是HashTable的方法都是强一致性的，对数据的一致性要求没有那么苛刻不建议使用HashTable，可以使用ConcurrentHashMap替代。</p>
+<h5 id="TreeMap（二叉树实现）"><a href="#TreeMap（二叉树实现）" class="headerlink" title="TreeMap（二叉树实现）"></a>TreeMap（二叉树实现）</h5><p>TreeMap 实现 SortedMap 接口，能够把它保存的记录根据键排序，默认是按键值的升序排序，也可以指定排序的比较器，当用 Iterator 遍历 TreeMap 时，得到的记录是排过序的。<br>在使用 TreeMap 时，key 必须实现 Comparable 接口或者在构造 TreeMap 传入自定义的Comparator，否则会在运行时抛出 java.lang.ClassCastException 类型的异常。</p>
+<h5 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h5><p>LinkedHashMap保存了记录的插入顺序，在用 Iterator 遍历LinkedHashMap 时，先得到的记录肯定是先插入的，也可以在构造时带参数，按照访问次序排序。</p>
+<p>LinkedHashMap继承了HashMap，所以他们很多地方是相似的。LinkedHashMap结构中还维护着一个双向链表，用于记录顺序，所以可以做到跟存入顺序一样取出元素。</p>
 
       
     </div>
@@ -512,7 +618,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+            <a href="/tags/java/" rel="tag"># java</a>
           
         </div>
       
@@ -525,18 +631,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/20191114/javasource/util/1_HashMap/" rel="next" title="HashMap阅读 （1.8|1.7）">
-                <i class="fa fa-chevron-left"></i> HashMap阅读 （1.8|1.7）
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/20170811/Design_pattern/18_interpreter/" rel="prev" title="解释器模式">
-                解释器模式 <i class="fa fa-chevron-right"></i>
+              <a href="/20191121/javasource/util/4_ConcurrentHashMap/" rel="prev" title="ConcurrentHashMap(1.7|1.8)阅读">
+                ConcurrentHashMap(1.7|1.8)阅读 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -567,17 +669,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -708,7 +799,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器模式"><span class="nav-number">1.</span> <span class="nav-text">迭代器模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点和适用场景"><span class="nav-number">1.2.</span> <span class="nav-text">优缺点和适用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">1.2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">1.2.2.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#适用场景"><span class="nav-number">1.2.3.</span> <span class="nav-text">适用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DEMO"><span class="nav-number">1.3.</span> <span class="nav-text">DEMO</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#java集合"><span class="nav-number">1.</span> <span class="nav-text">java集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#List"><span class="nav-number">1.1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.1.1.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Vector（线程安全）"><span class="nav-number">1.1.2.</span> <span class="nav-text">Vector（线程安全）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LinkList（链表）"><span class="nav-number">1.1.3.</span> <span class="nav-text">LinkList（链表）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Set"><span class="nav-number">1.2.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HashSet"><span class="nav-number">1.2.1.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TreeSet"><span class="nav-number">1.2.2.</span> <span class="nav-text">TreeSet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LinkedHashSet"><span class="nav-number">1.2.3.</span> <span class="nav-text">LinkedHashSet</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Queue"><span class="nav-number">1.3.</span> <span class="nav-text">Queue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map"><span class="nav-number">1.4.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HashMap"><span class="nav-number">1.4.1.</span> <span class="nav-text">HashMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ConcurrentHashMap"><span class="nav-number">1.4.2.</span> <span class="nav-text">ConcurrentHashMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HashTable"><span class="nav-number">1.4.3.</span> <span class="nav-text">HashTable</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TreeMap（二叉树实现）"><span class="nav-number">1.4.4.</span> <span class="nav-text">TreeMap（二叉树实现）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LinkedHashMap"><span class="nav-number">1.4.5.</span> <span class="nav-text">LinkedHashMap</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -734,18 +825,6 @@
       <script id="dsq-count-scr" src="https://来自.disqus.com/count.js" async></script>
     
 
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/20170817/Design_pattern/19_iterator/';
-          this.page.identifier = '20170817/Design_pattern/19_iterator/';
-          this.page.title = '迭代器模式';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://来自.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
     
 
   
