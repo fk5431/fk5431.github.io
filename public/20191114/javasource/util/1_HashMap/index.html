@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/20191114/javasource/util/1_HashMap/index.html">
 <meta property="og:site_name" content="fk5431">
 <meta property="og:description" content="HashMap 内部默认的参数    变量 值 含义     DEFAULT_INITIAL_CAPACITY 16 默认容量   MAXIMUM_CAPACITY 1 &amp;lt;&amp;lt; 30 最大容量   DEFAULT_LOAD_FACTOR 0.75 负载因子   TREEIFY_THRESHOLD 8 链表超过8转为红黑树   UNTREEIFY_THRESHOLD 6 红黑树转为链表的阈">
-<meta property="og:updated_time" content="2019-11-19T06:31:19.263Z">
+<meta property="og:updated_time" content="2019-11-23T09:25:21.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap阅读 （1.8|1.7）">
 <meta name="twitter:description" content="HashMap 内部默认的参数    变量 值 含义     DEFAULT_INITIAL_CAPACITY 16 默认容量   MAXIMUM_CAPACITY 1 &amp;lt;&amp;lt; 30 最大容量   DEFAULT_LOAD_FACTOR 0.75 负载因子   TREEIFY_THRESHOLD 8 链表超过8转为红黑树   UNTREEIFY_THRESHOLD 6 红黑树转为链表的阈">
@@ -488,7 +488,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">void addEntry(int hash, K key, V value, int bucketIndex) &#123;</div><div class="line">    if ((size &gt;= threshold) &amp;&amp; (null != table[bucketIndex])) &#123;</div><div class="line">        resize(2 * table.length);</div><div class="line">        hash = (null != key) ? hash(key) : 0;</div><div class="line">        bucketIndex = indexFor(hash, table.length);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    createEntry(hash, key, value, bucketIndex);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
-<p>addEntry方法中判断了这个bucketIndex的链表没有冲突且元素size超过负载因子*容量的大小就进行resize的操作，然后重新计算key 的hash值和在table的index，最后进行createEntry。<br>createEntry 在链表中增加了一个节点。</p>
+<p>addEntry方法中判断了这个bucketIndex的链表没有冲突且元素size超过负载因子*容量的大小就进行resize的操作，然后重新计算key 的hash值和在table的index，最后进行createEntry。<br>createEntry 在链表头部中增加了一个节点。</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">void resize(int newCapacity) &#123;</div><div class="line">    Entry[] oldTable = table;</div><div class="line">    int oldCapacity = oldTable.length;</div><div class="line">    if (oldCapacity == MAXIMUM_CAPACITY) &#123;</div><div class="line">        threshold = Integer.MAX_VALUE;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Entry[] newTable = new Entry[newCapacity];</div><div class="line">    transfer(newTable, initHashSeedAsNeeded(newCapacity));</div><div class="line">    table = newTable;</div><div class="line">    threshold = (int)Math.min(newCapacity * loadFactor, MAXIMUM_CAPACITY + 1);</div><div class="line">&#125;</div><div class="line">void transfer(Entry[] newTable, boolean rehash) &#123;</div><div class="line">    int newCapacity = newTable.length;</div><div class="line">    for (Entry&lt;K,V&gt; e : table) &#123;</div><div class="line">        while(null != e) &#123;</div><div class="line">            Entry&lt;K,V&gt; next = e.next;</div><div class="line">            if (rehash) &#123;</div><div class="line">                e.hash = null == e.key ? 0 : hash(e.key);</div><div class="line">            &#125;</div><div class="line">            int i = indexFor(e.hash, newCapacity);</div><div class="line">            e.next = newTable[i];</div><div class="line">            newTable[i] = e;</div><div class="line">            e = next;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
@@ -651,7 +651,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
