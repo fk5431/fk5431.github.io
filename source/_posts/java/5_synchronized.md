@@ -83,5 +83,24 @@ Mark Word 默认存储
 > - Owner：当前获取到锁资源的线程被称为Owner；
 > - !Owner：当前释放锁的线程；
 
-https://blog.csdn.net/javazejian/article/details/72828483
+### synchronized原理
 
+//TODO
+
+1. JVM每次从队列尾部取出一个数据用于锁的竞争候选者（OnDeck），但是并发情况，ContentionList会被大量的并发线程进行CAS访问，为了降低对尾部元素的竞争，JVM会将一部分线程移动到EntryList中作为候选竞争线程。
+2. Owner线程会在unlock时，将ContentionList中部分线程迁移到EntryList中，并制定EntryList中某个线程为OnDeck现场。（一般是最先进去的线程）
+3. Owner线程不直接把锁传递给OnDeck线程，而是把锁竞争权利交给OnDeck，OnDeck需要重新竞争锁。这样虽然牺牲了公平性，但是可以极大提升系统的吞吐量。（这种行为成为竞争切换）
+4. OnDeck线程获取到锁资源后会变为Owner线程，没有获取到锁资源的话会继续停留在EntryList中（仍是头部）。如果Owner线程为wait阻塞则会被转移到waitset队列，等到被notify或notifyAll唤醒，会重新进入EntryList。
+
+> - 处于ContentionList、EntryList、WaitSet中的线程都是阻塞状态的。（由操作系统完成）
+> - Synchronized是非公平锁。Synchronized在线程进入ContentionList时，等待的线程会先尝试获取锁，获取不到才进去ContentionList，自旋获取锁可能会直接抢占OnDeck线程的锁资源。
+
+### 锁的类型
+
+无锁->偏向锁->轻量级锁->重量级锁，它会随着竞争情况逐渐升级。锁可以升级但不能降级，目的是为了提高获得锁和释放锁的效率。
+
+#### 偏向锁
+
+#### 轻量级锁
+
+#### 重量级锁
