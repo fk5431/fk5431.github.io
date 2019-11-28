@@ -95,7 +95,7 @@ Mark Word 默认存储
 > - 处于ContentionList、EntryList、WaitSet中的线程都是阻塞状态的。（由操作系统完成）
 > - Synchronized是非公平锁。Synchronized在线程进入ContentionList时，等待的线程会先尝试获取锁，获取不到才进去ContentionList，自旋获取锁可能会直接抢占OnDeck线程的锁资源。
 
-### 锁的类型
+### Synchronized优化
 
 无锁->偏向锁->轻量级锁->重量级锁，它会随着竞争情况逐渐升级。锁可以升级但不能降级，目的是为了提高获得锁和释放锁的效率。
 
