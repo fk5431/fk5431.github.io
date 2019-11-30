@@ -33,45 +33,7 @@ Mark Word 默认存储
 | 无锁状态 | 对象HashCode | 对象分代年龄 | 0 | 01         |
 
 可能变化的结构：
-
-<table>
-    <tr>
-        <td rowspan="2">锁状态</td>
-        <td colspan="2">25bit</td>
-        <td rowspan="2">4bit</td>
-        <td>1bit</td>
-        <td>2bit</td>
-    </tr>
-	<tr>
-		<td>23bit</td>
-		<td>2bit</td>
-		<td>是否是偏向锁</td>
-		<td>锁标志位</td>
-	</tr>
-	<tr>
-	    <td>轻量级锁</td>
-	    <td rowspan="4">指向栈中锁记录的指针</td>
-	    <td>00</td>
-	</tr>
-	<tr>
-	    <td>重量级锁</td>
-	    <td rowspan="4">指向重量级锁的指针</td>
-	    <td>10</td>
-	</tr>
-	<tr>
-	    <td>GC标记</td>
-	    <td rowspan="4">空，不需要记录信息</td>
-	    <td>11</td>
-	</tr>
-	<tr>
-	    <td>偏向锁</td>
-	    <td>偏向线程ID</td>
-	    <td>偏向时间戳</td>
-	    <td>对象分代年龄</td>
-	    <td>1</td>
-	    <td>01</td>
-	</tr>
-</table>
+<table border=0 cellpadding=0 cellspacing=0 style='border-collapse:collapse;table-layout:fixed'><tr><td rowspan="2">锁状态</td><td colspan="2">25bit</td><td rowspan="2">4bit</td><td>1bit</td><td>2bit</td></tr><tr><td>23bit</td><td>2bit</td><td>是否是偏向锁</td><td>锁标志位</td></tr><tr><td>轻量级锁</td><td colspan="4">指向栈中锁记录的指针</td><td>00</td></tr><tr><td>重量级锁</td><td colspan="4">指向重量级锁的指针</td><td>10</td></tr><tr><td>GC标记</td><td colspan="4">空，不需要记录信息</td><td>11</td></tr><tr><td>偏向锁</td><td>偏向线程ID</td><td>偏向时间戳</td><td>对象分代年龄</td><td>1</td><td>01</td></tr></table>
 
 在锁标志位为10时，也就是代表重量级锁（synchronized），其中指针指向的是Monitor对象的起始地址。每个对象都与一个Monitor关联，对象和其Monitor之间有多种实现的方式（Monitor可以和对象一起创建销毁或获取锁对象的时候生成），但是当一个Monitor被某个线程持有便处于锁定状态。
 

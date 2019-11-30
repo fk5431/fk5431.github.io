@@ -94,13 +94,10 @@
 <meta property="og:url" content="http://yoursite.com/20191124/java/4_集合简介/index.html">
 <meta property="og:site_name" content="fk5431">
 <meta property="og:description" content="java集合java集合类存放在java.util下面，主要有三种：Set，List，Map。  Collection 是集合Set、List和Queue最基本的接口 Iterator 可以使用迭代器遍历集合中的元素 Map 是key value映射形式的基本接口                 ArrayList 有序，底层是数组，查询快，增删慢，线程不安全，扩容 n*1.5+1     Lis">
-<meta property="og:image" content="http://fk5431.com/20191114/javasource/util/1_HashMap/">
-<meta property="og:image" content="http://fk5431.com/20191114/javasource/util/4_ConcurrentHashMap/">
-<meta property="og:updated_time" content="2019-11-24T13:34:00.477Z">
+<meta property="og:updated_time" content="2019-11-28T08:12:47.619Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java集合简述">
 <meta name="twitter:description" content="java集合java集合类存放在java.util下面，主要有三种：Set，List，Map。  Collection 是集合Set、List和Queue最基本的接口 Iterator 可以使用迭代器遍历集合中的元素 Map 是key value映射形式的基本接口                 ArrayList 有序，底层是数组，查询快，增删慢，线程不安全，扩容 n*1.5+1     Lis">
-<meta name="twitter:image" content="http://fk5431.com/20191114/javasource/util/1_HashMap/">
 
 
 
@@ -562,8 +559,8 @@
 </li>
 </ul>
 <h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p>Map是存储的key value形式的数据，Map的主要是实现有5种，HashMap，ConcurrentHashMap，HashTable，TreeMap，LinkedHashMap</p>
-<h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><p>HashMap是通过hash表来实现键值对的存储，在JDK1.8与1.7的实现上还不同，具体的源码分析可以见 <img src="http://fk5431.com/20191114/javasource/util/1_HashMap/" alt="HashMap阅读 （1.8|1.7）"></p>
-<h5 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h5><p>ConcurrentHashMap 是线程安全的HashMap，但是此实现下的get方法其实是弱一致性的，有可能获取到过期的数据，具体的源码分析可以见 <img src="http://fk5431.com/20191114/javasource/util/4_ConcurrentHashMap/" alt="ConcurrentHashMap(1.7|1.8)阅读"></p>
+<h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><p>HashMap是通过hash表来实现键值对的存储，在JDK1.8与1.7的实现上还不同，具体的源码分析可以见 <a href="http://fk5431.com/20191114/javasource/util/1_HashMap/" target="_blank" rel="external">HashMap阅读 （1.8|1.7）</a></p>
+<h5 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h5><p>ConcurrentHashMap 是线程安全的HashMap，但是此实现下的get方法其实是弱一致性的，有可能获取到过期的数据，具体的源码分析可以见 <a href="http://fk5431.com/20191114/javasource/util/4_ConcurrentHashMap/" target="_blank" rel="external">ConcurrentHashMap(1.7|1.8)阅读</a></p>
 <h5 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h5><p>Hashtable 是遗留类，很多映射的常用功能与 HashMap 类似，不同的是它承自 Dictionary 类，并且是线程安全的，任一时间只有一个线程能写 Hashtable，并发性不如 ConcurrentHashMap，因为ConcurrentHashMap(1.7)引入了分段锁。但是HashTable的方法都是强一致性的，对数据的一致性要求没有那么苛刻不建议使用HashTable，可以使用ConcurrentHashMap替代。</p>
 <h5 id="TreeMap（二叉树实现）"><a href="#TreeMap（二叉树实现）" class="headerlink" title="TreeMap（二叉树实现）"></a>TreeMap（二叉树实现）</h5><p>TreeMap 实现 SortedMap 接口，能够把它保存的记录根据键排序，默认是按键值的升序排序，也可以指定排序的比较器，当用 Iterator 遍历 TreeMap 时，得到的记录是排过序的。<br>在使用 TreeMap 时，key 必须实现 Comparable 接口或者在构造 TreeMap 传入自定义的Comparator，否则会在运行时抛出 java.lang.ClassCastException 类型的异常。</p>
 <h5 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h5><p>LinkedHashMap保存了记录的插入顺序，在用 Iterator 遍历LinkedHashMap 时，先得到的记录肯定是先插入的，也可以在构造时带参数，按照访问次序排序。</p>
@@ -630,6 +627,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/20191127/java/5_synchronized/" rel="next" title="synchronized">
+                <i class="fa fa-chevron-left"></i> synchronized
+              </a>
             
           </div>
 
@@ -713,7 +714,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -724,7 +725,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -735,7 +736,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
