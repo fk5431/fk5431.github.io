@@ -9,7 +9,7 @@ categories:
 keywords: aqs,AbstractQueuedSynchronizer,锁,同步
 ---
 
-### aqs
+## aqs
 
 AQS（AbstractQueuedSynchronizer）是JAVA中众多锁以及并发工具的基础，其底层采用乐观锁，大量使用了CAS操作， 并且在冲突时，采用自旋方式重试，以实现轻量级和高效地获取锁。
 
@@ -39,15 +39,15 @@ AbstractQueuedSynchronizer只继承了AbstractOwnableSynchronizer，实现了jav
 > ```
 > exclusiveOwnerThread 即独占资源的线程。
 
-#### AQS原理
+### AQS原理
 
 AQS维护了一个state变量和node双向链表。
 
-state是已获取资源占有许可的数量。例如线程调用acquire(1)获取资源的许可，acquire会调用一次tryAcquire(1)获取资源。如果获取成功，则state加1并且调用父类的设置独占线程将当前线程设置为独占线程。如果获取失败，则说明已经有线程占用了这个资源，需要等待占用释放。此时将该线程封装成node节点，加入双向链表，，之后Locksupport.pack()堵塞当前线程。如果这个线程被唤醒则继续循环调用tryAcquire获取许可，如果获取到了将自己的node节点设置为链表的头结点并把之前的头结点去掉。如果线程释放资源，调用release方法，release方法会调用tryRelease方法尝试释放资源,如果释放成功，则state减1，再调用AQS的父类AbstractOwnableSynchronizer的设置独占线程为null，再locksupport.unpack()双向node链表的头node节点的线程，恢复其执行。
+state是已获取资源占有许可的数量。例如线程调用acquire(1)获取资源的许可，acquire会调用一次tryAcquire(1)获取资源。如果获取成功，则state加1并且调用父类的设置独占线程将当前线程设置为独占线程。如果获取失败，则说明已经有线程占用了这个资源，需要等待占用释放。此时将该线程封装成node节点，加入双向链表，之后Locksupport.pack()堵塞当前线程。如果这个线程被唤醒则继续循环调用tryAcquire获取许可，如果获取到了将自己的node节点设置为链表的头结点并把之前的头结点去掉。如果线程释放资源，调用release方法，release方法会调用tryRelease方法尝试释放资源,如果释放成功，则state减1，再调用AQS的父类AbstractOwnableSynchronizer的设置独占线程为null，再locksupport.unpack()双向node链表的头node节点的线程，恢复其执行。
 
-#### 源码
+### 源码
 
-##### 成员变量
+#### 成员变量
 
 ```
 private transient volatile Node head;
@@ -83,7 +83,7 @@ static {
 
 有一个头尾节点和state变量，实现CAS的Unsafe的工具类，还有一些偏移量，都用于Unsafe的CAS操作，通过静态代码块进行初始化，通过objectFieldOffset获取对应字段相对于该对象的起始地址的偏移量。
 
-##### Node节点
+#### Node节点
 
 ```
 static final class Node {
@@ -137,7 +137,7 @@ static final class Node {
 }
 ```
 
-##### enq方法
+#### enq方法
 
 ```
 private Node enq(final Node node) {
@@ -159,7 +159,7 @@ private Node enq(final Node node) {
 
 enq方法是将node加入链表，如果tail尾节点为空则必须进行初始化，如果tail不为空，则将node的前指针指向tail，通过CAS将tail的指向改为node，然后设置t.next为node，完成node插入链表尾部。
 
-##### addWaiter方法
+#### addWaiter方法
 
 ```
 private Node addWaiter(Node mode) {
@@ -179,9 +179,9 @@ private Node addWaiter(Node mode) {
 ```
 addWaiter方法包装node节点，放入node双向链表。如果tail不为空则说明初始化过了直接将node加入链表尾部，如果为空则进行初始化再将node加入链表尾部。
 
-##### 共享模式
+#### 共享模式
 
-###### acquireShared（获取锁）
+##### acquireShared（获取锁）
 
 ```
 public final void acquireShared(int arg) {
@@ -192,7 +192,7 @@ public final void acquireShared(int arg) {
 
 尝试去获取资源，如果没有获取资源返回负数，tryAcquireShared方法需要子类自己去实现，如果不实现会直接抛异常（在读写锁的Sync实现）；如果没有获取到资源加入等待队列等待获取资源。
 
-###### doAcquireShared
+##### doAcquireShared
 
 ```
 private void doAcquireShared(int arg) {
@@ -232,7 +232,7 @@ private void doAcquireShared(int arg) {
 
 先吧当前节点加入到队列尾部，然后进入自旋，自旋的目的是为了获取资源或者阻塞，如果此节点的前一个node是head节点，就去获取资源，如果获取失败就执行shouldParkAfterFailedAcquire，将前一个node设置为SIGNAL，获取成功就setHeadAndPropagate。
 
-####### setHeadAndPropagate
+###### setHeadAndPropagate
 
 ```
 ////两个入参，一个是当前成功获取共享锁的节点，一个就是tryAcquireShared方法的返回值，它可能大于0也可能等于0
@@ -252,7 +252,7 @@ private void setHeadAndPropagate(Node node, int propagate) {
 
 > 会唤醒后面的所有节点
 
-####### doReleaseShared（唤醒）
+###### doReleaseShared（唤醒）
 ```
 private void doReleaseShared() {
     for (;;) {
@@ -281,7 +281,7 @@ private void doReleaseShared() {
 }
 ```
 
-####### unparkSuccessor方法
+###### unparkSuccessor方法
 
 ```
  private void unparkSuccessor(Node node) {
@@ -307,7 +307,7 @@ private void doReleaseShared() {
 
 > 从后往前找是因为下一个任务有可能被取消了，节点就有可能为null
 
-####### shouldParkAfterFailedAcquire
+###### shouldParkAfterFailedAcquire
 
 ```
 private static boolean shouldParkAfterFailedAcquire(Node pred, Node node) {
@@ -328,7 +328,7 @@ private static boolean shouldParkAfterFailedAcquire(Node pred, Node node) {
 
 > 主要是进行的状态的检查，如果前一个节点的状态是-1则返回true；如果前一个节点取消了，那就向前找到一个没有被取消的节点，将取消的节点舍弃，如果前一个节点没有被取消则将节点状态设置为-1.
 
-###### releaseShared（ 释放锁）
+##### releaseShared（ 释放锁）
 
 ```
 public final boolean releaseShared(int arg) {
@@ -340,9 +340,9 @@ public final boolean releaseShared(int arg) {
 }
 ```
 
-##### 独占模式
+#### 独占模式
 
-###### acquire（获取锁）
+##### acquire（获取锁）
 ```
 public final void acquire(int arg) {
     if (!tryAcquire(arg) &&
@@ -352,7 +352,7 @@ public final void acquire(int arg) {
 ```
 首先也是尝试获取资源，如果获取到资源则直接返回了，如果没有获取到资源则执行acquireQueued(addWaiter(Node.EXCLUSIVE), arg)，将该线程加入队列节点尾部。
 
-###### acquireQueued
+##### acquireQueued
 ```
 final boolean acquireQueued(final Node node, int arg) {
     boolean failed = true;
@@ -381,7 +381,7 @@ final boolean acquireQueued(final Node node, int arg) {
 
 > 挂起逻辑同上。
 
-###### cancelAcquire
+##### cancelAcquire
 
 ```
 private void cancelAcquire(Node node) {
@@ -422,7 +422,7 @@ private void cancelAcquire(Node node) {
 
 获取锁资源失败的处理，即自己实现的获取资源的逻辑出异常的时候会进入到这里。（共享模式同这里的）
 
-###### release（释放锁）
+##### release（释放锁）
 
 ```
 public final boolean release(int arg) {
@@ -452,7 +452,7 @@ private void unparkSuccessor(Node node) {
 }
 ```
 
-##### 条件队列(ConditionObject)
+#### 条件队列(ConditionObject)
 
 使用场景
 ```
@@ -511,7 +511,7 @@ ConditionObject 实现了 Condition接口，Condition接口中一个有7个接�
 - signal : 唤醒等待队列中的第一个节点
 - signalAll : 唤醒等待队列中的所有节点
 
-###### await 
+##### await 
 
 ```
 public final void await() throws InterruptedException {
@@ -544,7 +544,7 @@ public final void await() throws InterruptedException {
 
 先将该节点加入到条件队列，然后释放掉当前的锁，如果该节点不在AQS的阻塞队列中就阻塞该线程，等待signal；被唤醒后该线程会尝试去获取锁
 
-###### signal
+##### signal
 
 ```
 public final void signal() {
@@ -582,7 +582,7 @@ final boolean transferForSignal(Node node) {
 
 将条件队列的第一个节点移除，加入到AQS的阻塞队列中。
 
-###### signalAll
+##### signalAll
 
 ```
 public final void signalAll() {
@@ -606,7 +606,7 @@ private void doSignalAll(Node first) {
 
 signalAll 会遍历全部节点唤醒加入到AQS阻塞队列。
 
-##### 条件队列与同步队列
+#### 条件队列与同步队列
 
 1.同步队列依赖一个双向链表来完成同步状态的管理，当前线程获取同步状态失败 后，同步器会将线程构建成一个节点，并将其加入同步队列中。
 2.通过signal或signalAll将条件队列中的节点转移到同步队列。（由条件队列转化为同步队列）
