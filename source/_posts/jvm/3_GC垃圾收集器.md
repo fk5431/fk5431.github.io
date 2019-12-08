@@ -13,7 +13,7 @@ keywords: jvm,垃圾收集器
 
 java虚拟机规范没有对垃圾收集器如何实现做任何规定，因此不同厂商、版本提供的垃圾收集器都不一样，JDK1.7中垃圾收集器如下:
 
-[垃圾收集器](../../../uploads/jvm/垃圾收集器.jpg)
+![垃圾收集器](../../../uploads/jvm/垃圾收集器.jpg)
 
 如果两个收集器之间存在连线，则说明他们之间可以搭配使用。
 
@@ -23,7 +23,7 @@ java虚拟机规范没有对垃圾收集器如何实现做任何规定，因此�
 
 Serial收集器运行时如下：
 
-[Serial](../../../uploads/jvm/serial.jpg)
+![Serial](../../../uploads/jvm/serial.jpg)
 
 当Serial收集器工作时候，会造成Stop-The-World，这对很多应用是不可能接受的。但是对于限定单个CPU的环境来说，没有线程交互的开销，专心做GC，和其他收集器相比是简单而高效的（单线程情况）。在用户的桌面应用场景中，可用内存一般不大（几十M至一两百M），可以在较短时间内完成垃圾收集（几十MS至一百多MS）,只要不频繁发生，这是可以接受的。因此，Serial收集器对于运行在Client模式下的虚拟机来说是个比较好的选择。
 
@@ -36,7 +36,7 @@ ParNew收集器其实就是Serial收集器的多线程版本，也使用复制�
 
 ParNew收集器的运行过程如下图所示:
 
-[ParNew](../../../uploads/jvm/ParNew.jpg)
+![ParNew](../../../uploads/jvm/ParNew.jpg)
 
 在Server模式下，ParNew收集器是一个非常重要的收集器，因为除Serial外，目前只有它能与CMS收集器配合工作；但在单个CPU环境中，不会比Serail收集器有更好的效果，因为存在线程交互开销，该收集器通过超线程技术实现的两个CPU的环境中都不能百分百的保证超过Serial收集器。
 
@@ -45,7 +45,7 @@ ParNew收集器的运行过程如下图所示:
 Parallel Scavenge收集器是一个新生代收集器，它也是使用复制算法的收集器，又是并行的多线程收集器。
 Parallel Scavenge收集器的特点是它的关注点和其他收集器不同，CMS等收集器关注点是尽可能的缩短垃圾收集时用户的停顿时间，而Parallel Scavenge关注点是吞吐量（如何高效率的利用CPU）。所谓吞吐量就是CPU中用于运行用户代码的时间与CPU总消耗时间的比值。（吞吐量：CPU用于用户代码的时间/CPU总消耗时间的比值，即=运行用户代码的时间/(运行用户代码时间+垃圾收集时间)。比如，虚拟机总共运行了100分钟，其中垃圾收集花掉1分钟，那吞吐量就是99%。）
 
-[ParallelScavenge](../../../uploads/jvm/ParallelScavenge.jpg)
+![ParallelScavenge](../../../uploads/jvm/ParallelScavenge.jpg)
 
 当应用程序运行在具有多个CPU上，对暂停时间没有特别高的要求时，即程序主要在后台进行计算，而不需要与用户进行太多交互，例如，那些执行批量处理、订单处理、工资支付、科学计算的应用程序；可以采用Parallel Scavenge收集器。
 
@@ -55,7 +55,7 @@ Serial收集器的老年代版本，同样是一个单线程收集器。
 
 它主要有两大用途：一种用途是在JDK1.5以及以前的版本中与Parallel Scavenge收集器搭配使用，另一种用途是作为CMS收集器的后备方案
 
-[SerialOld](../../../uploads/jvm/SerialOld.jpg)
+![SerialOld](../../../uploads/jvm/SerialOld.jpg)
 
 
 #### Parallel Old收集器（多线程标记整理）
@@ -63,7 +63,7 @@ Serial收集器的老年代版本，同样是一个单线程收集器。
 Parallel Old 收集器是Parallel Scavenge的年老代版本，使用多线程的标记-整理算法，在JDK1.6才开始提供。
 在JDK1.6之前，新生代使用ParallelScavenge收集器只能搭配年老代的Serial Old收集器，只能保证新生代的吞吐量优先，无法保证整体的吞吐量，Parallel Old 正是为了在年老代同样提供吞吐量优先的垃圾收集器，如果系统对吞吐量要求比较高，可以优先考虑新生代 Parallel Scavenge 和年老代 Parallel Old 收集器的搭配策略。
 
-[ParallelOld](../../../uploads/jvm/ParallelOld.jpg)
+![ParallelOld](../../../uploads/jvm/ParallelOld.jpg)
 
 
 #### CMS收集器（多线程标记清除）
@@ -78,7 +78,7 @@ CMS 收集器是一种以获取最短回收挺短时间为目标的收集器。�
 由于整个过程耗时最长的并发标记和并发清除过程收集器线程都可以与用户线程一起工作，所以总体来说，CMS的内存回收是与用户线程一起“并发”执行的。
 
 
-[CMS](../../../uploads/jvm/CMS.jpg)
+![CMS](../../../uploads/jvm/CMS.jpg)
 
 CMS有三个明显的缺点；
 
@@ -113,7 +113,7 @@ G1是一款面向服务端应用的垃圾收集器。HotSpot开发团队赋予�
 3. 最终标记：修正并发标记阶段因用户线程继续运行而导致标记发生变化的那部分对象的标记记录，上一阶段对象的变化记录在线程的Remembered Set Log，这里把Remembered Set Log合并到Remembered Set中，需要"Stop The World"，且停顿时间比初始标记稍长，但远比并发标记短；
 4. 筛选回收：首先排序各个Region的回收价值和成本，然后根据用户期望的GC停顿时间来制定回收计划，最后按计划回收一些价值高的Region中垃圾对象，回收时采用"复制"算法，从一个或多个Region复制存活对象到堆上的另一个空的Region，并且在此过程中压缩和释放内存，可以并发进行，降低停顿时间，并增加吞吐量；
 
-[G1](../../../uploads/jvm/G1.jpg)
+![G1](../../../uploads/jvm/G1.jpg)
 
 
 
