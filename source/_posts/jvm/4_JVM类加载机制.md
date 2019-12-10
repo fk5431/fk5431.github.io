@@ -110,3 +110,52 @@ false
 可以看出这个object的确是ClassLoaderTest实例化出来的对象，但是这个类与classloader.ClassLoaderTest做类型检查却返回false。
 
 #### 双亲委派模式
+
+从Java虚拟机的江都讲，只存在两种不同的类加载器：一种是启动类加载器（Bootstrap ClassLoader）,这个类加载器由C++实现，是虚拟机的一部分；另一种就是所有其他的类加载器，这些类加载器都由Java实现，全都继承于抽象类java.lang.ClassLoader。
+
+JVM提供了以下3种系统的类加载器：
+
+- 启动类加载器（Bootstrap ClassLoader）：最顶层的类加载器，负责加载 JAVA_HOME\lib 目录中的，或通过-Xbootclasspath参数指定路径中的，且被虚拟机认可（按文件名识别，如rt.jar）的类。
+- 扩展类加载器(Extension ClassLoader)：负责加载 JAVA_HOME\lib\ext 目录中的，或通过java.ext.dirs系统变量指定路径中的类库。
+- 应用程序类加载器(Application ClassLoader)：也叫做系统类加载器，可以通过getSystemClassLoader()获取，负责加载用户路径（classpath）上的类库。如果没有自定义类加载器，一般这个就是默认的类加载器。
+
+![类加载器](../../../uploads/jvm/类加载器.jpeg)
+
+类加载器之间的这种层次关系叫做双亲委派模型。 
+双亲委派模型要求除了顶层的启动类加载器（Bootstrap ClassLoader）外，其余的类加载器都应当有自己的父类加载器。这里的类加载器之间的父子关系一般不是以继承关系实现的，而是用组合实现的。
+
+##### 双亲委派模型的工作过程
+如果一个类接受到类加载请求，他自己不会去加载这个请求，而是将这个类加载请求委派给父类加载器，这样一层一层传送，直到到达启动类加载器（Bootstrap ClassLoader）。 
+只有当父类加载器无法加载这个请求时，子加载器才会尝试自己去加载。
+
+##### 双亲委派模型的代码实现
+双亲委派模型的代码实现集中在java.lang.ClassLoader的loadClass()方法当中。 
+1. 首先检查类是否被加载，没有则调用父类加载器的loadClass()方法； 
+2. 若父类加载器为空，则默认使用启动类加载器作为父加载器； 
+3. 若父类加载失败，抛出ClassNotFoundException 异常后，再调用自己的findClass() 方法。
+
+```
+protected synchronized Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
+    //1 首先检查类是否被加载
+    Class c = findLoadedClass(name);
+    if (c == null) {
+        try {
+            if (parent != null) {
+             //2 没有则调用父类加载器的loadClass()方法；
+                c = parent.loadClass(name, false);
+            } else {
+            //3 若父类加载器为空，则默认使用启动类加载器作为父加载器；
+                c = findBootstrapClass0(name);
+            }
+        } catch (ClassNotFoundException e) {
+           //4 若父类加载失败，抛出ClassNotFoundException 异常后
+            c = findClass(name);
+        }
+    }
+    if (resolve) {
+        //5 再调用自己的findClass() 方法。
+        resolveClass(c);
+    }
+    return c;
+}
+```
