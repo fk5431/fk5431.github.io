@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://yoursite.com/uploads/jvm/ParallelOld.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/jvm/CMS.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/jvm/G1.jpg">
-<meta property="og:updated_time" content="2019-12-08T09:16:55.996Z">
+<meta property="og:updated_time" content="2019-12-08T10:03:27.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GC垃圾收集器">
 <meta name="twitter:description" content="垃圾收集器java虚拟机规范没有对垃圾收集器如何实现做任何规定，因此不同厂商、版本提供的垃圾收集器都不一样，JDK1.7中垃圾收集器如下:  如果两个收集器之间存在连线，则说明他们之间可以搭配使用。 Serial收集器（单线程复制算法）这个收集器是一个单线程的收集器，但它单线程的意义不仅仅说明它只会使用一个CPU或一条收集线程去完成垃圾回收，它在进行垃圾回收的时，必须暂停其他所有工作线程，直到它收">
@@ -433,7 +433,7 @@
 <p>Serial收集器运行时如下：</p>
 <p><img src="../../../uploads/jvm/serial.jpg" alt="Serial"></p>
 <p>当Serial收集器工作时候，会造成Stop-The-World，这对很多应用是不可能接受的。但是对于限定单个CPU的环境来说，没有线程交互的开销，专心做GC，和其他收集器相比是简单而高效的（单线程情况）。在用户的桌面应用场景中，可用内存一般不大（几十M至一两百M），可以在较短时间内完成垃圾收集（几十MS至一百多MS）,只要不频繁发生，这是可以接受的。因此，Serial收集器对于运行在Client模式下的虚拟机来说是个比较好的选择。</p>
-<h4 id="ParNew-收集器（Serial-多线程）"><a href="#ParNew-收集器（Serial-多线程）" class="headerlink" title="ParNew 收集器（Serial+多线程）"></a>ParNew 收集器（Serial+多线程）</h4><p>ParNew收集器其实就是Serial收集器的多线程版本，也使用复制算法，除了使用多线程进行垃圾收集之外，其余的行为和Serial收集器完全一样，ParNew垃圾收集器在垃圾收集过程中同样也ParNew.jpg要暂停所有其他的工作线程。<br>它是许多运行在Server模式下的虚拟机的首要选择，除了Serial收集器外，目前只有它能与CMS收集器配合工作。</p>
+<h4 id="ParNew-收集器（Serial-多线程）"><a href="#ParNew-收集器（Serial-多线程）" class="headerlink" title="ParNew 收集器（Serial+多线程）"></a>ParNew 收集器（Serial+多线程）</h4><p>ParNew收集器其实就是Serial收集器的多线程版本，也使用复制算法，除了使用多线程进行垃圾收集之外，其余的行为和Serial收集器完全一样，ParNew垃圾收集器在垃圾收集过程中同样也要暂停所有其他的工作线程。<br>它是许多运行在Server模式下的虚拟机的首要选择，除了Serial收集器外，目前只有它能与CMS收集器配合工作。</p>
 <blockquote>
 <p>CMS收集器是一个被认为具有划时代意义的并发收集器，因此如果有一个垃圾收集器能和它一起搭配使用让其更加完美，那这个收集器必然也是一个不可或缺的部分了。</p>
 </blockquote>
@@ -448,7 +448,7 @@
 <p><img src="../../../uploads/jvm/SerialOld.jpg" alt="SerialOld"></p>
 <h4 id="Parallel-Old收集器（多线程标记整理）"><a href="#Parallel-Old收集器（多线程标记整理）" class="headerlink" title="Parallel Old收集器（多线程标记整理）"></a>Parallel Old收集器（多线程标记整理）</h4><p>Parallel Old 收集器是Parallel Scavenge的年老代版本，使用多线程的标记-整理算法，在JDK1.6才开始提供。<br>在JDK1.6之前，新生代使用ParallelScavenge收集器只能搭配年老代的Serial Old收集器，只能保证新生代的吞吐量优先，无法保证整体的吞吐量，Parallel Old 正是为了在年老代同样提供吞吐量优先的垃圾收集器，如果系统对吞吐量要求比较高，可以优先考虑新生代 Parallel Scavenge 和年老代 Parallel Old 收集器的搭配策略。</p>
 <p><img src="../../../uploads/jvm/ParallelOld.jpg" alt="ParallelOld"></p>
-<h4 id="CMS收集器（多线程标记清除）"><a href="#CMS收集器（多线程标记清除）" class="headerlink" title="CMS收集器（多线程标记清除）"></a>CMS收集器（多线程标记清除）</h4><p>CMS 收集器是一种以获取最短回收挺短时间为目标的收集器。它的整个过程分为4个步骤：初始标记、并发标记、重新标记、并发清除。</p>
+<h4 id="CMS收集器（多线程标记清除）"><a href="#CMS收集器（多线程标记清除）" class="headerlink" title="CMS收集器（多线程标记清除）"></a>CMS收集器（多线程标记清除）</h4><p>CMS 收集器是一种以获取最短回收时间为目标的收集器。它的整个过程分为4个步骤：初始标记、并发标记、重新标记、并发清除。</p>
 <ul>
 <li>初始标记： 暂停所有的其他线程，初始标记仅仅标记GC Roots能直接关联到的对象，速度很快；</li>
 <li>并发标记： 并发标记就是进行GC Roots Tracing的过程；同时开启GC和用户线程，用一个闭包结构去记录可达对象。但在这个阶段结束，这个闭包结构并不能保证包含当前所有的可达对象。因为用户线程可能会不断的更新引用域，所以GC线程无法保证可达性分析的实时性。所以这个算法里会跟踪记录这些发生引用更新的地方；</li>
@@ -554,6 +554,10 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/20191208/javasource/util/9_Semaphore/" rel="next" title="Semaphore阅读">
+                <i class="fa fa-chevron-left"></i> Semaphore阅读
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
@@ -636,7 +640,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -647,7 +651,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -658,7 +662,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
