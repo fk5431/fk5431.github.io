@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="synchronized,lock,并发" />
+  <meta name="keywords" content="设计模式, 迭代器模式" />
 
 
 
@@ -87,19 +87,19 @@
 
 
 
-<meta name="description" content="锁的种类锁的种类很多，包括：自旋锁(CAS)、阻塞锁、可重入锁、读写锁、互斥锁、悲观锁、乐观锁、公平锁、可中断锁等等，主要介绍下可重入锁、读写锁、可中断锁和公平锁。 可重入锁 如果锁具备可重入性，则称作为可重入锁。synchronized和ReentrantLock都是可重入锁，可重入性在我看来实际上表明了锁的分配机制：基于线程的分配，而不是基于方法调用的分配。举比如说，当一个线程执行到metho">
-<meta name="keywords" content="java">
+<meta name="description" content="迭代器模式介绍迭代器模式：提供一种方法访问一个容器对象中各个元素，而又不暴露该对象的内部细节。（行为型模式）迭代器模式是应该是java中使用的最多的一种设计模式，迭代器模式如下：  抽象容器：一般是一个接口，提供一个iterator()方法，例如java中的Collection接口，List接口，Set接口等。  具体容器：就是抽象容器的具体实现类，比如List接口的有序列表实现ArrayList">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="synchronized和lock">
-<meta property="og:url" content="http://yoursite.com/20191116/java/4_synchronizedAndlock/index.html">
+<meta property="og:title" content="迭代器模式">
+<meta property="og:url" content="http://yoursite.com/20170817/Design_pattern/19_iterator/index.html">
 <meta property="og:site_name" content="fk5431">
-<meta property="og:description" content="锁的种类锁的种类很多，包括：自旋锁(CAS)、阻塞锁、可重入锁、读写锁、互斥锁、悲观锁、乐观锁、公平锁、可中断锁等等，主要介绍下可重入锁、读写锁、可中断锁和公平锁。 可重入锁 如果锁具备可重入性，则称作为可重入锁。synchronized和ReentrantLock都是可重入锁，可重入性在我看来实际上表明了锁的分配机制：基于线程的分配，而不是基于方法调用的分配。举比如说，当一个线程执行到metho">
-<meta property="og:image" content="http://yoursite.com/20191116/uploads/javasource/lock.jpeg">
-<meta property="og:updated_time" content="2019-11-19T06:31:19.261Z">
+<meta property="og:description" content="迭代器模式介绍迭代器模式：提供一种方法访问一个容器对象中各个元素，而又不暴露该对象的内部细节。（行为型模式）迭代器模式是应该是java中使用的最多的一种设计模式，迭代器模式如下：  抽象容器：一般是一个接口，提供一个iterator()方法，例如java中的Collection接口，List接口，Set接口等。  具体容器：就是抽象容器的具体实现类，比如List接口的有序列表实现ArrayList">
+<meta property="og:image" content="http://yoursite.com/20170817/uploads/iterator/1.jpg">
+<meta property="og:updated_time" content="2019-12-08T10:00:05.136Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="synchronized和lock">
-<meta name="twitter:description" content="锁的种类锁的种类很多，包括：自旋锁(CAS)、阻塞锁、可重入锁、读写锁、互斥锁、悲观锁、乐观锁、公平锁、可中断锁等等，主要介绍下可重入锁、读写锁、可中断锁和公平锁。 可重入锁 如果锁具备可重入性，则称作为可重入锁。synchronized和ReentrantLock都是可重入锁，可重入性在我看来实际上表明了锁的分配机制：基于线程的分配，而不是基于方法调用的分配。举比如说，当一个线程执行到metho">
-<meta name="twitter:image" content="http://yoursite.com/20191116/uploads/javasource/lock.jpeg">
+<meta name="twitter:title" content="迭代器模式">
+<meta name="twitter:description" content="迭代器模式介绍迭代器模式：提供一种方法访问一个容器对象中各个元素，而又不暴露该对象的内部细节。（行为型模式）迭代器模式是应该是java中使用的最多的一种设计模式，迭代器模式如下：  抽象容器：一般是一个接口，提供一个iterator()方法，例如java中的Collection接口，List接口，Set接口等。  具体容器：就是抽象容器的具体实现类，比如List接口的有序列表实现ArrayList">
+<meta name="twitter:image" content="http://yoursite.com/20170817/uploads/iterator/1.jpg">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/20191116/java/4_synchronizedAndlock/"/>
+  <link rel="canonical" href="http://yoursite.com/20170817/Design_pattern/19_iterator/"/>
 
 
 
 
 
-  <title> synchronized和lock | fk5431 </title>
+  <title> 迭代器模式 | fk5431 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -316,7 +316,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191116/java/4_synchronizedAndlock/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20170817/Design_pattern/19_iterator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fk">
@@ -337,7 +337,7 @@
             
             
               
-                synchronized和lock
+                迭代器模式
               
             
           </h1>
@@ -352,8 +352,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T11:46:23+08:00">
-                2019-11-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T09:19:52+08:00">
+                2017-08-17
               </time>
             
 
@@ -375,8 +375,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -387,10 +387,23 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/20170817/Design_pattern/19_iterator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="20170817/Design_pattern/19_iterator/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
           
           
-             <span id="/20191116/java/4_synchronizedAndlock/" class="leancloud_visitors" data-flag-title="synchronized和lock">
+             <span id="/20170817/Design_pattern/19_iterator/" class="leancloud_visitors" data-flag-title="迭代器模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -419,63 +432,36 @@
       
 
       
-        <h3 id="锁的种类"><a href="#锁的种类" class="headerlink" title="锁的种类"></a>锁的种类</h3><p>锁的种类很多，包括：自旋锁(CAS)、阻塞锁、可重入锁、读写锁、互斥锁、悲观锁、乐观锁、公平锁、可中断锁等等，主要介绍下可重入锁、读写锁、可中断锁和公平锁。</p>
-<h4 id="可重入锁"><a href="#可重入锁" class="headerlink" title="可重入锁"></a>可重入锁</h4><blockquote>
-<p>如果锁具备可重入性，则称作为可重入锁。synchronized和ReentrantLock都是可重入锁，可重入性在我看来实际上表明了锁的分配机制：基于线程的分配，而不是基于方法调用的分配。举比如说，当一个线程执行到method1 的synchronized方法时，而在method1中会调用另外一个synchronized方法method2，此时该线程不必重新去申请锁，而是可以直接执行方法method2。</p>
-</blockquote>
-<h4 id="读写锁"><a href="#读写锁" class="headerlink" title="读写锁"></a>读写锁</h4><blockquote>
-<p>读写锁将对一个资源的访问分成了2个锁，如文件，一个读锁和一个写锁。正因为有了读写锁，才使得多个线程之间的读操作不会发生冲突。ReadWriteLock就是读写锁，它是一个接口，ReentrantReadWriteLock实现了这个接口。可以通过readLock()获取读锁，通过writeLock()获取写锁。</p>
-</blockquote>
-<h4 id="可中断锁"><a href="#可中断锁" class="headerlink" title="可中断锁"></a>可中断锁</h4><blockquote>
-<p>可中断锁，即可以中断的锁。在Java中，synchronized就不是可中断锁，而Lock是可中断锁。<br>如果某一线程A正在执行锁中的代码，另一线程B正在等待获取该锁，可能由于等待时间过长，线程B不想等待了，想先处理其他事情，我们可以让它中断自己或者在别的线程中中断它，这种就是可中断锁。<br>Lock接口中的lockInterruptibly()方法就体现了Lock的可中断性。</p>
-</blockquote>
-<h4 id="公平锁"><a href="#公平锁" class="headerlink" title="公平锁"></a>公平锁</h4><blockquote>
-<p>公平锁即尽量以请求锁的顺序来获取锁。同时有多个线程在等待一个锁，当这个锁被释放时，等待时间最久的线程（最先请求的线程）会获得该锁，这种就是公平锁。<br>非公平锁即无法保证锁的获取是按照请求锁的顺序进行的，这样就可能导致某个或者一些线程永远获取不到锁。<br>synchronized是非公平锁，它无法保证等待的线程获取锁的顺序。对于ReentrantLock和ReentrantReadWriteLock，默认情况下是非公平锁，但是可以设置为公平锁。</p>
-</blockquote>
-<h3 id="synchronized和lock的用法"><a href="#synchronized和lock的用法" class="headerlink" title="synchronized和lock的用法"></a>synchronized和lock的用法</h3><h4 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h4><p>synchronized是Java的关键字，当它用来修饰一个方法或者一个代码块的时候，能够保证在同一时刻最多只有一个线程执行该段代码，同时它还可以保证共享变量的内存可见性。</p>
-<h5 id="修饰代码块"><a href="#修饰代码块" class="headerlink" title="修饰代码块"></a>修饰代码块</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public void method()&#123;</div><div class="line">    synchronized (Object o)&#123;</div><div class="line">        //</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>作用于代码块，synchronized后跟括号，括号里是变量，每次只会有一个线程进入该代码块。</p>
-</blockquote>
-<h5 id="修饰方法"><a href="#修饰方法" class="headerlink" title="修饰方法"></a>修饰方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public synchronized void method()&#123;</div><div class="line">    //</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>作用于方法时，一次只有一个线程进入该方法，其他线程此时想调用只能排队等候。</p>
-</blockquote>
-<h5 id="修饰类"><a href="#修饰类" class="headerlink" title="修饰类"></a>修饰类</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public static void menthed()&#123;</div><div class="line">    synchronized(Service.class) &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>如果线程进入，则线程在该类中所有操作不能进行，包括静态变量和静态方法，对于含有静态方法和静态变量的代码块的同步，通常使用这种方式。</p>
-</blockquote>
-<h4 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h4><p>java.util.concurrent.locks 包下有以下这些类：</p>
-<p><img src="../../uploads/javasource/lock.jpeg" alt="类"></p>
-<p>ReetrantLock实现了Lock接口，ReadWriteLock是读写锁的接口，由ReentrantReadWriteLock实现。</p>
-<h5 id="Lock-1"><a href="#Lock-1" class="headerlink" title="Lock"></a>Lock</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public interface Lock &#123;</div><div class="line"></div><div class="line">    void lock();</div><div class="line"></div><div class="line">    void lockInterruptibly() throws InterruptedException;</div><div class="line"></div><div class="line">    boolean tryLock();</div><div class="line"></div><div class="line">    boolean tryLock(long time, TimeUnit unit) throws InterruptedException;</div><div class="line"></div><div class="line">    void unlock();</div><div class="line"></div><div class="line">    Condition newCondition();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Lock接口中定义了这6个接口。</p>
+        <h2 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>迭代器模式：提供一种方法访问一个容器对象中各个元素，而又不暴露该对象的内部细节。（行为型模式）<br>迭代器模式是应该是java中使用的最多的一种设计模式，迭代器模式如下：<br><img src="../../uploads/iterator/1.jpg" alt="迭代器模式"></p>
 <ul>
-<li>lock():用来获取锁，如果锁已经被其他线程获取，则会处于等待状态。使用Lock则必须主动释放锁，发生异常也不会自动释放锁，所以要在try{}catch()中进行，finally中释放锁。</li>
-<li>lockInterruptibly():通过这个方法去获取锁时，如果线程正在等待获取锁，则这个线程能够响应中断，即中断线程的等待状态。</li>
-<li>tryLock():尝试获取锁，如果获取成功，则返回true，如果获取失败则返回false。这个方法会立即返回，拿不到锁也不会等待。</li>
-<li>tryLock(long time, TimeUnit unit):也是尝试获取锁，不过会有设定的等待时间。</li>
-<li>unlock():释放锁</li>
-<li>newCondition(): 创建一个Condition，Condition接口也提供了类似Object的监视器方法，与Lock配合可以实现等待/通知模式。</li>
+<li><p>抽象容器：一般是一个接口，提供一个iterator()方法，例如java中的Collection接口，List接口，Set接口等。</p>
+</li>
+<li><p>具体容器：就是抽象容器的具体实现类，比如List接口的有序列表实现ArrayList，List接口的链表实现LinkList，Set接口的哈希列表的实现HashSet等。</p>
+</li>
+<li><p>抽象迭代器：定义遍历元素所需要的方法，一般来说会有这么三个方法：取得第一个元素的方法first()，取得下一个元素的方法next()，判断是否遍历结束的方法isDone()（或者叫hasNext()），移出当前对象的方法remove(),</p>
+</li>
+<li><p>迭代器实现：实现迭代器接口中定义的方法，完成集合的迭代。</p>
+</li>
 </ul>
-<h5 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h5><p>ReentrantLock 实现了Lock接口，是一个可重入锁，内部定义了公平锁和非公平锁，默认是非公平锁。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class ReentrantLockTest &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws InterruptedException &#123;</div><div class="line"></div><div class="line">        ReentrantLock lock = new ReentrantLock();</div><div class="line"></div><div class="line">        for (int i = 1; i &lt;= 3; i++) &#123;</div><div class="line">            lock.lock();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for(int i=1;i&lt;=3;i++)&#123;</div><div class="line">            try &#123;</div><div class="line"></div><div class="line">            &#125; finally &#123;</div><div class="line">                lock.unlock();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>ReentrantLock 可以通过lock()方法加锁多次，在通过unlock()方法释放锁多次使得程序正常退出，所以ReentrantLocl是可重入锁。</p>
-</blockquote>
-<ul>
-<li>ReentrantLock和synchronized都是独占锁,只允许线程互斥的访问临界区。synchronized是隐式的，ReentrantLocl是显示的。</li>
-<li>ReentrantLock和synchronized都是可重入的。synchronized因为可重入因此可以放在被递归执行的方法上,且不用担心线程最后能否正确释放锁；而ReentrantLock在重入时要却确保重复获取锁的次数必须和重复释放锁的次数一样，否则可能导致其他线程无法获得该锁。</li>
+<h3 id="优缺点和适用场景"><a href="#优缺点和适用场景" class="headerlink" title="优缺点和适用场景"></a>优缺点和适用场景</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li><p>迭代器简化了聚合的接口</p>
+</li>
+<li><p>可以提供多种遍历方式</p>
+</li>
+<li><p>在同一个聚合上可以有多个遍历</p>
+</li>
 </ul>
-<h5 id="ReadWriteLock"><a href="#ReadWriteLock" class="headerlink" title="ReadWriteLock"></a>ReadWriteLock</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public interface ReadWriteLock &#123;</div><div class="line">    Lock readLock();</div><div class="line"></div><div class="line">    Lock writeLock();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>ReadWriteLock是读写锁，定义了一个获取读锁，一个获取写锁的方法。如果有一个线程已经占用了读锁，则此时其他线程如果要申请写锁，则申请写锁的线程会一直等待释放读锁；如果有一个线程已经占用了写锁，则此时其他线程如果申请写锁或者读锁，则申请的线程会一直等待释放写锁。</p>
-<h4 id="synchronized和lock的区别"><a href="#synchronized和lock的区别" class="headerlink" title="synchronized和lock的区别"></a>synchronized和lock的区别</h4><ul>
-<li>Lock是一个接口，而synchronized是java中的关键字。</li>
-<li>synchronized在发生异常的时候会自动释放锁，而Lock在发生异常的时候仍需要手动去释放锁。</li>
-<li>Lock可以让等待的线程响应中断，而synchronized不可以，会是等待线程一直等待下去，直到获取锁。</li>
-<li>Lock可以知道是否获取到锁。</li>
-<li>ReadWriteLock可以提高多读的效率。</li>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>对于比较简单的遍历（像数组或者有序列表），使用迭代器方式遍历较为繁琐，大家可能都有感觉，像ArrayList，我们宁可愿意使用for循环和get方法来遍历集合</li>
 </ul>
+<h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><p>一般来说，我们只要实现一个集合，就需要同时提供这个集合的迭代器，就像java中的Collection，List、Set、Map等，这些集合都有自己的迭代器。java本身已经把迭代器做到内部中了，我们一般情况自己很少自定义的迭代器。</p>
+<h3 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h3><p>看了JDK源码简单写了一个</p>
+<p>首先是抽象迭代器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.iterator;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/17.</div><div class="line"> * 抽象迭代器类</div><div class="line"> */</div><div class="line">public interface Iterator&lt;E&gt; &#123;</div><div class="line">    public boolean hasNext();</div><div class="line">    public E next();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>抽象集合<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.iterator;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/17.</div><div class="line"> */</div><div class="line">public interface List&lt;E&gt; extends Iterable&lt;E&gt; &#123;</div><div class="line">    void add(E e);</div><div class="line">    E get(int index);</div><div class="line">    Iterator&lt;E&gt; iterator();</div><div class="line">    int getSize();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>抽象集合继承了iterable,iterable可以使得多个迭代器互不干扰<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.iterator;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/17.</div><div class="line"> */</div><div class="line">public interface Iterable&lt;T&gt; &#123;</div><div class="line">    Iterator&lt;T&gt; iterator();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>具体的集合实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.iterator;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/17.</div><div class="line"> */</div><div class="line">public class ArrayList&lt;E&gt; implements List&lt;E&gt; &#123;</div><div class="line"></div><div class="line">    private Object[] elementData;</div><div class="line">    private int size = 0;</div><div class="line">    private int index = 0;</div><div class="line"></div><div class="line">    public ArrayList() &#123;</div><div class="line">        this.elementData = new Object[10];</div><div class="line">        this.size = 0;</div><div class="line">        this.index = 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void add(E e) &#123;</div><div class="line">        elementData[index++] = e;</div><div class="line">        size++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public E get(int index) &#123;</div><div class="line">        return (E) elementData[index];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public Iterator&lt;E&gt; iterator() &#123;</div><div class="line">        return new ConcreteIterator();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getSize() &#123;</div><div class="line">        return size;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private class ConcreteIterator implements Iterator&lt;E&gt;&#123;</div><div class="line">        int cursor;</div><div class="line">        @Override</div><div class="line">        public boolean hasNext() &#123;</div><div class="line">            return cursor != size ;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public E next() &#123;</div><div class="line">            return (E) elementData[cursor++];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>测试类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.iterator;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/17.</div><div class="line"> */</div><div class="line">public class Test &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        List&lt;String&gt; list = new ArrayList&lt;&gt;();</div><div class="line">        list.add(&quot;one&quot;);</div><div class="line">        list.add(&quot;two&quot;);</div><div class="line">        list.add(&quot;three&quot;);</div><div class="line">        list.add(&quot;four&quot;);</div><div class="line">        Iterator&lt;String&gt; iterator = list.iterator();</div><div class="line">        while (iterator.hasNext())&#123;</div><div class="line">            String str = iterator.next();</div><div class="line">            System.out.println(str);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -526,7 +512,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
         </div>
       
@@ -539,8 +525,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/20191118/javasource/util/3_AbstractQueuedSynchronizer/" rel="next" title="aqs源码">
-                <i class="fa fa-chevron-left"></i> aqs源码
+              <a href="/20191114/javasource/util/1_HashMap/" rel="next" title="HashMap阅读 （1.8|1.7）">
+                <i class="fa fa-chevron-left"></i> HashMap阅读 （1.8|1.7）
               </a>
             
           </div>
@@ -549,8 +535,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/20191115/javasource/util/2_ExecutorService/" rel="prev" title="线程池阅读">
-                线程池阅读 <i class="fa fa-chevron-right"></i>
+              <a href="/20170811/Design_pattern/18_interpreter/" rel="prev" title="解释器模式">
+                解释器模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -581,6 +567,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -625,7 +622,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -636,7 +633,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -647,7 +644,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -711,7 +708,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#锁的种类"><span class="nav-number">1.</span> <span class="nav-text">锁的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可重入锁"><span class="nav-number">1.1.</span> <span class="nav-text">可重入锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读写锁"><span class="nav-number">1.2.</span> <span class="nav-text">读写锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可中断锁"><span class="nav-number">1.3.</span> <span class="nav-text">可中断锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#公平锁"><span class="nav-number">1.4.</span> <span class="nav-text">公平锁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#synchronized和lock的用法"><span class="nav-number">2.</span> <span class="nav-text">synchronized和lock的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized"><span class="nav-number">2.1.</span> <span class="nav-text">synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#修饰代码块"><span class="nav-number">2.1.1.</span> <span class="nav-text">修饰代码块</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修饰方法"><span class="nav-number">2.1.2.</span> <span class="nav-text">修饰方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修饰类"><span class="nav-number">2.1.3.</span> <span class="nav-text">修饰类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lock"><span class="nav-number">2.2.</span> <span class="nav-text">Lock</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Lock-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Lock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ReentrantLock"><span class="nav-number">2.2.2.</span> <span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ReadWriteLock"><span class="nav-number">2.2.3.</span> <span class="nav-text">ReadWriteLock</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized和lock的区别"><span class="nav-number">2.3.</span> <span class="nav-text">synchronized和lock的区别</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器模式"><span class="nav-number">1.</span> <span class="nav-text">迭代器模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点和适用场景"><span class="nav-number">1.2.</span> <span class="nav-text">优缺点和适用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">1.2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">1.2.2.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#适用场景"><span class="nav-number">1.2.3.</span> <span class="nav-text">适用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DEMO"><span class="nav-number">1.3.</span> <span class="nav-text">DEMO</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -737,6 +734,18 @@
       <script id="dsq-count-scr" src="https://来自.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/20170817/Design_pattern/19_iterator/';
+          this.page.identifier = '20170817/Design_pattern/19_iterator/';
+          this.page.title = '迭代器模式';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://来自.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
