@@ -3,9 +3,9 @@ title: JDK常用命令（虚拟机性能监控故障处理）
 date: 2019-12-11 22:02
 comments: false
 tags: 
-- java,JDK
+- java JDK
 categories: 
-- java,JDK
+- java JDK
 keywords: java JDK
 ---
 
