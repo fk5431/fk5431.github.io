@@ -5,7 +5,7 @@ tags:
 - 设计模式
 categories: 
 - 设计模式
-keywords: 设计模式, 建造者模式
+keywords: 设计模式 建造者模式
 ---
 
 ## 建造者模式

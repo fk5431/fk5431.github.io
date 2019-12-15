@@ -5,7 +5,7 @@ tags:
 - 设计模式
 categories: 
 - 设计模式
-keywords: 设计模式, 原型模式
+keywords: 设计模式 原型模式
 ---
 ## 原型模式
 

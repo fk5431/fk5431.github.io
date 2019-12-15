@@ -5,7 +5,7 @@ tags:
 - 设计模式
 categories: 
 - 设计模式
-keywords: 设计模式, 组合模式
+keywords: 设计模式 组合模式
 ---
 ## 组合模式
 

@@ -6,7 +6,7 @@ tags:
 - java
 categories: 
 - java
-keywords: Semaphore,锁,同步
+keywords: Semaphore 锁 同步
 ---
 
 ### Semaphore

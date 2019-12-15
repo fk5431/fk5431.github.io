@@ -6,7 +6,7 @@ tags:
 - java,jvm
 categories: 
 - java,jvm
-keywords: jvm,JVM,内存区域
+keywords: jvm JVM 内存区域
 ---
 
 ### JVM内存区域

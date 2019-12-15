@@ -6,7 +6,7 @@ tags:
 - java,JDK
 categories: 
 - java,JDK
-keywords: java,JDK
+keywords: java JDK
 ---
 
 ### jps：虚拟机进程状况工具

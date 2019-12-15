@@ -5,7 +5,7 @@ tags:
 - 设计模式
 categories: 
 - 设计模式
-keywords: 设计模式, 代理模式
+keywords: 设计模式 代理模式
 ---
 
 ## 代理模式

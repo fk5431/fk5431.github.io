@@ -6,7 +6,7 @@ tags:
 - java
 categories: 
 - java
-keywords: ReentrantLock,锁,同步,公平锁,非公平锁
+keywords: ReentrantLock 锁 同步 公平锁 非公平锁
 ---
 
 ### ReentrantLock

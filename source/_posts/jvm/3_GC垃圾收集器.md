@@ -6,7 +6,7 @@ tags:
 - java,jvm,垃圾收集器
 categories: 
 - java,jvm,垃圾收集器
-keywords: jvm,垃圾收集器
+keywords: jvm 垃圾收集器
 ---
 
 ### 垃圾收集器

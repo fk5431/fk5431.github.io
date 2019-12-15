@@ -6,7 +6,7 @@ tags:
 - java
 categories: 
 - java
-keywords: aqs,AbstractQueuedSynchronizer,锁,同步
+keywords: aqs AbstractQueuedSynchronizer 锁 同步
 ---
 
 ## aqs

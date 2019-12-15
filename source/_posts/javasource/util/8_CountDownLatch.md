@@ -6,7 +6,7 @@ tags:
 - java
 categories: 
 - java
-keywords: CountDownLatch,锁,同步
+keywords: CountDownLatch 锁 同步
 ---
 
 ### CountDownLatch

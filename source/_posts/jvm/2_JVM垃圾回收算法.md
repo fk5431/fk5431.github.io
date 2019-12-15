@@ -6,7 +6,7 @@ tags:
 - java,jvm
 categories: 
 - java,jvm
-keywords: jvm,垃圾回收
+keywords: jvm 垃圾回收
 ---
 
 ### 垃圾回收

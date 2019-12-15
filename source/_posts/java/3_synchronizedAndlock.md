@@ -6,7 +6,7 @@ tags:
 - java
 categories: 
 - java
-keywords: synchronized,lock,并发
+keywords: synchronized lock 并发
 ---
 
 ### 锁的种类

@@ -6,7 +6,7 @@ tags:
 - java,JVM,类加载机制
 categories: 
 - java,JVM,类加载机制
-keywords: java,JVM,类加载机制
+keywords: java JVM 类加载机制
 ---
 
 ### 虚拟机类加载机制

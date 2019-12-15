@@ -6,7 +6,7 @@ tags:
 - java
 categories: 
 - java
-keywords: volatile, 并发
+keywords: volatile 并发
 ---
 
 > java编程语言允许线程访问共享变量，为了确保共享变量能被准确和一致的更新，线程应该确保通过排他锁单独获得这个变量。java语言提供了volatile，在某些情况下比锁更加方便。如果一个字段被声明成volatile，java线程内存模型确保所有线程看到这个变量的值是一致的。

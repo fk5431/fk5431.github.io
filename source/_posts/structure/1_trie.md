@@ -6,7 +6,7 @@ tags:
 - structure
 categories: 
 - structure
-keywords: structure,trie,字典数
+keywords: structure trie 字典数
 ---
 
 ### 字典树

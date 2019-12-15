@@ -6,7 +6,7 @@ tags:
 - java
 categories: 
 - java
-keywords: CyclicBarrier,锁,同步
+keywords: CyclicBarrier 锁 同步
 ---
 
 ### CyclicBarrier

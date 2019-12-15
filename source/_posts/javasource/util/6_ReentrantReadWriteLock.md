@@ -6,7 +6,7 @@ tags:
 - java
 categories: 
 - java
-keywords: ReentrantReadWriteLock,锁,同步
+keywords: ReentrantReadWriteLock 锁 同步
 ---
 
 ### ReentrantReadWriteLock
