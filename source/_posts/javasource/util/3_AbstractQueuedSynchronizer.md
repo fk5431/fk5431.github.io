@@ -235,7 +235,7 @@ private void doAcquireShared(int arg) {
 ###### setHeadAndPropagate
 
 ```
-////两个入参，一个是当前成功获取共享锁的节点，一个就是tryAcquireShared方法的返回值，它可能大于0也可能等于0
+//两个入参，一个是当前成功获取共享锁的节点，一个就是tryAcquireShared方法的返回值，它可能大于0也可能等于0
 private void setHeadAndPropagate(Node node, int propagate) {
     Node h = head; // Record old head for check below
     //设置新的头节点
@@ -578,7 +578,7 @@ final boolean transferForSignal(Node node) {
         LockSupport.unpark(node.thread);
     return true;
 }
-``` 
+```
 
 将条件队列的第一个节点移除，加入到AQS的阻塞队列中。
 

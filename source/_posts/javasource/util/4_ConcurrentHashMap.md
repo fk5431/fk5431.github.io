@@ -220,7 +220,10 @@ static final int RETRIES_BEFORE_LOCK = 2;
 
 ConcurrentHashMap 主要的默认参数和HashMap差不多。
 
-> DEFAULT_CONCURRENCY_LEVEL 是默认的并发数（Segment数组的数量） MIN_SEGMENT_TABLE_CAPACITY 每个Segment最小的容量 MAX_SEGMENTS 每个Segment最大的容量   RETRIES_BEFORE_LOCK默认的自旋次数
+> - DEFAULT_CONCURRENCY_LEVEL 是默认的并发数（Segment数组的数量）
+> - MIN_SEGMENT_TABLE_CAPACITY 每个Segment最小的容量 
+> - MAX_SEGMENTS 每个Segment最大的容量   
+> - RETRIES_BEFORE_LOCK默认的自旋次数
 
 ##### put
 ```
@@ -693,11 +696,12 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
         }
     }
 }
-``` 
+```
 
 1. 遍历整个table，当前节点为空，则采用CAS的方式在当前位置放入fwd
 2. 当前节点已经为fwd(with hash field “MOVED”)，则已经有有线程处理完了了，直接跳过 ，这里是控制并发扩容的核心
 3. 当前节点为链表节点或红黑树，重新计算链表节点的hash值，移动到nextTable相应的位置（构建了一个反序链表和顺序链表，分别放置在i和i+n的位置上）。移动完成后，用Unsafe.putObjectVolatile在tab的原位置赋为为fwd, 表示当前节点已经完成扩容。
+
 
 ##### get
 
