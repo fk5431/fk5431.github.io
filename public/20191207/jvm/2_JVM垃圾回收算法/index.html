@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="jvm,垃圾回收" />
+  <meta name="keywords" content="jvm 垃圾回收" />
 
 
 
@@ -88,7 +88,7 @@
 
 
 <meta name="description" content="垃圾回收在java运行过程中，程序计数器、虚拟机栈、本地方法栈3个区域都是线程私有的，都会随着线程而创建，随着线程而销毁。这三个区域不需要考虑内存的回收，在方法结束或者线程结束后，内存就会被回收。但是在java堆和方法区却不能这样，只有在程序运行的过程中才能知道会创建哪些对象，这些对象的创建和回收都是动态的，因为这部分区域的内容是需要垃圾回收的。 如何确定垃圾引用计数法给对象添加一个引用计数器，每">
-<meta name="keywords" content="java,jvm">
+<meta name="keywords" content="java jvm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM垃圾回收算法">
 <meta property="og:url" content="http://yoursite.com/20191207/jvm/2_JVM垃圾回收算法/index.html">
@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yoursite.com/uploads/jvm/标记清除.png">
 <meta property="og:image" content="http://yoursite.com/uploads/jvm/标记复制.png">
 <meta property="og:image" content="http://yoursite.com/uploads/jvm/标记整理.png">
-<meta property="og:updated_time" content="2019-12-08T10:00:05.205Z">
+<meta property="og:updated_time" content="2019-12-15T09:43:04.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM垃圾回收算法">
 <meta name="twitter:description" content="垃圾回收在java运行过程中，程序计数器、虚拟机栈、本地方法栈3个区域都是线程私有的，都会随着线程而创建，随着线程而销毁。这三个区域不需要考虑内存的回收，在方法结束或者线程结束后，内存就会被回收。但是在java堆和方法区却不能这样，只有在程序运行的过程中才能知道会创建哪些对象，这些对象的创建和回收都是动态的，因为这部分区域的内容是需要垃圾回收的。 如何确定垃圾引用计数法给对象添加一个引用计数器，每">
@@ -379,7 +379,7 @@
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/java-jvm/" itemprop="url" rel="index">
-                    <span itemprop="name">java,jvm</span>
+                    <span itemprop="name">java jvm</span>
                   </a>
                 </span>
 
@@ -527,7 +527,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java-jvm/" rel="tag"># java,jvm</a>
+            <a href="/tags/java-jvm/" rel="tag"># java jvm</a>
           
         </div>
       
@@ -626,7 +626,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -637,7 +637,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -648,7 +648,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
