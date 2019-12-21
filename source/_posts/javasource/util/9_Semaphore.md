@@ -4,9 +4,16 @@ date:
 comments: false
 tags: 
 - java
+- Semaphore
+- 锁
+- 同步
 categories: 
 - java
-keywords: Semaphore 锁 同步
+keywords: 
+- java
+- Semaphore
+- 锁
+- 同步
 ---
 
 ### Semaphore

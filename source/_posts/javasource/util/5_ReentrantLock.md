@@ -4,9 +4,20 @@ date: 2019-12-01 20:15:48
 comments: false
 tags: 
 - java
+- ReentrantLock
+- 锁
+- 同步
+- 公平锁
+- 非公平锁
 categories: 
 - java
-keywords: ReentrantLock 锁 同步 公平锁 非公平锁
+keywords: 
+- java
+- ReentrantLock
+- 锁
+- 同步
+- 公平锁
+- 非公平锁
 ---
 
 ### ReentrantLock

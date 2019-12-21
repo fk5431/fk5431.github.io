@@ -4,10 +4,18 @@ date: 2019-11-18 21:33:08
 comments: false
 tags: 
 - java
+- aqs
+- AbstractQueuedSynchronizer
+- 锁
+- 同步
 categories: 
 - java
-keywords: aqs AbstractQueuedSynchronizer 锁 同步
----
+keywords: 
+- java
+- aqs
+- AbstractQueuedSynchronizer
+- 锁
+- 同步---
 
 ## aqs
 

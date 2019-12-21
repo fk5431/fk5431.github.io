@@ -3,10 +3,15 @@ title: JVM内存区域
 date: 2019-12-05 21:52:13
 comments: false
 tags: 
-- java jvm
+- jvm
+- JVM
+- 内存区域
 categories: 
-- java jvm
-keywords: jvm JVM 内存区域
+- jvm
+keywords:  
+- jvm
+- JVM
+- 内存区域
 ---
 
 ### JVM内存区域

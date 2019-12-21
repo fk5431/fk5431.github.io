@@ -4,9 +4,16 @@ date: 2019-12-03 21:32:17
 comments: false
 tags: 
 - java
+- ReentrantReadWriteLock
+- 锁
+- 同步
 categories: 
 - java
-keywords: ReentrantReadWriteLock 锁 同步
+keywords: 
+- java
+- ReentrantReadWriteLock
+- 锁
+- 同步
 ---
 
 ### ReentrantReadWriteLock

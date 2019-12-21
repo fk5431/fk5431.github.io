@@ -4,9 +4,16 @@ date: 2019-12-04 22:17:53
 comments: false
 tags: 
 - java
+- CyclicBarrier
+- 锁
+- 同步
 categories: 
 - java
-keywords: CyclicBarrier 锁 同步
+keywords:
+- java
+- CyclicBarrier
+- 锁
+- 同步
 ---
 
 ### CyclicBarrier

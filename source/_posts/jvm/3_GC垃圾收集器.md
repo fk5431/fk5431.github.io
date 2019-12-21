@@ -3,10 +3,13 @@ title: GC垃圾收集器
 date: 2019-12-08 12:02
 comments: false
 tags: 
-- java,jvm 垃圾收集器
+- jvm
+- 垃圾收集器
 categories: 
-- java,jvm 垃圾收集器
-keywords: jvm 垃圾收集器
+- jvm
+keywords: 
+- jvm
+- 垃圾收集器
 ---
 
 ### 垃圾收集器

@@ -4,9 +4,16 @@ date: 2019-11-16 11:46:23
 comments: false
 tags: 
 - java
+- synchronized
+- lock
+- 并发
 categories: 
 - java
-keywords: synchronized lock 并发
+keywords: 
+- java
+- synchronized
+- lock
+- 并发
 ---
 
 ### 锁的种类

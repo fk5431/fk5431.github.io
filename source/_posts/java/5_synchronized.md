@@ -4,9 +4,12 @@ date: 2019-11-27 22:22:13
 comments: false
 tags: 
 - synchronized
+- 锁
 categories: 
 - synchronized
-keywords: synchronized 锁
+keywords: 
+- synchronized
+- 锁
 ---
 
 synchronized 可以使用任意一个非空的对象当做锁。synchronized属于独占式的悲观锁，也是可重入锁。它可以保证同一时刻只有一个线程执行某个方法或某个代码块，还可保证共享变量的可见性。

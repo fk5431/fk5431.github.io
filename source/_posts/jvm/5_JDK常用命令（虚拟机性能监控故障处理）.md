@@ -3,10 +3,11 @@ title: JDK常用命令（虚拟机性能监控故障处理）
 date: 2019-12-11 22:02
 comments: false
 tags: 
-- java JDK
+- JDK
 categories: 
-- java JDK
-keywords: java JDK
+- JDK
+keywords: 
+- JDK
 ---
 
 ### jps：虚拟机进程状况工具

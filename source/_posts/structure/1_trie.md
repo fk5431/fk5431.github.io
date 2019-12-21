@@ -4,9 +4,14 @@ date: 2019-12-06 15:45:38
 comments: false
 tags: 
 - structure
+- trie
+- 字典数
 categories: 
 - structure
-keywords: structure trie 字典数
+keywords: 
+- structure
+- trie
+- 字典数
 ---
 
 ### 字典树
