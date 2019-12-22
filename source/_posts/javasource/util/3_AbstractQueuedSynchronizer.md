@@ -15,7 +15,8 @@ keywords:
 - aqs
 - AbstractQueuedSynchronizer
 - 锁
-- 同步---
+- 同步
+---
 
 ## aqs
 
