@@ -88,7 +88,7 @@ Spring中Bean定义了5种作用域，分别为singleton（单例）、prototype
 
 Spring Bean的生命周期有四个过程：实例化->属性赋值->初始化->销毁。但是Spring在对Bean管理的过程中，具体化了很多接口，完整的过程如下
 
-![容器](../../../uploads/spring/ioc/5.jpeg)
+![容器](../../../uploads/spring/ioc/5.jpg)
 
 - postProcessBeanFactory：BeanFactoryPostProcessor的方法，允许使用者修改容器中的bean definitions，但是不能进行Bean的实例化（会导致依赖注入失败）。
 - postProcessBeforeInstantiation：InstantiationAwareBeanPostProcessorAdapter的方法，在Bean实例化之前调用，在Bean的构造函数之前。
@@ -105,6 +105,6 @@ Spring Bean的生命周期有四个过程：实例化->属性赋值->初始化->
 
 这些过程也可以归为下面四个大过程：
 
-![容器](../../../uploads/spring/ioc/6.jpeg)
+![容器](../../../uploads/spring/ioc/6.jpg)
 
 
