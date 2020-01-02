@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yoursite.com/uploads/javasource/util/aqs2.png">
 <meta property="og:image" content="http://yoursite.com/uploads/javasource/util/aqs3.png">
 <meta property="og:image" content="http://yoursite.com/uploads/javasource/util/aqs4.png">
-<meta property="og:updated_time" content="2019-12-22T14:21:35.518Z">
+<meta property="og:updated_time" content="2019-12-28T15:27:48.087Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="aqs源码">
 <meta name="twitter:description" content="aqsAQS（AbstractQueuedSynchronizer）是JAVA中众多锁以及并发工具的基础，其底层采用乐观锁，大量使用了CAS操作， 并且在冲突时，采用自旋方式重试，以实现轻量级和高效地获取锁。 AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法。AQS是被设计为支持多种用途，如果定义抽象方法，子类在继承的时候就需要实现所有抽象方法，所以AQS将需要子类覆盖的方法都设计为pro">
@@ -423,7 +423,7 @@
 
       
         <h2 id="aqs"><a href="#aqs" class="headerlink" title="aqs"></a>aqs</h2><p>AQS（AbstractQueuedSynchronizer）是JAVA中众多锁以及并发工具的基础，其底层采用乐观锁，大量使用了CAS操作， 并且在冲突时，采用自旋方式重试，以实现轻量级和高效地获取锁。</p>
-<p>AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法。AQS是被设计为支持多种用途，如果定义抽象方法，子类在继承的时候就需要实现所有抽象方法，所以AQS将需要子类覆盖的方法都设计为protect方法，默认抛出UnsupportedOperationException异常，。如果子类用到这些方法就必须重写，否则会抛出异常，如果没有用到则不需要做任何操作。</p>
+<p>AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法。AQS是被设计为支持多种用途，如果定义抽象方法，子类在继承的时候就需要实现所有抽象方法，所以AQS将需要子类覆盖的方法都设计为protect方法，默认抛出UnsupportedOperationException异常。如果子类用到这些方法就必须重写，否则会抛出异常，如果没有用到则不需要做任何操作。</p>
 <p>AbstractQueuedSynchronizer只继承了AbstractOwnableSynchronizer，实现了java.io.Serializable接口。</p>
 <blockquote>
 <p>AbstractOwnableSynchronizer类是一种同步器，这个类仅有set和get独占线程资源。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&gt; public abstract class AbstractOwnableSynchronizer</div><div class="line">&gt;      implements java.io.Serializable &#123;</div><div class="line">&gt;  </div><div class="line">&gt;      private static final long serialVersionUID = 3737899427754241961L;</div><div class="line">&gt;  </div><div class="line">&gt;      protected AbstractOwnableSynchronizer() &#123; &#125;</div><div class="line">&gt;</div><div class="line">&gt;      private transient Thread exclusiveOwnerThread;</div><div class="line">&gt; </div><div class="line">&gt;      protected final void setExclusiveOwnerThread(Thread t) &#123;</div><div class="line">&gt;          exclusiveOwnerThread = t;</div><div class="line">&gt;      &#125;</div><div class="line">&gt;</div><div class="line">&gt;      protected final Thread getExclusiveOwnerThread() &#123;</div><div class="line">&gt;          return exclusiveOwnerThread;</div><div class="line">&gt;      &#125;</div><div class="line">&gt;  &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
@@ -663,7 +663,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -674,7 +674,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -685,7 +685,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -819,7 +819,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

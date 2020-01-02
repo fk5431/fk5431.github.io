@@ -96,7 +96,7 @@
 <meta property="og:description" content="JVM内存区域Java虚拟机在执行Java程序的过程中会把所管理的内存划分为若干个不同的数据区域。Java虚拟机所管理的内存将会包括以下几个运行时数据区域（Java虚拟机规范（Java SE7））：  线程隔离的数据区生命周期与线程相同，依赖用户线程的启动/结束。线程共享区随着虚拟机的启动/关闭而创建/销毁。 程序计数器程序计数器是一块比较小的空间，可以看作是当前线程所执行的字节码的行号指示器。字">
 <meta property="og:image" content="http://yoursite.com/uploads/jvm/运行时数据区.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/jvm/栈帧.jpg">
-<meta property="og:updated_time" content="2019-12-21T14:58:26.906Z">
+<meta property="og:updated_time" content="2019-12-28T15:27:48.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM内存区域">
 <meta name="twitter:description" content="JVM内存区域Java虚拟机在执行Java程序的过程中会把所管理的内存划分为若干个不同的数据区域。Java虚拟机所管理的内存将会包括以下几个运行时数据区域（Java虚拟机规范（Java SE7））：  线程隔离的数据区生命周期与线程相同，依赖用户线程的启动/结束。线程共享区随着虚拟机的启动/关闭而创建/销毁。 程序计数器程序计数器是一块比较小的空间，可以看作是当前线程所执行的字节码的行号指示器。字">
@@ -439,7 +439,7 @@
 <p>与虚拟机栈区域一样，本地方法栈也会抛出StackOverflowError和OutOfMemoryError异常。</p>
 </blockquote>
 <h4 id="java堆"><a href="#java堆" class="headerlink" title="java堆"></a>java堆</h4><p>java堆是被所有线程共享的一块区域，在虚拟机启动时创建。几乎所有的对象实例都会在java堆上分配内存。（java虚拟机规范中描述的是：所有对象实例以及数组都要在堆上分配）</p>
-<p>Java堆是垃圾收集器管理的主要区域，从内存回收的角度来看，现在的收集器基本采用分代手机算法，所以java堆还可以细分为：新生代和老年代；在细一点有Eden空间、From Survivor空间、To Survivor空间等。</p>
+<p>Java堆是垃圾收集器管理的主要区域，从内存回收的角度来看，现在的收集器基本采用分代收集算法，所以java堆还可以细分为：新生代和老年代；在细一点有Eden空间、From Survivor空间、To Survivor空间等。</p>
 <p>Java堆可以处于物理上不连续的内存空间中，只要逻辑上是连续的即可，就像磁盘空间一样。如果在堆中没有内存完成实例分配，并且堆也无法在扩展时，就是抛出OutOfMemoryError异常。</p>
 <h4 id="方法区（永久代）"><a href="#方法区（永久代）" class="headerlink" title="方法区（永久代）"></a>方法区（永久代）</h4><p>方法区与Java堆一样，是各个线程共享的内存区域，用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。HotSpot VM把GC分代收集扩展至方法区，即使用Java堆的永久代来实现方法区，这样HotSpot的垃圾收集器就可以像管理Java堆一样管理这部分内存，而不用为方法区开发专门的内存管理器。</p>
 <blockquote>
@@ -603,7 +603,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -614,7 +614,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -625,7 +625,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -759,7 +759,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
