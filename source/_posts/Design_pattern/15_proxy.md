@@ -108,7 +108,7 @@ public class Test {
 
 #### 动态代理
 
-动态代理不需要实现接口，是利用JDK的API来实现代理对象的生成，所以动态代理也是JDK代理。
+动态代理也需要实现接口，是利用JDK的API来实现代理对象的生成，所以动态代理也是JDK代理。
 
 > JDK中生成代理对象的API
 >  代理类所在包:java.lang.reflect.Proxy
