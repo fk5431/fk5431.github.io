@@ -37,9 +37,9 @@ BeanFactory是spring框架的基础设施面向spring（低级容器）；Applic
 
 - 默认初始化所有的Singleton，也可以通过配置取消预初始化。
 - 继承MessageSource，因此支持国际化。
-= 资源访问，比如访问URL和文件。
-= 事件机制。
-= 同时加载多个配置文件。
+- 资源访问，比如访问URL和文件。
+- 事件机制。
+- 同时加载多个配置文件。
 - 以声明式方式启动并创建Spring容器。
 
 所以，可以说ApplicationContext是高级容器，依赖着低级容器的getBean的功能，并提供了更多的额外功能。
