@@ -103,7 +103,7 @@ void transfer(Entry[] newTable, boolean rehash) {
     }
 }
 ```
-迁移源代码
+迁移原数据
 
 #### 正常ReHash过程
 

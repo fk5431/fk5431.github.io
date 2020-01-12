@@ -64,7 +64,8 @@ public class UnsafeLazyLoading {
 
 但是执行到 sing1 标识的地方的时候,线程有可能unsafeLazyLoading不为空的时候,但是unsafeLazyloading引用的对象还有可能没有完成初始化的过程.
 
-> ###问题根源
+###问题根源
+
 > 在上述代码执行到   unsafelazyloading = new UnsafeLazyLoading(); 的时候,此时创建一个对象可分解为以下三步:
 > ```
 > memory = allocate();   //1：分配对象的内存空间
