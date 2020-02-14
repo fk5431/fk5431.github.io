@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/20170803/Design_pattern/15_proxy/index.html">
 <meta property="og:site_name" content="fk5431">
 <meta property="og:description" content="代理模式介绍代理模式为其他对象提供一种代理以控制对这个对象的访问。（结构型模式）代理模式提供三种角色：  抽象角色：声明真实对象和代理对象的共同接口。 代理角色：代理对象角色内部含有对真实对象的引用，从而可以操作真实对象，同时代理对象提供与真实对象相同的接口以便在任何时刻都能代替真实对象。同时，代理对象可以在执行真实对象操作时，附加其他的操作，相当于对真实对象进行封装。 真实角色：代理角色所代表的">
-<meta property="og:updated_time" content="2019-12-23T02:22:45.846Z">
+<meta property="og:updated_time" content="2020-01-09T06:55:59.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代理模式">
 <meta name="twitter:description" content="代理模式介绍代理模式为其他对象提供一种代理以控制对这个对象的访问。（结构型模式）代理模式提供三种角色：  抽象角色：声明真实对象和代理对象的共同接口。 代理角色：代理对象角色内部含有对真实对象的引用，从而可以操作真实对象，同时代理对象提供与真实对象相同的接口以便在任何时刻都能代替真实对象。同时，代理对象可以在执行真实对象操作时，附加其他的操作，相当于对真实对象进行封装。 真实角色：代理角色所代表的">
@@ -442,7 +442,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.proxy.demo1;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/3.</div><div class="line"> */</div><div class="line">public class RealImage implements Image &#123;</div><div class="line">    private String fileName;</div><div class="line"></div><div class="line">    public RealImage(String fileName) &#123;</div><div class="line">        this.fileName = fileName;</div><div class="line">        loadFormDisk(fileName);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void loadFormDisk(String fileName) &#123;</div><div class="line">        System.out.println(&quot;Loading &quot; + fileName);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void dispalay() &#123;</div><div class="line">        System.out.println(&quot;Displaying &quot; + fileName);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.proxy.demo1;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/3.</div><div class="line"> */</div><div class="line">public class ProxyImage implements Image &#123;</div><div class="line">    private RealImage realImage;</div><div class="line">    private String fileNmme;</div><div class="line"></div><div class="line">    public ProxyImage(String fileNmme) &#123;</div><div class="line">        this.fileNmme = fileNmme;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void dispalay() &#123;</div><div class="line">        if( realImage == null)&#123;</div><div class="line">            realImage = new RealImage(fileNmme);</div><div class="line">        &#125;</div><div class="line">        realImage.dispalay();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">package factory.pattern.proxy.demo1;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by FK on 2017/8/3.</div><div class="line"> */</div><div class="line">public class Test &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        Image image = new ProxyImage(&quot;test.jpg&quot;);</div><div class="line">        image.dispalay();</div><div class="line">        System.out.println();</div><div class="line">        image.dispalay();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h4><p>动态代理不需要实现接口，是利用JDK的API来实现代理对象的生成，所以动态代理也是JDK代理。</p>
+<h4 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h4><p>动态代理也需要实现接口，是利用JDK的API来实现代理对象的生成，所以动态代理也是JDK代理。</p>
 <blockquote>
 <p>JDK中生成代理对象的API<br> 代理类所在包:java.lang.reflect.Proxy<br> JDK实现代理只需要使用newProxyInstance方法,但是该方法需要接收三个参数,完整的写法是:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; static Object newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces,InvocationHandler h )</div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
 <p>注意该方法是在Proxy类中是静态方法,且接收的三个参数依次为:</p>
@@ -625,7 +625,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">56</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -636,7 +636,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -647,7 +647,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">56</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

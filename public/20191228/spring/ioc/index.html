@@ -90,7 +90,7 @@
 <meta name="description" content="IoCIoC即Inversion of Control，是控制反转的意思：所谓IoC，就是由spring IoC容器来负责对象的生命周期和对象之间的关系。Spring通过一个配置文件描述Bean及Bean之间的关系，利用Java的反射实例化Bean并建立Bean之间的依赖关系。Spring的Ioc容易在完成基础工作上，还提供了Bean实例缓存、生命周期管理、Bean实例化、事件发布、资源装载等服务">
 <meta name="keywords" content="java,spring,IoC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring——IoC的理解">
+<meta property="og:title" content="Spring——IoC的理解">
 <meta property="og:url" content="http://yoursite.com/20191228/spring/ioc/index.html">
 <meta property="og:site_name" content="fk5431">
 <meta property="og:description" content="IoCIoC即Inversion of Control，是控制反转的意思：所谓IoC，就是由spring IoC容器来负责对象的生命周期和对象之间的关系。Spring通过一个配置文件描述Bean及Bean之间的关系，利用Java的反射实例化Bean并建立Bean之间的依赖关系。Spring的Ioc容易在完成基础工作上，还提供了Bean实例缓存、生命周期管理、Bean实例化、事件发布、资源装载等服务">
@@ -100,9 +100,9 @@
 <meta property="og:image" content="http://yoursite.com/uploads/spring/ioc/4.jpeg">
 <meta property="og:image" content="http://yoursite.com/uploads/spring/ioc/5.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/spring/ioc/6.jpg">
-<meta property="og:updated_time" content="2020-01-02T03:48:26.965Z">
+<meta property="og:updated_time" content="2020-01-09T06:55:59.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring——IoC的理解">
+<meta name="twitter:title" content="Spring——IoC的理解">
 <meta name="twitter:description" content="IoCIoC即Inversion of Control，是控制反转的意思：所谓IoC，就是由spring IoC容器来负责对象的生命周期和对象之间的关系。Spring通过一个配置文件描述Bean及Bean之间的关系，利用Java的反射实例化Bean并建立Bean之间的依赖关系。Spring的Ioc容易在完成基础工作上，还提供了Bean实例缓存、生命周期管理、Bean实例化、事件发布、资源装载等服务">
 <meta name="twitter:image" content="http://yoursite.com/uploads/spring/ioc/1.jpg">
 
@@ -138,7 +138,7 @@
 
 
 
-  <title> spring——IoC的理解 | fk5431 </title>
+  <title> Spring——IoC的理解 | fk5431 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -342,7 +342,7 @@
             
             
               
-                spring——IoC的理解
+                Spring——IoC的理解
               
             
           </h1>
@@ -395,7 +395,7 @@
 
           
           
-             <span id="/20191228/spring/ioc/" class="leancloud_visitors" data-flag-title="spring——IoC的理解">
+             <span id="/20191228/spring/ioc/" class="leancloud_visitors" data-flag-title="Spring——IoC的理解">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -432,7 +432,10 @@
 <p>通过常用的ClassPathXmlApplicationContext来展示整个容易的XML类图如上所示，像BeanFactory、HierarchicalBeanFactory、ListableBeanFactory、XMLBeanFactory这些都属于低级容器，ApplicationContext和它的实现都是高级容器。<br>可以看出ApplicationContext不仅仅实现了BeanFactory的功能，还实现了ResourceLoader、MessageSource、ApplicationEventPublisher、EnvironmentCapable，所以ApplicationContext除了BeanFactory提供的功能以外，还支持：</p>
 <ul>
 <li>默认初始化所有的Singleton，也可以通过配置取消预初始化。</li>
-<li>继承MessageSource，因此支持国际化。<br>= 资源访问，比如访问URL和文件。<br>= 事件机制。<br>= 同时加载多个配置文件。</li>
+<li>继承MessageSource，因此支持国际化。</li>
+<li>资源访问，比如访问URL和文件。</li>
+<li>事件机制。</li>
+<li>同时加载多个配置文件。</li>
 <li>以声明式方式启动并创建Spring容器。</li>
 </ul>
 <p>所以，可以说ApplicationContext是高级容器，依赖着低级容器的getBean的功能，并提供了更多的额外功能。</p>
@@ -553,6 +556,10 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/20200106/spring/aop/" rel="next" title="Spring——AOP">
+                <i class="fa fa-chevron-left"></i> Spring——AOP
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
@@ -635,7 +642,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">56</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -646,7 +653,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -657,7 +664,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">56</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

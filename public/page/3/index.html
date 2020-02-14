@@ -314,7 +314,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191121/javasource/util/4_ConcurrentHashMap/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191207/jvm/2_JVM垃圾回收算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fk">
@@ -336,8 +336,8 @@
             
               
                 
-                <a class="post-title-link" href="/20191121/javasource/util/4_ConcurrentHashMap/" itemprop="url">
-                  ConcurrentHashMap(1.7|1.8)阅读
+                <a class="post-title-link" href="/20191207/jvm/2_JVM垃圾回收算法/" itemprop="url">
+                  JVM垃圾回收算法
                 </a>
               
             
@@ -353,8 +353,487 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T22:20:28+08:00">
-                2019-11-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-07T22:42:00+08:00">
+                2019-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jvm/" itemprop="url" rel="index">
+                    <span itemprop="name">jvm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/20191207/jvm/2_JVM垃圾回收算法/" class="leancloud_visitors" data-flag-title="JVM垃圾回收算法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          垃圾回收在java运行过程中，程序计数器、虚拟机栈、本地方法栈3个区域都是线程私有的，都会随着线程而创建，随着线程而销毁。这三个区域不需要考虑内存的回收，在方法结束或者线程结束后，内存就会被回收。但是在java堆和方法区却不能这样，只有在程序运行的过程中才能知道会创建哪些对象，这些对象的创建和回收都
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/20191207/jvm/2_JVM垃圾回收算法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191206/structure/1_trie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fk5431">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/20191206/structure/1_trie/" itemprop="url">
+                  字典树
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-06T15:45:38+08:00">
+                2019-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/structure/" itemprop="url" rel="index">
+                    <span itemprop="name">structure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/20191206/structure/1_trie/" class="leancloud_visitors" data-flag-title="字典树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          字典树字典树又称单词查找树，是一种树形的结构，是一种哈希数的变种。典型应用是用于统计、排序和保存大量的字符串，经常被用于文本词频的统计。它的优点是：利用字符串的公共前缀来减少查询时间，最大限度地减少无谓的字符串比较，查询效率比哈希树高。
+
+基本性质
+根节点不包含字符，除根节点意外每个节点只包含一个字
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/20191206/structure/1_trie/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191205/jvm/1_JVM内存区域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fk5431">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/20191205/jvm/1_JVM内存区域/" itemprop="url">
+                  JVM内存区域
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-05T21:52:13+08:00">
+                2019-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jvm/" itemprop="url" rel="index">
+                    <span itemprop="name">jvm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/20191205/jvm/1_JVM内存区域/" class="leancloud_visitors" data-flag-title="JVM内存区域">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          JVM内存区域Java虚拟机在执行Java程序的过程中会把所管理的内存划分为若干个不同的数据区域。Java虚拟机所管理的内存将会包括以下几个运行时数据区域（Java虚拟机规范（Java SE7））：
+
+线程隔离的数据区生命周期与线程相同，依赖用户线程的启动/结束。线程共享区随着虚拟机的启动/关闭而创
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/20191205/jvm/1_JVM内存区域/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191204/javasource/util/7_CyclicBarrier/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/author.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="fk5431">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/20191204/javasource/util/7_CyclicBarrier/" itemprop="url">
+                  CyclicBarrier阅读
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-04T22:17:53+08:00">
+                2019-12-04
               </time>
             
 
@@ -391,7 +870,7 @@
 
           
           
-             <span id="/20191121/javasource/util/4_ConcurrentHashMap/" class="leancloud_visitors" data-flag-title="ConcurrentHashMap(1.7|1.8)阅读">
+             <span id="/20191204/javasource/util/7_CyclicBarrier/" class="leancloud_visitors" data-flag-title="CyclicBarrier阅读">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -422,12 +901,11 @@
       
         
           
-          ConcurrentHashMapjdk1.7ConcurrentHashMap 和 HashMap非常类似，ConcurrentHashMap在实现上采取了分段锁的思想来实现的。
-ConcurrentHashMap在内部采用了一个叫做 Segment 的结构，一个Segment就类似HashMap
+          CyclicBarrierCyclicBarrier我们叫做栅栏，其实与CountDownLatch的功能类似（CyclicBarrier也可实现CountDownLatch的功能），都是等待多个线程执行完成之后在进行最后的动作，只不过CountDownLatch是一次性的，而CyclicBarri
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/20191121/javasource/util/4_ConcurrentHashMap/#more" rel="contents">
+            <a class="btn" href="/20191204/javasource/util/7_CyclicBarrier/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -473,7 +951,7 @@ ConcurrentHashMap在内部采用了一个叫做 Segment 的结构，一个Segmen
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191118/javasource/util/3_AbstractQueuedSynchronizer/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191203/javasource/util/6_ReentrantReadWriteLock/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fk">
@@ -495,8 +973,8 @@ ConcurrentHashMap在内部采用了一个叫做 Segment 的结构，一个Segmen
             
               
                 
-                <a class="post-title-link" href="/20191118/javasource/util/3_AbstractQueuedSynchronizer/" itemprop="url">
-                  aqs源码
+                <a class="post-title-link" href="/20191203/javasource/util/6_ReentrantReadWriteLock/" itemprop="url">
+                  ReentrantReadWriteLock阅读
                 </a>
               
             
@@ -512,8 +990,8 @@ ConcurrentHashMap在内部采用了一个叫做 Segment 的结构，一个Segmen
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-18T21:33:08+08:00">
-                2019-11-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-03T21:32:17+08:00">
+                2019-12-03
               </time>
             
 
@@ -550,7 +1028,7 @@ ConcurrentHashMap在内部采用了一个叫做 Segment 的结构，一个Segmen
 
           
           
-             <span id="/20191118/javasource/util/3_AbstractQueuedSynchronizer/" class="leancloud_visitors" data-flag-title="aqs源码">
+             <span id="/20191203/javasource/util/6_ReentrantReadWriteLock/" class="leancloud_visitors" data-flag-title="ReentrantReadWriteLock阅读">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -581,12 +1059,12 @@ ConcurrentHashMap在内部采用了一个叫做 Segment 的结构，一个Segmen
       
         
           
-          aqsAQS（AbstractQueuedSynchronizer）是JAVA中众多锁以及并发工具的基础，其底层采用乐观锁，大量使用了CAS操作， 并且在冲突时，采用自旋方式重试，以实现轻量级和高效地获取锁。
-AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法。AQS是被设计为支持多种用途，如
+          ReentrantReadWriteLockReentrantReadWriteLock实现的是ReadWriteLock接口，ReadWriteLock接口中只定义了 readLock 和 writeLock 方法。
+readLock 和 writeLock方法分别返回了内部的读锁和写锁。12pu
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/20191118/javasource/util/3_AbstractQueuedSynchronizer/#more" rel="contents">
+            <a class="btn" href="/20191203/javasource/util/6_ReentrantReadWriteLock/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -632,7 +1110,7 @@ AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191116/java/3_synchronizedAndlock/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191203/javasource/util/9_Semaphore/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fk">
@@ -654,8 +1132,8 @@ AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法�
             
               
                 
-                <a class="post-title-link" href="/20191116/java/3_synchronizedAndlock/" itemprop="url">
-                  synchronized和lock
+                <a class="post-title-link" href="/20191203/javasource/util/9_Semaphore/" itemprop="url">
+                  Semaphore阅读
                 </a>
               
             
@@ -671,8 +1149,8 @@ AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T11:46:23+08:00">
-                2019-11-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-03T16:59:00+08:00">
+                2019-12-03
               </time>
             
 
@@ -709,7 +1187,7 @@ AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法�
 
           
           
-             <span id="/20191116/java/3_synchronizedAndlock/" class="leancloud_visitors" data-flag-title="synchronized和lock">
+             <span id="/20191203/javasource/util/9_Semaphore/" class="leancloud_visitors" data-flag-title="Semaphore阅读">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -740,13 +1218,12 @@ AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法�
       
         
           
-          锁的种类锁的种类很多，包括：自旋锁(CAS)、阻塞锁、可重入锁、读写锁、互斥锁、悲观锁、乐观锁、公平锁、可中断锁等等，主要介绍下可重入锁、读写锁、可中断锁和公平锁。
-可重入锁
-如果锁具备可重入性，则称作为可重入锁。synchronized和ReentrantLock都是可重入锁，可重入性在我看来实际
+          SemaphoreSemaphore是一个计数信号量，必须由获取它的线程释放。常用于限制可以访问某些资源的线程数量，利用Semaphore限流。
+Semaphore有两种模式，公平模式和非公平模式。公平模式就是调用acquire的顺序就是获取许可证的顺序，遵循FIFO;而非公平锁是抢占式的，有可能一
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/20191116/java/3_synchronizedAndlock/#more" rel="contents">
+            <a class="btn" href="/20191203/javasource/util/9_Semaphore/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -792,7 +1269,7 @@ AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191115/javasource/util/2_ExecutorService/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191202/javasource/util/8_CountDownLatch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fk">
@@ -814,8 +1291,8 @@ AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法�
             
               
                 
-                <a class="post-title-link" href="/20191115/javasource/util/2_ExecutorService/" itemprop="url">
-                  线程池阅读
+                <a class="post-title-link" href="/20191202/javasource/util/8_CountDownLatch/" itemprop="url">
+                  CountDownLatch阅读
                 </a>
               
             
@@ -831,8 +1308,8 @@ AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-15T16:45:45+08:00">
-                2019-11-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-02T21:48:17+08:00">
+                2019-12-02
               </time>
             
 
@@ -869,7 +1346,7 @@ AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法�
 
           
           
-             <span id="/20191115/javasource/util/2_ExecutorService/" class="leancloud_visitors" data-flag-title="线程池阅读">
+             <span id="/20191202/javasource/util/8_CountDownLatch/" class="leancloud_visitors" data-flag-title="CountDownLatch阅读">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -900,13 +1377,12 @@ AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法�
       
         
           
-          类继承的结构
-Executor是最顶层的接口，定义了execute(Runnable runnable)方法。ExecutorService继承了Executor，继承了execute方法，还定义很多接口方法，例如shutdown、isTerminated、submit等方法。
-在下面一层是Abst
+          CountDownLatchcountDownLatch这个类使一个线程等待其他线程各自执行完毕后再执行。是通过一个计数器来实现的，计数器的初始值是线程的数量。每当一个线程执行完毕后，计数器的值就-1，当计数器的值为0时，表示所有线程都执行完毕，然后在闭锁上等待的线程就可以恢复工作了。
+countD
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/20191115/javasource/util/2_ExecutorService/#more" rel="contents">
+            <a class="btn" href="/20191202/javasource/util/8_CountDownLatch/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -952,7 +1428,7 @@ Executor是最顶层的接口，定义了execute(Runnable runnable)方法。Exec
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191114/javasource/util/1_HashMap/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191201/javasource/util/5_ReentrantLock/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fk">
@@ -974,8 +1450,8 @@ Executor是最顶层的接口，定义了execute(Runnable runnable)方法。Exec
             
               
                 
-                <a class="post-title-link" href="/20191114/javasource/util/1_HashMap/" itemprop="url">
-                  HashMap阅读 （1.8|1.7）
+                <a class="post-title-link" href="/20191201/javasource/util/5_ReentrantLock/" itemprop="url">
+                  ReentrantLock阅读
                 </a>
               
             
@@ -991,8 +1467,8 @@ Executor是最顶层的接口，定义了execute(Runnable runnable)方法。Exec
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-14T15:24:25+08:00">
-                2019-11-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-01T20:15:48+08:00">
+                2019-12-01
               </time>
             
 
@@ -1029,7 +1505,7 @@ Executor是最顶层的接口，定义了execute(Runnable runnable)方法。Exec
 
           
           
-             <span id="/20191114/javasource/util/1_HashMap/" class="leancloud_visitors" data-flag-title="HashMap阅读 （1.8|1.7）">
+             <span id="/20191201/javasource/util/5_ReentrantLock/" class="leancloud_visitors" data-flag-title="ReentrantLock阅读">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1060,37 +1536,12 @@ Executor是最顶层的接口，定义了execute(Runnable runnable)方法。Exec
       
         
           
-          HashMap 内部默认的参数
-
-
-
-变量
-值
-含义
-
-
-
-
-DEFAULT_INITIAL_CAPACITY
-16
-默认容量
-
-
-MAXIMUM_CAPACITY
-1 &lt;&lt; 30
-最大容量
-
-
-DEFAULT_LOAD_FACTOR
-0.75
-负载因子
-
-
-TREEIFY_THRESH
+          ReentrantLockReentrantLock是一个互斥锁，也是一个可重入锁。ReentrantLock锁在同一时刻只能被一个线程持有，但是它可被单个线程多次获取，每获取一次AQS的state就加1。ReentrantLock内部的实现（公平锁和非公平锁）都是基于内部Sync的实现。
+内部结构
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/20191114/javasource/util/1_HashMap/#more" rel="contents">
+            <a class="btn" href="/20191201/javasource/util/5_ReentrantLock/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1136,7 +1587,7 @@ TREEIFY_THRESH
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20170817/Design_pattern/19_iterator/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191127/java/5_synchronized/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fk">
@@ -1158,8 +1609,8 @@ TREEIFY_THRESH
             
               
                 
-                <a class="post-title-link" href="/20170817/Design_pattern/19_iterator/" itemprop="url">
-                  迭代器模式
+                <a class="post-title-link" href="/20191127/java/5_synchronized/" itemprop="url">
+                  synchronized
                 </a>
               
             
@@ -1175,8 +1626,8 @@ TREEIFY_THRESH
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T09:19:52+08:00">
-                2017-08-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-27T22:22:13+08:00">
+                2019-11-27
               </time>
             
 
@@ -1198,8 +1649,8 @@ TREEIFY_THRESH
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/synchronized/" itemprop="url" rel="index">
+                    <span itemprop="name">synchronized</span>
                   </a>
                 </span>
 
@@ -1210,23 +1661,10 @@ TREEIFY_THRESH
           
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/20170817/Design_pattern/19_iterator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="20170817/Design_pattern/19_iterator/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
 
           
           
-             <span id="/20170817/Design_pattern/19_iterator/" class="leancloud_visitors" data-flag-title="迭代器模式">
+             <span id="/20191127/java/5_synchronized/" class="leancloud_visitors" data-flag-title="synchronized">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1257,13 +1695,14 @@ TREEIFY_THRESH
       
         
           
-          迭代器模式介绍迭代器模式：提供一种方法访问一个容器对象中各个元素，而又不暴露该对象的内部细节。（行为型模式）迭代器模式是应该是java中使用的最多的一种设计模式，迭代器模式如下：
-
-抽象容器：一般是一个接口，提供一个iterator()方法，例如java中的Collection接口，List接口，S
+          synchronized 可以使用任意一个非空的对象当做锁。synchronized属于独占式的悲观锁，也是可重入锁。它可以保证同一时刻只有一个线程执行某个方法或某个代码块，还可保证共享变量的可见性。
+synchronized的三种作用范围
+作用于方法，锁住的是对象实例。
+作用于代码块，指定加锁对象
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/20170817/Design_pattern/19_iterator/#more" rel="contents">
+            <a class="btn" href="/20191127/java/5_synchronized/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1309,7 +1748,7 @@ TREEIFY_THRESH
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20170811/Design_pattern/18_interpreter/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20191124/java/4_集合简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fk">
@@ -1331,8 +1770,8 @@ TREEIFY_THRESH
             
               
                 
-                <a class="post-title-link" href="/20170811/Design_pattern/18_interpreter/" itemprop="url">
-                  解释器模式
+                <a class="post-title-link" href="/20191124/java/4_集合简介/" itemprop="url">
+                  java集合简述
                 </a>
               
             
@@ -1348,8 +1787,8 @@ TREEIFY_THRESH
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-11T09:08:34+08:00">
-                2017-08-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-24T20:21:33+08:00">
+                2019-11-24
               </time>
             
 
@@ -1371,8 +1810,8 @@ TREEIFY_THRESH
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -1383,23 +1822,10 @@ TREEIFY_THRESH
           
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/20170811/Design_pattern/18_interpreter/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="20170811/Design_pattern/18_interpreter/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
 
           
           
-             <span id="/20170811/Design_pattern/18_interpreter/" class="leancloud_visitors" data-flag-title="解释器模式">
+             <span id="/20191124/java/4_集合简介/" class="leancloud_visitors" data-flag-title="java集合简述">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1430,541 +1856,32 @@ TREEIFY_THRESH
       
         
           
-          解释器模式介绍解释器模式：给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。（行为型模式）
-解释器模式uml图一般如下：
+          java集合java集合类存放在java.util下面，主要有三种：Set，List，Map。
+
+Collection 是集合Set、List和Queue最基本的接口
+Iterator 可以使用迭代器遍历集合中的元素
+Map 是key value映射形式的基本接口
 
 
-AbstractExpression 抽象解释器
 
-&nbsp;&nbsp;&nbsp;&nbsp; 具体的解释任务由各个实现类
+
+
+
+
+
+
+
+
+
+
+
+
+
+A
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/20170811/Design_pattern/18_interpreter/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20170808/Design_pattern/17_command/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fk">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/author.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fk5431">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/20170808/Design_pattern/17_command/" itemprop="url">
-                  命令模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-08T14:54:23+08:00">
-                2017-08-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/20170808/Design_pattern/17_command/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="20170808/Design_pattern/17_command/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/20170808/Design_pattern/17_command/" class="leancloud_visitors" data-flag-title="命令模式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          命令模式介绍
-在软件系统中，行为请求者与行为实现者通常是一种紧耦合关系，但是有时候，比如需要对行为进行记录、撤销或重做、事务等处理时，这种无法抵御变化的紧耦合关系就不大合适。
-
-将一个请求封装成一个对象，从而是你可用不同的请求对客户进行参数化，对请求排队和记录请求日志，以及支持可撤销的操作。命令模式
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/20170808/Design_pattern/17_command/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20170806/Design_pattern/16_chainOfResponsibility/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fk">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/author.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fk5431">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/20170806/Design_pattern/16_chainOfResponsibility/" itemprop="url">
-                  责任链模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-06T21:00:13+08:00">
-                2017-08-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/20170806/Design_pattern/16_chainOfResponsibility/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="20170806/Design_pattern/16_chainOfResponsibility/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/20170806/Design_pattern/16_chainOfResponsibility/" class="leancloud_visitors" data-flag-title="责任链模式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          责任链模式介绍在责任链模式里，很多对象由每一个对象对其下家的引用而连接起来形成一条链。请求会在这个链上传递，直到链上某一个对象可以处理这个请求。（行为型模式）
-结构图责任链模式的结构像下面这样：
-
-
-抽象处理者角色（handler）：定义一个处理请求的接口，还可以定义一个后继连接（可选）。
-具体处理
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/20170806/Design_pattern/16_chainOfResponsibility/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/20170803/Design_pattern/15_proxy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fk">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/author.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="fk5431">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/20170803/Design_pattern/15_proxy/" itemprop="url">
-                  代理模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-03T22:15:23+08:00">
-                2017-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/20170803/Design_pattern/15_proxy/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="20170803/Design_pattern/15_proxy/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/20170803/Design_pattern/15_proxy/" class="leancloud_visitors" data-flag-title="代理模式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          代理模式介绍代理模式为其他对象提供一种代理以控制对这个对象的访问。（结构型模式）代理模式提供三种角色：
-
-抽象角色：声明真实对象和代理对象的共同接口。
-代理角色：代理对象角色内部含有对真实对象的引用，从而可以操作真实对象，同时代理对象提供与真实对象相同的接口以便在任何时刻都能代替真实对象。同时，代理
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/20170803/Design_pattern/15_proxy/#more" rel="contents">
+            <a class="btn" href="/20191124/java/4_集合简介/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2005,7 +1922,7 @@ AbstractExpression 抽象解释器
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2050,7 +1967,7 @@ AbstractExpression 抽象解释器
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-count">56</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2061,7 +1978,7 @@ AbstractExpression 抽象解释器
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2072,7 +1989,7 @@ AbstractExpression 抽象解释器
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">56</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
