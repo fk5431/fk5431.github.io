@@ -18,7 +18,7 @@ keywords: 设计模式 责任链模式
 
 责任链模式的结构像下面这样：
 
-![责任链模式](../../uploads/chainOfResponsibility/1.png)
+![责任链模式](../../../uploads/chainOfResponsibility/1.png)
 
 - 抽象处理者角色（handler）：定义一个处理请求的接口，还可以定义一个后继连接（可选）。
 - 具体处理者角色（ConcreteHandler）：具体处理者接到请求后，如果可以处理就处理请求，如果不能处理就把请求传给下一个继承。

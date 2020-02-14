@@ -17,7 +17,7 @@ keywords: 设计模式 装饰器模式
 
 ### 装饰器模式构成
 
-![装饰器模式UML](../../uploads/decorator/1.jpg)
+![装饰器模式UML](../../../uploads/decorator/1.jpg)
 
 Component : 组件对象接口，可以给这些对象动态添加职责
 

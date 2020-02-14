@@ -15,7 +15,7 @@ keywords: 设计模式 解释器模式
 
 解释器模式uml图一般如下：
 
-![解释器模式](../../../uploads/interpreter/1.gif)
+![解释器模式](../../../../uploads/interpreter/1.gif)
 
 - AbstractExpression 抽象解释器
 
