@@ -114,4 +114,4 @@ public void countDown() {
 }
 ```
 releaseShared就相当于先执行了tryReleaseShared（先以CAS的方式将state-1），然后执行AQS的doReleaseShared方法。
-doReleaseShared方法可以参考![aqs](http://fk5431.com/20191118/javasource/util/3_AbstractQueuedSynchronizer/)，就是对共享模式的node进行唤醒，如果state为0的时候，就会唤醒，此时此线程已等待其他线程执行完毕，就可以开始执行了。
+doReleaseShared方法可以参考[aqs](http://fk5431.com/20191118/javasource/util/3_AbstractQueuedSynchronizer/)，就是对共享模式的node进行唤醒，如果state为0的时候，就会唤醒，此时此线程已等待其他线程执行完毕，就可以开始执行了。

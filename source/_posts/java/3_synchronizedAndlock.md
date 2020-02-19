@@ -82,7 +82,7 @@ public static void menthed(){
 
 java.util.concurrent.locks 包下有以下这些类：
 
-![类](../../uploads/javasource/lock.jpeg)
+![类](../../../uploads/javasource/lock.jpeg)
 
 ReetrantLock实现了Lock接口，ReadWriteLock是读写锁的接口，由ReentrantReadWriteLock实现。
 
