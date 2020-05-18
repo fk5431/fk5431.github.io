@@ -17,7 +17,7 @@ keywords:
 ### IoC
 
 IoC即Inversion of Control，是控制反转的意思：所谓IoC，就是由spring IoC容器来负责对象的生命周期和对象之间的关系。
-Spring通过一个配置文件描述Bean及Bean之间的关系，利用Java的反射实例化Bean并建立Bean之间的依赖关系。Spring的Ioc容易在完成基础工作上，还提供了Bean实例缓存、生命周期管理、Bean实例化、事件发布、资源装载等服务。
+Spring通过一个配置文件描述Bean及Bean之间的关系，利用Java的反射实例化Bean并建立Bean之间的依赖关系。Spring的Ioc容器在完成基础工作上，还提供了Bean实例缓存、生命周期管理、Bean实例化、事件发布、资源装载等服务。
 
 #### IoC容器
 
