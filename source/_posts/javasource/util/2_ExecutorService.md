@@ -294,8 +294,6 @@ public void execute(Runnable command) {
 
 #### 拒绝策略
 
-##### CallerRunsPolicy
-
 ```
 public static class CallerRunsPolicy implements RejectedExecutionHandler {
     public CallerRunsPolicy() { }
